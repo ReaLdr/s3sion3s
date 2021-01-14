@@ -1,0 +1,410 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*CONTAINER*/
+#container {
+
+background-color: #fdfdfd;
+
+position:relative;
+top:auto;
+font-family:  Arial, Helvetica, sans-serif;
+font-size:11px;
+font-style:normal;
+width:650px;
+height: auto;
+bottom:auto;
+margin:0 auto;
+padding:0;
+line-height : 1.8em;
+	
+
+}
+html, body {
+/*height: 100%; /* Required */
+}
+body {
+	/*background-color:#2E213D;
+	/*background-image:url(images/bgm1.png);*/
+	/*background-repeat:repeat-x;*/
+background-repeat: repeat-x;
+	min-height: 100%;
+	width :900px;
+	height:auto;
+	margin : 0 auto;
+	padding-bottom: 10px;
+	left: 0px;
+	top: 0px;
+	background-color: #4E4B65;
+}
+			/*CONTAINER*/
+#container {
+	background-color: #231A31;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	width : 580px;
+	height:450;
+	margin:0 auto;
+	padding: 0;
+	line-height : 1.8em;
+}
+
+#container_blanco {
+	background-color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	width : 850px;
+	height:450;
+	margin:0 auto;
+	padding: 0;
+	line-height : 1.8em;
+}
+
+			/*BANNER*/
+#banner {
+height : 150px;
+padding : 0;
+margin-top : 0;
+color : #666;
+background : #7dce27 url(img/banner.jpg) no-repeat;
+}
+#banner h1 {
+margin-top : 0;
+padding : 5px 5px 0 0;
+font : 170% verdana, "Trebuchet MS", arial, tahoma, sans-serif;
+text-align : right;
+letter-spacing : 5px;
+color : #4B2207;
+background : inherit;
+}
+			/*TOP NAVIGATION*/
+#navlist {
+padding : 0.5em 0;
+margin : 0 0 20px 0;
+text-align : left;
+letter-spacing : 5px;
+background : #C8BF88;
+}
+#navlist li {
+list-style : none;
+margin : 0;
+display : inline;
+}
+#navlist li a {
+padding : 0.5em 0.5em;
+margin: 0;
+color : #000;
+background : #C8BF88;
+text-decoration : none;
+}
+#navlist li a:link,#navlist li a:visited {
+color : #000000;
+background : #C8BF88;
+}
+#navlist li a:hover {
+color : olive;
+background : transparent url(img/menu_arrow.gif) bottom center no-repeat;
+}
+#navlist li a#current {
+color :  #fff;
+background : transparent url(img/menu_arrow.gif) bottom center no-repeat;
+}
+			/*MAIN CONTENT*/
+#content {
+padding : 10px;
+margin-left : 200px;
+margin-bottom : 10px;
+color : #666;
+background : #fff;
+}
+
+			/*SIDEBAR*/
+			/*FOOTER*/
+#footer {
+clear:both;
+position: absolute;
+bottom: 0;
+width: 850px;
+border-top: 1px solid #eee;
+background: #eee;
+} 
+#footer p {
+margin-left: 5px;
+}
+			/*LINK PROPERTIES*/
+A:link {
+	text-decoration:underline;
+	color:#303;
+	font-weight:bold
+}
+A:visited {
+	text-decoration:underline;
+	color:#96C;
+	font-weight:bold
+}
+A:active {text-decoration:none;color:#000000;font-weight:bold}
+A:hover {
+	text-decoration:underline;
+	color:#93C;
+	font-weight:bold
+}
+.menus a {
+	color: #FFF;
+}
+.menus a:active {
+	color: #999;
+}
+
+.menus a:visited {
+	color: #FFF;
+}
+
+.menus a:link {
+	color: #FFF;
+}
+.menus a:hover {
+	color: #999;
+}
+
+
+			/*IMAGE PROPERTIES*/
+
+.noborder {
+float : left;
+margin-right: 10px;
+padding :0 10px;
+}
+ 
+
+			/*TYPOGRAPHY*/
+
+blockquote {
+font-weight : bold;
+font-style : italic;
+color : #2E213D;
+}
+			/*CLASSES*/
+
+.info {
+color : #2E213D;
+}
+
+.post {
+font-family: Arial, Helvetica, sans-serif;
+padding : 3px;
+margin : 20px 10px 10px 5px;
+border : 1px dashed #8a795d;
+font-size : 80%;
+color: #2E213D;
+background : #fff;
+} 
+.post .date { 
+background : url(img/clock.gif) no-repeat left center;
+padding-left : 15px;
+margin : 0 15px 0 5px;
+} 
+.post .comments { 
+background : url(img/comment.gif) no-repeat left center;
+padding-left : 15px;
+margin : 0 15px 0 5px;
+} 
+.post .readmore { 
+background : url(img/document.gif) no-repeat left center;
+padding-left : 15px;
+margin : 0 15px 0 5px;
+} 
+.subrayados {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #2E213D;
+	text-decoration: underline;
+}
+.titulo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	text-align : center;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #2E213D;
+}
+.titulo_sistema {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	text-align : center;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #2E213D;
+}
+.foot {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	text-align : center;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #2E213D;
+}
+.pequeno {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-style: normal;
+	text-align : center;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #2E213D;
+}
+
+.titulo_header {
+	font-family: Arial;
+	font-size: 24px;
+	font-style:normal;
+	text-align : center;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #2E213D;
+}
+.titulo1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	text-align : center;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #2E213D;
+}
+.titulo_blanco {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	text-align : center;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #FFFFFF;
+}
+.footer_blanco {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	text-align : center;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #FFFFFF;
+}
+.subtitulo 
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	text-align : center;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #2E213D;
+	text-decoration: underline;
+}
+.login {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	line-height: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #FFF;
+	font-weight:bold;
+}
+
+.titulo_negro {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	line-height: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #FFF;
+	font-weight:bold;
+}
+.instrucciones {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #2E213D;
+	font-style:normal;
+	font-weight:bold;
+}
+
+.texto_instrucciones {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	text-align : center;
+	line-height: normal;
+	font-weight:normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #2E213D;
+}
+.menus {
+	background-color: #434055;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFF;
+	
+}
+
+	.tcAlert { color: orange; }
+	.tcWarn { color: red; }
+textarea{
+	width:390px;
+	height:200px;
+	border:1px solid #ccc;
+	padding:3px;
+	color:black;
+	font:12px Arial, sans-serif, Helvetica;
+	}
+
+.titulo{
+
+font - family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+.blanco_tablas {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	text-align : center;
+	line-height: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	color: #FFFFFF;
+}
+
+.tablitas {
+	border: 1px solid #999;
+}
+
+#tablaforma {
+	margin-top: 30px;
+}

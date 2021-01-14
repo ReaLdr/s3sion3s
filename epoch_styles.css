@@ -1,0 +1,95 @@
+table.calendar {
+	width: 200px;
+	font-family: Calibri, Arial, sans-serif;
+	font-size: 0.9em;
+	border-collapse: collapse;
+	background-color: white;
+	border: solid #999999 1px;
+	background-color: white;
+	text-align: center;
+
+}
+table.calendar input, table.calendar select {
+	font-size: 9px;
+}
+table.calendar td {
+	border: 0;
+	font-size: 10px;
+	text-align: center;
+}
+div.mainheading {
+	width: 200px;
+	margin: 2px;
+}
+table.caldayheading {
+	border-collapse: collapse;
+	cursor: pointer;
+	empty-cells: show;
+	margin: 0 6px 0 6px;
+	width: 35px;
+}
+table.caldayheading td {
+	border: solid #CCCCCC 1px;
+	text-align: left;
+	color: #306;
+	font-weight: bold;
+	width: 35px; /*should match calendar cell's width*/
+}
+table.caldayheading td.wkhead {
+	border-right: double #CCCCCC 3px;
+	width: 35px;
+}
+table.calcells {
+	border-collapse: collapse;
+	cursor: pointer;
+	margin: 0 6px 0 6px;
+	width: 35px;
+}
+table.calcells td {
+	border: solid #CCCCCC 1px;
+	vertical-align: top;
+	text-align: left;
+	font-weight: bold;
+	width: 35px;
+	height: 20px; /*IE doesn't like ems*/
+}
+table.calcells td div {
+	padding: 1px;
+	margin: 0;
+	width: 35px;
+}
+table.calcells td.wkhead {
+	background-color: white;
+	text-align: center;
+	border-right: double #CCCCCC 3px;
+	color: #306;
+	width: 35px;
+}
+table.calcells td.wkday {
+	background-color: #DDDDDD;
+	width: 35px;
+}
+table.calcells td.wkend {
+	background-color: #DDDDDD;
+	width: 35px;
+}
+table.calcells td.curdate {
+	width: 35px;
+}
+table.calcells td.cell_selected {
+	background-color: #99CCFF;
+	color: black;
+	width: 35px;
+}
+table.calcells td.notmnth {
+	background-color: #FFFFFF;
+	color: #CCCCCC;
+}
+table.calcells td.notallowed {
+	background-color: white;
+	color: #EEEEEE;
+	font-style: italic;
+}
+table.calcells td.hover {
+	background-color: #999999;
+}

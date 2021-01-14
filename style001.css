@@ -1,0 +1,59 @@
+
+/*
+body {
+	position: relative;
+}
+.affix {
+	top: 20px;
+}
+
+div.col-sm-9 div {
+	height: 250px;
+	
+}
+		
+		  
+@media screen and (max-width: 810px) {
+	#section1, #section2, #section3, #section41, #section42  {
+		 margin-left: 150px;
+	}
+	body {
+		position: absolute;
+	}
+}
+*/
+.form-group label {
+	text-align: left;
+}
+
+.btnimg{
+	background-image: url('../imagenes/pdf.jpg');
+}
+.btnedit{
+	background-image: url('../imagenes/edit.png');
+}
+
+.form-group{
+	/*padding-bottom: 40px;
+	border-bottom: 1px solid #FFF;
+	padding-top: 10px;*/
+}
+.well:nth-child(odd){
+	background-color: #DDD;
+}
+
+.radio-inline label{
+	font-style: normal;
+	font-weight: 100; 
+	/*padding-left: 30px;
+	border-left: 1px solid #FFF;
+	margin-left: 5px;*/
+}
+
+.oculta{
+	display: none;
+}
+
+#maincontainer{
+	min-height: 500px;
+}
