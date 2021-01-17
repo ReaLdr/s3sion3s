@@ -644,10 +644,10 @@ echo'</table>';
 <tr>
 
 <td colspan="2" align="center">MORENA</td>
-<td colspan="2" align="center">PELG</td>
 <td colspan="2" align="center">PES</td>
-<td colspan="2" align="center">PRSP</td>
-<td colspan="2" align="center">PFSM</td>
+<td colspan="2" align="center">RSP</td>
+<td colspan="2" align="center">FSM</td>
+	<td colspan="2" align="center">ELIGE</td>
 </tr>
 <tr>
 <td>
@@ -657,13 +657,6 @@ echo'</table>';
 <input type="radio" name="morena" value="2" <?php if($cliente['qf_morena_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
 	
-<td>
-<input type="radio" name="elg" value="1" <?php if($cliente['qf_elg_p']=="1") echo "checked=\"checked\""?>><br>P
-</td>
-<td>
-<input type="radio" name="elg" value="2" <?php if($cliente['qf_elg_s']=="1") echo "checked=\"checked\""?>><br>S
-</td>
-
 <td>
 <input type="radio" name="pes" value="1" <?php if($cliente['qf_pes_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
@@ -684,6 +677,12 @@ echo'</table>';
 <input type="radio" name="pfsm" value="2" <?php if($cliente['qf_pfsm_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
 
+	<td>
+<input type="radio" name="elg" value="1" <?php if($cliente['qf_elg_p']=="1") echo "checked=\"checked\""?>><br>P
+</td>
+<td>
+<input type="radio" name="elg" value="2" <?php if($cliente['qf_elg_s']=="1") echo "checked=\"checked\""?>><br>S
+</td>
 
 <tr><td  colspan=12 align="center" bgcolor="#CCCCFF"><strong>Asistencia a Sesión de Candidaturas Sin Partido</strong></td></tr>
 <tr align="center">
@@ -925,15 +924,14 @@ echo'</table>';
 <tr>
 
 <td colspan="2" align="center">MORENA</td>
-<td colspan="2" align="center">PELG</td>
+
 <td colspan="2" align="center">PES</td>
-<td colspan="2" align="center">PRSP</td>
-<td colspan="2" align="center">PFSM</td>
-	
+<td colspan="2" align="center">RSP</td>
+<td colspan="2" align="center">FSM</td>
+<td colspan="2" align="center">ELIGE</td>	
 </tr>
+	 
 <tr align="center">
-
-
 <td>
 <input type="radio" name="morena" value="1"  /><br>P
 </td>
@@ -941,13 +939,6 @@ echo'</table>';
 <input type="radio" name="morena" value="2"  /><br>S
 </td>
 
-<td>
-<input type="radio" name="elg" value="1"  /><br>P
-</td>
-<td width="0%">
-<input type="radio" name="elg" value="2"  /><br>S
-</td>
-	
 <td>
 <input type="radio" name="pes" value="1"  /><br>P
 </td>
@@ -966,8 +957,15 @@ echo'</table>';
 <td width="0%">
 <input type="radio" name="pfsm" value="2" ><br>S
 </td>
-</tr>
-<tr >
+	
+<td>
+<input type="radio" name="elg" value="1"  /><br>P
+</td>
+<td width="0%">
+<input type="radio" name="elg" value="2"  /><br>S
+</td>
+	</tr>
+<tr>
   <td  colspan=12 align="center" bgcolor="#CCCCFF"><strong>Asistencia a Sesión de Candidaturas Sin Partido</strong></td></tr>
 <tr align="center">
 <td colspan="2">CI - 1 </td>

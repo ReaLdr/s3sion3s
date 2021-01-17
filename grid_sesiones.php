@@ -209,7 +209,7 @@ echo "<center><strong>El status de la sesion es: &nbsp;&nbsp;" .utf8_encode($edo
     <td style="background-color: #EEE;">Fecha de Inicio</td>
     <td style="background-color: #EEE;" >Hora de Inicio</td>
     <td style="background-color: #EEE;" colspan="5" align="center">Acciones</td>
-    <td style="background-color: #EEE;" colspan="9" align="center">Reportes</td>
+    <td style="background-color: #EEE;" colspan="11" align="center">Reportes</td>
     </tr>
 
 <?php
@@ -273,6 +273,21 @@ echo '<td>';
 	else
 	{
 	echo'<a  class="btn btn-primary" href="./'.$acta_principal.'" target="_blank">Ver Acta</a>';
+	}
+echo '</td>';
+	
+	
+	echo'<td><a  class="btn btn-primary" id="nuevo" href="subir_docto.php?id_sesion='.$datos[id_sesion].'&id_distrito='.$id_distrito.'" >Subir Documentos de la sesión</a></td>';
+	
+	$doctos_principal=$datos[doctos_principal];
+echo '<td>';
+	if($doctos_principal=='')
+	{
+		echo "<div class='alert alert-warning'>No hay documentos</div>";
+	}
+	else
+	{
+	echo'<a  class="btn btn-primary" href="./'.$doctos_principal.'" target="_blank">Ver Documentos</a>';
 	}
 echo '</td>';
 echo'</tr>';

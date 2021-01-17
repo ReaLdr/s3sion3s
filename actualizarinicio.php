@@ -712,38 +712,32 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 <tr>
 
 <td colspan="2" align="center">MORENA</td>
-<td colspan="2" align="center">PELG</td>
 <td colspan="2" align="center">PES</td>
-<td colspan="2" align="center">PRSP</td>
-<td colspan="2" align="center">PFSM</td>
+<td colspan="2" align="center">RSP</td>
+<td colspan="2" align="center">FSM</td>	
+<td colspan="2" align="center">ELIGE</td>
 </tr>
-	
+
 	
 <tr>
-
 <td>
 <input type="radio" name="morena" value="1" <?php if($cliente['qi_morena_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
 <td width="0%">
 <input type="radio" name="morena" value="2" <?php if($cliente['qi_morena_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
-
-<td>
-<input type="radio" name="elg" value="1" <?php if($cliente['qi_elg_p']=="1") echo "checked=\"checked\""?>><br>P
-</td>
-<td width="0%">
-<input type="radio" name="elg" value="2" <?php if($cliente['qi_elg_s']=="1") echo "checked=\"checked\""?>><br>S
-</td>
-
+	
 <td>
 <input type="radio" name="pes" value="1" <?php if($cliente['qi_pes_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
 <td width="0%">
 <input type="radio" name="pes" value="2" <?php if($cliente['qi_pes_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
+	
 <td>
 <input type="radio" name="prsp" value="1" <?php if($cliente['qi_prsp_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
+	
 <td width="0%">
 <input type="radio" name="prsp" value="2" <?php if($cliente['qi_prsp_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
@@ -751,10 +745,17 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 <td>
 <input type="radio" name="pfsm" value="1" <?php if($cliente['qi_pfsm_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
+	
 <td width="0%">
 <input type="radio" name="ppfsm" value="2" <?php if($cliente['qi_prfsm_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
-
+	
+<td>
+<input type="radio" name="elg" value="1" <?php if($cliente['qi_elg_p']=="1") echo "checked=\"checked\""?>><br>P
+</td>
+<td width="0%">
+<input type="radio" name="elg" value="2" <?php if($cliente['qi_elg_s']=="1") echo "checked=\"checked\""?>><br>S
+</td>
 
 <tr><td  colspan=12 align="center" bgcolor="#CCCCFF"><strong>Asistencia a Sesi&oacute;n de Candidaturas Sin Partido</strong></td></tr>
 <tr align="center">
@@ -1052,10 +1053,10 @@ echo'</table>';
 
 <tr>
 <td colspan="2" align="center">MORENA</td>
-<td colspan="2" align="center">PELGS</td>
 <td colspan="2" align="center">PES</td>
-<td colspan="2" align="center">PRSP</td>
-<td colspan="2" align="center">PFSM</td>
+<td colspan="2" align="center">RSP</td>
+<td colspan="2" align="center">FSM</td>
+	<td colspan="2" align="center">ELIGE</td>
 </tr>
 
 <tr align="center">
@@ -1067,13 +1068,6 @@ echo'</table>';
 <input type="radio" name="morena" value="2" <?php if($cliente['qi_morenas']=="1") echo "checked=\"checked\""?>><br>S
 </td>
 	
-	<td>
-<input type="radio" name="elg" value="1" <?php if($cliente['qi_elg_p']=="1") echo "checked=\"checked\""?>><br>P
-</td>
-<td width="0%">
-<input type="radio" name="elg" value="2" <?php if($cliente['qi_elg_s']=="1") echo "checked=\"checked\""?>><br>S
-</td>
-
 <td>
 <input type="radio" name="pes" value="1" <?php if($cliente['qi_pes_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
@@ -1093,6 +1087,13 @@ echo'</table>';
 </td>
 <td width="0%">
 <input type="radio" name="pfsm" value="2" <?php if($cliente['qi_pfsm_s']=="1") echo "checked=\"checked\""?>><br>S
+</td>
+	
+<td>
+<input type="radio" name="elg" value="1" <?php if($cliente['qi_elg_p']=="1") echo "checked=\"checked\""?>><br>P
+</td>
+<td width="0%">
+<input type="radio" name="elg" value="2" <?php if($cliente['qi_elg_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
 
 </tr>

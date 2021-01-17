@@ -104,15 +104,16 @@ $tipo_cand[13]="Partido de la Revoluci&oacute;n Democr&aacute;tica (PRD)";
 $tipo_cand[14]="Partido Verde Ecologista de M&eacute;xico (PVEM)";
 $tipo_cand[15]="Partido del Trabajo (PT)";
 $tipo_cand[16]="Partido Movimiento Ciudadano (PMC)";
-//$tipo_cand[17]="Partido Nueva Alianza (PNA)";
-$tipo_cand[18]="Partido MORENA";
-//$tipo_cand[19]="Partido Encuentro Social (PES)";
-//$tipo_cand[20]="Partido Humanista (PH)";
+$tipo_cand[17]="Partido MORENA";
+$tipo_cand[18]="Partido Equidad, Libertad y G&eacute;nero (ELIGE)";
 
+$tipo_cand[19]="Partido Encuentro Solidario (PES)";
+$tipo_cand[20]="Partido Redes Sociales Progresistas (RSP)";
+$tipo_cand[21]="Fuerza Social por M&eacute;xico (FSM)";
 
-//$tipo_cand[31]="Representante Lorena Osornio";
-$tipo_cand[32]="Rep. Candidaturas sin partido Diputaciones";
-$tipo_cand[33]="Rep. Candidaturas sin partido Alcaldias";
+$tipo_cand[31]="Representante CI-1";
+$tipo_cand[32]="Rep. CI-2";
+$tipo_cand[33]="Rep. CI-3";
 $tipo_cand[34]="Candidato sin partido -4";
 
 ?>

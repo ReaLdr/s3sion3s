@@ -17,7 +17,8 @@ else{
 
 $variable= $_REQUEST["page"];
 
-
+//-------------------- 12/01/2021 Variable para imprimir partido ELEGIR AL ULTIMO
+	$integra18 = "";
 
 //echo $id_distrito;
 
@@ -533,7 +534,7 @@ $cliente ="";
 
 	if(isset($id_sesion)){
 		
-	$sql_count2="SELECT count(*) as cuantos2 FROM sisesecd_cat_funcionarios WHERE id_sesion =$_REQUEST[id_sesion] ";
+	$sql_count2="SELECT count(*) as cuantos2 FROM sisesecd_cat_funcionarios WHERE id_sesion =$_REQUEST[id_sesion] "; /// CAMBIO A TABLA CAT_FUNCIONARIOS_CENTRAL
 		//echo $sql_count2;
 		
 		$exec_count2 = sqlsrv_query($conn, $sql_count2);
@@ -1112,6 +1113,7 @@ else
     echo'</tr>';
 	}
 	
+	
 	if($row[id_integrante]==17 && $row[tipo_acredor]=='S')
 	{
     echo' <tr>';
@@ -1133,53 +1135,7 @@ else
     echo' </tr>';
 	}
 	
-	 if($row[id_integrante]==18 && $row[tipo_acredor]=='P')
-	{ 
-	 echo'<tr>';
-     echo' <td width="26%" rowspan="2">Partido Equidad, Libertad y Genero  (PELG)</td>';
-     echo' <td width="15%">';
-     echo'<input type="hidden" name="id_integra18" id="id_integra18" value ="'.$row['id_integrante'].'"  />';
-     echo'<input type="hidden" name="id_func18P" id="id_func18P" value ="'.$row['id_funcionario'].'" />';
-     echo' <input type="text" name="txt_nombrePNA-P" id="txt_nombrePNA-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
-     echo' <td width="22%"><input type="text" name= "txt_paternoPNA-P" id="txt_paternoPNA-P" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
-	 echo' <td width="21%"><input type="text" name= "txt_maternoPNA-P" id="txt_maternoPNA-P" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)" /></td>';
-	 
-	echo'<td width="16%">';
-    echo '<label>P</label>';
-if($row['tipo_acredor']=="P")
-{
-	echo'<input type="checkbox" name="ck_PNA-P" value="P" checked="checked" >';
-}
-else
-{
-	echo'<input type="checkbox" name="ck_PNA-P" value="P" >';
-}
-
-     echo' </tr>';
-	}
-	 
-	 if($row[id_integrante]==18 && $row[tipo_acredor]=='S')
-	{
-     echo' <tr>';
-     echo'<input type="hidden" name="id_func18S" id="id_func18S" value ="'.$row['id_funcionario'].'" />';
-     echo' <td width="15%"><input type="text" name= "txt_nombrePNA-S" id="txt_nombrePNA-S" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
-     echo' <td width="22%"><input type="text" name= "txt_paternoPNA-S" id="txt_paternoPNA-S" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
-     echo' <td width="21%"><input type="text" name= "txt_maternoPNA-S" id="txt_maternoPNA-S" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/> </td>'; 
-
-   
-	echo'<td width="16%">';
-   	echo '<label>S</label>';       
-  if($row['tipo_acredor']=="S")
-{
-	echo'<input type="checkbox" name="ck_PNA-S" value="S" checked="checked" >';
-}
-else
-{
-	echo'<input type="checkbox" name="ck_PNA-S" value="S" >';
-}
-     echo'</tr>';
-	}
-	
+	///// 
 	if($row[id_integrante]==19 && $row[tipo_acredor]=='P')
 	{
 	
@@ -1226,6 +1182,8 @@ else
     echo' </tr>';
 	}
 	
+///////
+	
 	if($row[id_integrante]==20 && $row[tipo_acredor]=='P')
 	{
    echo' <tr>';
@@ -1271,11 +1229,12 @@ else
 
     echo' </tr>';
 	}
+//////////////
 	
-  if($row[id_integrante]==21 && $row[tipo_acredor]=='P')
+	 if($row[id_integrante]==21 && $row[tipo_acredor]=='P')
 	{
    echo' <tr>';
-   echo' <td width="26%" rowspan="2">Partido Fuerza Social por México (PFSM)</td>';
+   echo' <td width="26%" rowspan="2">Fuerza Social por México (FSM)</td>';
    echo' <td width="15%">';
    echo'<input type="hidden" name="id_integra21" id="id_integra21" value ="'.$row['id_integrante'].'"  />';
    echo'<input type="hidden" name="id_func21P" id="id_func20P" value ="'.$row['id_funcionario'].'" />';
@@ -1318,7 +1277,66 @@ else
     echo' </tr>';
 	} 
    	
-}// ciera while 2partidos 
+	
+	// ESTE VA AL ULTIMO:
+	 if($row[id_integrante]==18 && $row[tipo_acredor]=='P')
+	{ 
+	// 12/01/2021 Variable para imprimir partido ELEGIR AL ULTIMO
+	 $integra18 .= '<tr>';
+     $integra18 .= ' <td width="26%" rowspan="2">Partido Equidad, Libertad y Genero  (ELIGE)</td>';
+     $integra18 .=  ' <td width="15%">';
+     $integra18 .=  '<input type="hidden" name="id_integra18" id="id_integra18" value ="'.$row['id_integrante'].'"  />';
+     $integra18 .=  '<input type="hidden" name="id_func18P" id="id_func18P" value ="'.$row['id_funcionario'].'" />';
+     $integra18 .= ' <input type="text" name="txt_nombrePNA-P" id="txt_nombrePNA-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
+     $integra18 .= ' <td width="22%"><input type="text" name= "txt_paternoPNA-P" id="txt_paternoPNA-P" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
+	 $integra18 .= ' <td width="21%"><input type="text" name= "txt_maternoPNA-P" id="txt_maternoPNA-P" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)" /></td>';
+	 
+	$integra18 .= '<td width="16%">';
+    $integra18 .=  '<label>P</label>';
+	
+	if($row['tipo_acredor']=="P")
+	{
+		$integra18 .= '<input type="checkbox" name="ck_PNA-P" value="P" checked="checked" >';
+	}
+	else
+	{
+		$integra18 .= '<input type="checkbox" name="ck_PNA-P" value="P" >';
+	}
+
+     $integra18 .= ' </tr>';
+	}
+	 
+	 if($row[id_integrante]==18 && $row[tipo_acredor]=='S')
+	{
+     $integra18 .=  ' <tr>';
+     $integra18 .=  '<input type="hidden" name="id_func18S" id="id_func18S" value ="'.$row['id_funcionario'].'" />';
+     $integra18 .= ' <td width="15%"><input type="text" name= "txt_nombrePNA-S" id="txt_nombrePNA-S" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
+     $integra18 .= ' <td width="22%"><input type="text" name= "txt_paternoPNA-S" id="txt_paternoPNA-S" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
+     $integra18 .= ' <td width="21%"><input type="text" name= "txt_maternoPNA-S" id="txt_maternoPNA-S" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/> </td>'; 
+
+   
+	$integra18 .=  '<td width="16%">';
+   	$integra18 .=  '<label>S</label>';       
+		if($row['tipo_acredor']=="S")
+		{
+			$integra18 .= '<input type="checkbox" name="ck_PNA-S" value="S" checked="checked" >';
+		}
+		else
+		{
+			$integra18 .= '<input type="checkbox" name="ck_PNA-S" value="S" >';
+		}
+     $integra18 .= '</tr>';
+	}
+	///  ---- FIN $integra18
+	
+	
+		
+ 
+}// ciera while 2partidos
+
+// 12/01/2021:  Se pone prelación
+echo $integra18;
+
 		 echo'</table>';
 
  ?> 
@@ -1491,7 +1509,7 @@ if($row[id_integrante]==33 && $row[tipo_acredor]=='P')
 	echo'<td colspan="4"> <input type="tex" name="txt_puestocandidatoALCALDE" id ="txt_puestocandidatoALCALDE" value="'.$row['puesto'].'"/></td>';
 	echo'</tr>';
 	 echo'<tr>';
-	 echo'<input type="hidden" name="id_integra33" id="id_integra33" value ="'.$row['id_integrante'].'"  />';
+	 echo'<input type="hidden" name="id_integra33" id="id_integra33" value ="'.$row['id_integrante'].'"/>';
      echo'<input type="hidden" name="id_func33P" id="id_func33P" value ="'.$row['id_funcionario'].'" />';
 	
      echo'<td width="26%" rowspan="2" align="center"><strong>Reperesentantes C- 3</strong></td>';
@@ -1960,32 +1978,6 @@ else
   <input type="checkbox" name="ck_MOR-S" value="S" checked="checked" disabled="disabled"/>
           S </p></td>
     </tr>
-<tr>
-      <td width="25%">Partido Equidad, Libertad y Genero (PELyG)</td><!-- antes PNA -->
-      <td width="20%"><p>
-        <input type="hidden" name="id_integra18" id="id_integra18" value ="18" />
-        <input type="text" name= "txt_nombrePNA-P" id="txt_nombrePNA-P" onkeypress='return validar_texto(event)' tabindex="37"/>
-      </p>
-        <p>
-          <input type="text" name= "txt_nombrePNA-S" id="txt_nombrePNA-S" onkeypress='return validar_texto(event)' tabindex="40"/>
-        </p></td>
-      <td width="21%"><p>
-        <input type="text" name= "txt_paternoPNA-P" id="txt_paternoPNA-P" onkeypress='return validar_texto(event)' tabindex="38"/>
-      </p>
-      <p>
-          <input type="text" name= "txt_paternoPNA-S" id="txt_paternoPNA-S" onkeypress='return validar_texto(event)' tabindex="41"/>
-      </p></td>
-      <td width="22%"><p>
-        <input type="text" name= "txt_maternoPNA-P" id="txt_maternoPNA-P" onkeypress='return validar_texto(event)' tabindex="39"/>
-      </p>
-      <p>
-          <input type="text" name= "txt_maternoPNA-S" id="txt_maternoPNA-S" onkeypress='return validar_texto(event)' tabindex="42"/>
-      </p></td>
-      <td width="12%"><input type="checkbox" name="ck_PNA-P" value="P" checked="checked" disabled="disabled"/>
-      P <br /> <br />
-<input type="checkbox" name="ck_PNA-S" value="S" checked="checked" disabled="disabled"/>
-      S </td>
-    </tr>
  
   <tr>
       <td width="25%">Partido Encuentro Solidario (PES)</td>
@@ -2014,7 +2006,7 @@ P <br /> <br />
 S </td>
     </tr>
      <tr>
-      <td width="25%">Partido Redes Sociales Progresistas (PRSP)</td> <!-- antes Partido humanista -->
+      <td width="25%">Partido Redes Sociales Progresistas (RSP)</td> <!-- antes Partido humanista -->
       <td width="20%"><p>
         <input type="hidden" name="id_integra20" id="id_integra20" value ="20" />
         <input type="text" name= "txt_nombrePH-P" id="txt_nombrePH-P" onkeypress='return validar_texto(event)' tabindex="55"/>
@@ -2043,7 +2035,7 @@ S </td>
     </tr>
    
      <tr>
-      <td width="25%">Partido Fuerza Social por México (PFSM)</td> <!-- Nuevo partido  -->
+      <td width="25%">Fuerza Social por México (FSM)</td> <!-- Nuevo partido  -->
       <td width="20%"><p>
         <input type="hidden" name="id_integra21" id="id_integra21" value ="21" />
         <input type="text" name= "txt_nombrePFSM-P" id="txt_nombrePFSM-P" onkeypress='return validar_texto(event)' tabindex="55"/>
@@ -2070,6 +2062,33 @@ S </td>
        <input type="checkbox" name="ck_PFSM-S" value="S" checked="checked" disabled="disabled"/>
         S </p></td>
     </tr>
+<tr>
+      <td width="25%">Partido Equidad, Libertad y Genero (ELIGE)</td><!-- antes PNA -->
+      <td width="20%"><p>
+        <input type="hidden" name="id_integra18" id="id_integra18" value ="18" />
+        <input type="text" name= "txt_nombrePNA-P" id="txt_nombrePNA-P" onkeypress='return validar_texto(event)' tabindex="37"/>
+      </p>
+        <p>
+          <input type="text" name= "txt_nombrePNA-S" id="txt_nombrePNA-S" onkeypress='return validar_texto(event)' tabindex="40"/>
+        </p></td>
+      <td width="21%"><p>
+        <input type="text" name= "txt_paternoPNA-P" id="txt_paternoPNA-P" onkeypress='return validar_texto(event)' tabindex="38"/>
+      </p>
+      <p>
+          <input type="text" name= "txt_paternoPNA-S" id="txt_paternoPNA-S" onkeypress='return validar_texto(event)' tabindex="41"/>
+      </p></td>
+      <td width="22%"><p>
+        <input type="text" name= "txt_maternoPNA-P" id="txt_maternoPNA-P" onkeypress='return validar_texto(event)' tabindex="39"/>
+      </p>
+      <p>
+          <input type="text" name= "txt_maternoPNA-S" id="txt_maternoPNA-S" onkeypress='return validar_texto(event)' tabindex="42"/>
+      </p></td>
+      <td width="12%"><input type="checkbox" name="ck_PNA-P" value="P" checked="checked" disabled="disabled"/>
+      P <br /> <br />
+<input type="checkbox" name="ck_PNA-S" value="S" checked="checked" disabled="disabled"/>
+      S </td>
+    </tr>
+	
   </table>
   <br />
 <table width="91%" height="60" border="0">

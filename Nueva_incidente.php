@@ -451,10 +451,10 @@ echo'</table>';
     </tr>
     <tr>
     <td colspan="2" align="center">MORENA</td>
-    <td colspan="2" align="center">PELG</td>
       <td colspan="2" align="center">PES</td>
-		<td colspan="2" align="center">PRSP</td>
-		<td colspan="2" align="center">PFSM</td>
+		<td colspan="2" align="center">RSP</td>
+		<td colspan="2" align="center">FSM</td>
+		<td colspan="2" align="center">ELIGE</td>
     </tr>
     <tr>
         <td><input type="radio" name="morena" value="1"  />
@@ -463,13 +463,7 @@ echo'</table>';
       <td width="0%"><input type="radio" name="morena" value="2" />
         <br />
         S </td>
-  <td><input type="radio" name="elg" value="1" />
-        <br />
-        P </td>
-      <td width="0%"><input type="radio" name="elg" value="2"/>
-        <br />
-        S </td>
- 
+   
 		<td><input type="radio" name="pes" value="1" />
         <br />
         P </td>
@@ -488,6 +482,13 @@ echo'</table>';
       <td width="0%"><input type="radio" name="pfsm" value="2" />
         <br />
         S </td>  
+	<!-- 12/01/2021: SE CAMBIA PRELACIÓN -->
+		<td><input type="radio" name="elg" value="1" />
+        <br />
+        P </td>
+      <td width="0%"><input type="radio" name="elg" value="2"/>
+        <br />
+        S </td>
     </tr>
 	  
     <tr >

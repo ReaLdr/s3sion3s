@@ -104,7 +104,7 @@ function detalle(codigophp){
     <td class="fondogris-tabla">Fecha de Inicio Programada</td>
     <td class="fondogris-tabla" >Hora de Inicio Programada</td>
     <td class="fondogris-tabla" colspan="3">Acciones</td>
-    <td class="fondogris-tabla" colspan="11">Reportes</td>
+    <td class="fondogris-tabla" colspan="12">Reportes</td>
     </tr>
 
 
@@ -180,6 +180,8 @@ $i++;
   	echo'<td><a class="btn btn-outline-dark btn-sm" href="sl1d3/examples/multiple/reporte_animado.php?nosesion='.$datos[nosesion].'&tiposesion='.$datos[tipo_sesion].'&descsesion='.$datos[desc_sesion].'" target="_blank">Reporte Seguimiento 1</a></td>';////<img src="images/rpt_incidentes.png" title="Reporte Animado 1" alt="Reporte Concentrado" border="0" />
   
   	echo'<td><a class="btn btn-outline-dark btn-sm"href="sl1d3/examples/multiple/reporte_animado2.php?nosesion='.$datos[nosesion].'&tiposesion='.$datos[tipo_sesion].'&descsesion='.$datos[desc_sesion].'" target="_blank">Reporte Seguimiento 2</a></td>';////<img src="images/rpt_intervenciones.png" title="Reporte Animado 2" alt="Reporte Concentrado" border="0" />
+	
+	echo'<td><a class="btn btn-outline-dark btn-sm"href="descarga_todos_doctos.php?nosesion='.$datos[nosesion].'&tiposesion='.$datos[tipo_sesion].'&descsesion='.$datos[desc_sesion].'">Descargar Documentos de la Sesion</a></td>';
   echo'</tr>';
 }
 ?>
