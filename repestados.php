@@ -3,7 +3,7 @@ header('Content-type: application/vnd.ms-excel');
 header("Content-Disposition: attachment; filename=Reporte de estados.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-//header("Content-Type: text/html;charset=utf-8"); 
+//header("Content-Type: text/html;charset=utf-8");
 
 
 session_start();
@@ -16,13 +16,13 @@ $t_sesion=$_REQUEST[tipo_sesion];
 $desc=$_REQUEST[desc_sesion];
 $idsesion=$_REQUEST[id_sesion];
 //echo $desc;
-$id_distrito=$_SESSION['id_distrito'];	
+$id_distrito=$_SESSION['id_distrito'];
 
 
 	include("bitacora.php");
 			$accion="GeneraReporte Estados";
 			bitacora($accion);
-  
+
 ?>
 <style>
 th { vertical-align: baseline }
@@ -91,34 +91,36 @@ $dia=$fecha_partida[2];
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 echo"<th colspan=30>";
 //echo "<img src='http://distritos.iedf.org.mx/sisesecd2015/images/iedf.PNG'/>";
+echo "<img src='https://aplicaciones.iecm.mx/sesiones2020/images/logo-header.png' style='vertical-align:middle;' width='10%' alt='IECM'>";
 echo "</th>";
 echo "<tr>";
-echo "<th colspan=6 padding: 16px; >SECRETARIA EJECUTIVA</th>";
+echo "<th colspan=3 padding: 16px; >SECRETARIA EJECUTIVA</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=6>";
+echo "<th colspan=3>";
 echo "<font style='font-size:16px;font-weight:bold;'>DIRECCI&Oacute;N EJECUTIVA DE ORGANIZACI&Oacute;N ELECTORAL Y GEOESTAD&Iacute;STICA.<br>";
 echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=6>";
+echo "<th colspan=3>";
 echo "<font style='font-size:16px;font-weight:bold;'>PROCESO ELECTORAL LOCAL ORDINARIO 2020-2021.<br>";
 echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=6 align='center'>";
+echo "<th colspan=3 align='center'>";
 echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE ESTADOS<br></font><br>";
 echo "</th>";
 echo "</tr>";
 echo "<tr>";
-echo "<th colspan=6>";
+echo "<th colspan=3>";
 echo "<font style='font-size:14px;font-weight:bold;'>".$nom_sesion[$nosesion]." SESI&Oacute;N DE LOS CONSEJOS DISTRITALES ($tipo_ses[$t_sesion] 0$desc)<br></font><br>";
 echo "</th>";
 echo "</tr>";
 
 echo "<tr> ";
-echo "<td colspan=6 align='center'>";
-echo "<font style='font-size:14px;font-weight:bold;'>FECHA DEL D&Iacute;A: ".$dia." DEL MES ",$month[$mes]." DE 2021</font><br>";
+echo "<td colspan=3 align='center'>";
+//echo "<font style='font-size:14px;font-weight:bold;'>FECHA DEL D&Iacute;A: ".$dia." DEL MES ",$month[$mes]." DE 2021</font><br>";
+echo "<font style='font-size:14px;font-weight:bold;'>FECHA: ".$dia. " DE " .$ar_mes[$mes] ." DE ".$anio."</font><br>";
 echo "</td>";
 echo "</tr>";
 echo '<tr>';
@@ -147,21 +149,21 @@ echo "<table border=1 style='font-family:Calibri, Arial, Helvetica, sans-serif;'
 $sql_consulta1 = "SELECT * FROM sisesecd_estado_sesion WHERE id_sesion= $idsesion and id_distrito= $id_distrito";
 //echo $sql_consulta1;
 	$consulta1 = sqlsrv_query($conn, $sql_consulta1);
-	
+
 		while($consulta1_row=sqlsrv_fetch_array($consulta1))
 		{
-	
-			
-	
+
+
+
 		echo "<tr>" ;
-	
+
 	    echo "<td>".$consulta1_row['hora_inicio']."</td>";
 		echo "<td>".$consulta1_row['hora_termino']."</td>";
 		echo "<td>".$array_estado[$consulta1_row['estado_sesion']]."</td>";
 		echo "</tr>";
 		}// cierro el primer while intervenciones
 
-	
+
 	echo "</tr>";
 
 //}// cierra while de sql

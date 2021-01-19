@@ -8,17 +8,17 @@ if (isset($_SESSION['user'])) {
 
 $name= $_SESSION['transaccion'];
 $grup=$_SESSION['grupo'];
-$id_distrito=$_SESSION['id_distrito'];	
-	
+$id_distrito=$_SESSION['id_distrito'];
+
 }
 else
 {
-echo' 	alert("Debe iniciar una sesion")';	
+echo' 	alert("Debe iniciar una sesion")';
 	echo'<SCRIPT LANGUAGE="javascript">';
 	echo'	location.href = "index.php";';
 	echo'	</SCRIPT>';
 }
-	
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -42,7 +42,7 @@ echo' 	alert("Debe iniciar una sesion")';
 <title>.: SISESECD 2018 :.</title>
 
 </head>
-	
+
 <body>
 <div id="container_blanco">
 
@@ -57,7 +57,7 @@ echo' 	alert("Debe iniciar una sesion")';
   <tr>
     <td width="16%" height="25" align="left" class="well">Usuario: <?php echo $name;?></td>
   	   <td width="16%" align="center"><?php echo"<a class='btn btn-primary' href='javascript:history.back(-2)'> Menu principal</a>"; ?></td>
-   
+
     <td width="29%" align="right"><a class="btn btn-default" href="logout.php">Cerrar Sesion</a></td>
   </tr>
 </table>
@@ -103,35 +103,35 @@ echo' 	alert("Debe iniciar una sesion")';
 <div id="content">
   <CENTER>
 <br>
-<div> 
+<div>
   <p>&nbsp;</p>
   <p><span class="titulo">Actas Circunstanciadas de los 33 Distritos Electorales<BR>
     </span></p>
 
-	 
-	  <p>&nbsp;</p>	  
+
+	  <p>&nbsp;</p>
 	<center>
 	<table class="table table-bordered table-responsive" border="1" align="center">
   <thead>
 	  <tr>
 	  <td> <p><span class="titulo">Todas las Actas <BR>
     </span></p></td>
-		  <td><?php echo '<a href="descargartodos.php?nosesion='.$_GET[nosesion].'&tiposesion='.$_REQUEST[tiposesion].'&descsesion='.$_REQUEST[descsesion].'">Descargar</a>'; ?></td>
+		  <td><?php echo '<a href="descargartodos.php?nosesion='.$_GET[nosesion].'&tiposesion='.$_REQUEST[tiposesion].'&descsesion='.$_REQUEST[descsesion].'" target="_blank">Descargar</a>'; ?></td>
 	  </tr>
     <tr >
       <th width="29" scope="col">#</th>
       <th width="78" height="43" align="center" scope="col">Distrito</th>
-      <th width="163"  align="center" scope="col">Actas</th>	
-      </tr>  
-    <?php 
+      <th width="163"  align="center" scope="col">Actas</th>
+      </tr>
+    <?php
 	error_reporting(E_ERROR | E_PARSE);
 $nosesion=$_GET[nosesion];
 $tiposesion=$_REQUEST[tiposesion];
 $desc=$_REQUEST[descsesion];
 
-	include ("config_open_db.php"); 
-	
-	$sqlSelec="SELECT * from sisesecd_sesiones where nosesion=$nosesion and tipo_sesion=$tiposesion 
+	include ("config_open_db.php");
+
+	$sqlSelec="SELECT * from sisesecd_sesiones where nosesion=$nosesion and tipo_sesion=$tiposesion
 and desc_sesion=$desc and id_distrito!=40 and estatus =1 order by id_distrito asc";
 //echo $sqlSelec;
 
@@ -163,7 +163,7 @@ echo '</td>';
 echo '</tr>';
 }
 ?>
-  </table> 
+  </table>
 		</center>
 <p>&nbsp;</p>
  <p>&nbsp;</p>

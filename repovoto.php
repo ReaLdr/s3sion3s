@@ -1,8 +1,8 @@
 <?php
-header("Content-type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename=Reporte_de_Sentido_del_voto_de_las_sesiones_de_consejos_distritales.xls");
-header("Pragma: no-cache");
-header("Expires: 0");
+// header("Content-type: application/vnd.ms-excel");
+// header("Content-Disposition: attachment; filename=Reporte_de_Sentido_del_voto_de_las_sesiones_de_consejos_distritales.xls");
+// header("Pragma: no-cache");
+// header("Expires: 0");
 //header("Content-Type: text/html;charset=utf-8");
 session_start();
 error_reporting(E_ERROR | E_PARSE);
@@ -17,6 +17,15 @@ $desc=$_POST['descsesion'];
 	include("bitacora.php");
 	$accion="GeneraReporte Votacion CENTRAL".$punto;
 	bitacora($accion);
+
+	$fecha_hoy= date('Y-n-d');
+	//$fecha_hoy=$undato["fecha_inicio_prog"];
+
+	$fecha_partida=explode("-", $fecha_hoy);
+
+	$anio=$fecha_partida[0];
+	$mes=$fecha_partida[1];
+	$dia=$fecha_partida[2];
 ?>
 <style>
 th { vertical-align: baseline }
@@ -73,7 +82,7 @@ and o.punto='$punto'
 and o.estatus=1
 and s.id_sesion in(
 select id_sesion from sisesecd_sesiones where nosesion=$nosesion and estatus=1 and con_votos=1 and tipo_sesion=$typesess and desc_sesion=$desc)order by s.id_distrito asc";
-//echo $sql;
+echo $sql;
 
 $sql_cuantos="SELECT count(*)as cuantos FROM sisesecd_ordendia as o, sisesecd_sesiones as s, sisesecd_inicio as i
 WHERE s.id_sesion=o.id_sesion
@@ -115,24 +124,25 @@ include ("arreglos.php");
 echo '<div id="contenedor">';
 
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
-echo"<th colspan=10>";
+echo"<th colspan=5>";
 //echo "<img src='http://desarrollo.iedf.org.mx/sisesecd2015/images/iedf.PNG'/>";
+echo "<img src='https://aplicaciones.iecm.mx/sesiones2020/images/logo-header.png' style='vertical-align:middle;' width='10%' alt='IECM'>";
 echo "</th>";
 echo "<tr>";
-echo "<th colspan=10 padding: 16px;>SECRETARIA EJECUTIVA</th>";
+echo "<th colspan=5 padding: 16px;>SECRETARIA EJECUTIVA</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=10 >";
+echo "<th colspan=5 >";
 echo "<font style='font-size:16px;font-weight:bold;'>DIRECCI&Oacute;N EJECUTIVA DE ORGANIZACI&Oacute;N ELECTORAL Y GEOESTAD&Iacute;STICA.<br>";
 echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=10>";
+echo "<th colspan=5>";
 echo "<font style='font-size:16px;font-weight:bold;'>PROCESO ELECTORAL LOCAL ORDINARIO 2020- 2021.<br>";
 echo "</th>";
 echo "</tr> ";
 echo "<tr>";
-echo "<th colspan=10>";
+echo "<th colspan=5>";
 echo "<font style='font-size:14px;font-weight:bold;'>".$nom_sesion[$nosesion]." SESION DE LOS CONSEJOS DISTRITALES (".$tipo_ses[$typesess]." 0".$desc." )<br></font><br>";
 echo "</th>";
 echo "</tr>";
@@ -140,21 +150,22 @@ echo "<tr> ";
 
 if($punto ==0)
 {
-	echo "<th colspan=10 align='center'>";
+	echo "<th colspan=5 align='center'>";
 echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE SENTIDO DE LA VOTACI&Oacute;N<br> Punto ".utf8_decode(htmlspecialchars($punto))." APROBACI&Oacute;N DEL ORDEN DEL D&Iacute;A Y DISPENSA DE LA LECTURA DE LOS DOCUMENTOS PREVIAMENTE DISTRIBUIDOS</font><br>";
 echo "</th>";
-	
+
 }
 else
 {
-echo "<th colspan=10 align='center'>";
+echo "<th colspan=5 align='center'>";
 echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE SENTIDO DE LA VOTACI&Oacute;N<br> Punto ".utf8_decode(htmlspecialchars($punto))." ".htmlspecialchars($descripcion)."</font><br>";
 echo "</th>";
 }
 echo "</tr>";
 echo "<tr>";
-echo "<td colspan=10 align='center'>";
-echo "<font style='font-size:14px;font-weight:bold;'>Sesi&oacute;n celebrada el: ".$fecha."<br></font><br>";
+echo "<td colspan=5 align='center'>";
+//echo "<font style='font-size:14px;font-weight:bold;'>Sesi&oacute;n celebrada el: ".$fecha."<br></font><br>";
+echo "<font style='font-size:14px;font-weight:bold;'>FECHA: ".$dia. " DE " .$ar_mes[$mes] ." DE ".$anio."</font><br>";
 echo "</td>";
 echo "</tr>";
 echo "</table>";
@@ -162,7 +173,7 @@ echo "</table>";
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 echo "<tr>";
 echo '<td width=88 rowspan=2 class="borde_tabla"><strong>DISTRITO</strong></td>';
-echo '<td width=88 rowspan=2 class="borde_tabla"><strong>DESCRIPCI&Oacute;N</strong></td>';
+//echo '<td width=88 rowspan=2 class="borde_tabla"><strong>DESCRIPCI&Oacute;N</strong></td>';
 
 echo '<td colspan=3 class="borde_tabla"><strong>SENTIDO DE LA VOTACI&Oacute;N</strong></td>';
 echo '<td width=239 rowspan=2 class="borde_tabla"><strong>OBSERVACIONES</strong></td>';
@@ -175,14 +186,14 @@ echo '<td width=114 class="borde_tabla"><strong>EXCUSA</strong></td>';
 echo "</tr>";
 
 
-$indice=0;	
+$indice=0;
 
 while($datos = sqlsrv_fetch_array ($resultados))
 {
-	
+
 	$distrito=$datos['id_distrito'];
 	$desc_punto=$datos['desc_punto'];
-	
+
 	$votocp=$datos['voto_cp'];
 	if($votocp==1)
 		$afavor++;
@@ -190,7 +201,7 @@ while($datos = sqlsrv_fetch_array ($resultados))
 		$encontra++;
 	if($votocp==3)
 		$excusa++;
-		
+
 	$votoc1=$datos['voto_c1'];
 	if($votoc1==1)
 		$afavor++;
@@ -198,7 +209,7 @@ while($datos = sqlsrv_fetch_array ($resultados))
 		$encontra++;
 	if($votoc1==3)
 		$excusa++;
-	
+
 	$votoc2=$datos['voto_c2'];
 	if($votoc2==1)
 		$afavor++;
@@ -214,8 +225,8 @@ while($datos = sqlsrv_fetch_array ($resultados))
 		$encontra++;
 	if($votoc3==3)
 		$excusa++;
-		
-		
+
+
 	$votoc4=$datos['voto_c4'];
 	if($votoc4==1)
 		$afavor++;
@@ -223,15 +234,15 @@ while($datos = sqlsrv_fetch_array ($resultados))
 		$encontra++;
 	if($votoc4==3)
 		$excusa++;
-	
+
 	$votoc5=$datos['voto_c5'];
 	if($votoc5==1)
 		$afavor++;
 	if($votoc5==2)
 		$encontra++;
-	if($votoc5==3)	
+	if($votoc5==3)
 		$excusa++;
-	
+
 	$votoc6=$datos['voto_c6'];
 	if($votoc6==1)
 		$afavor++;
@@ -243,50 +254,50 @@ while($datos = sqlsrv_fetch_array ($resultados))
 	$array_f[$indice]=$afavor;
 	$array_c[$indice]=$encontra;
 	$array_d[$indice]=$excusa;
-	
+
 	$observaini =  utf8_decode(htmlspecialchars(trim($datos['observa_punto'])));
-	
+
 	echo'<tr>';
-	
+
 	//if($distrito<=10){
 		echo'<td align="center" class="resultados">'.$datos['id_distrito'].'</td>';
-		echo'<td align="center" class="resultados">'.$datos['desc_punto'].'</td>';
-			
+		//echo'<td align="center" class="resultados">'.$datos['desc_punto'].'</td>';
+
 			/*if($afavor==6 || $encontra==6 || $excusa==6)
-				$total6++;			
-			
+				$total6++;
+
 			if($afavor==5 || $encontra==5 || $excusa==5)
 				$total5++;
-				
+
 			if($afavor==7 || $encontra==7 || $excusa==7)
 				$total7++;*/
-				
+
 			if($afavor==6 )
-				$total6++;			
-			
+				$total6++;
+
 			if($afavor==5 )
 				$total5++;
-				
+
 			if($afavor==7 )
 				$total7++;
 
 			if($afavor==4 )
-			$total4++;	
-				
-			
+			$total4++;
+
+
 			echo'<td align="center" class="resultados">'.$afavor.'</td>';
 			echo'<td align="center" class="resultados">'.$encontra.'</td>';
 			echo'<td align="center" class="resultados">'.$excusa.'</td>';
 			echo'<td align="center" class="resultados">'.$observaini.'</td>';
-	
+
 		$grantotal=$total7+$total5+$total6+$total4;
-		
+
 	echo'</tr>';
-	
+
 	$afavor=0;
 	$encontra=0;
 	$excusa=0;
-	
+
 	$indice++;
 }
 
@@ -294,53 +305,57 @@ while($datos = sqlsrv_fetch_array ($resultados))
 echo "<tr>";
 echo "</tr>";
 echo "<tr>";
-echo "</tr>"; 
+echo "</tr>";
 
 echo "</table>";
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 echo "<tr>";
 echo '<td colspan=2 class="borde_tabla">TOTALES VOTACI&Oacute;N</td>';
-echo "<td></td>";
-echo '<td colspan=2  class="borde_tabla">CONCENTRADO</td>';
+//echo "<td></td>";
+//echo '<td colspan=2  class="borde_tabla">CONCENTRADO</td>';
 echo "</tr>";
 
 echo "<tr>";
-echo '<td class="borde_tabla">VOTACI&Oacute;N</td>';
-echo '<td class="borde_tabla">No. Dttos.</td>';
-echo "<td></td>";
-
+//echo '<td class="borde_tabla">VOTACI&Oacute;N</td>';
+//echo '<td class="borde_tabla">No. Dttos.</td>';
+//echo "<td></td>";
+$total_daniel = 0;
 echo '<td class="resultados">A FAVOR</td>';
 if($cuantos1>=1){
 echo '<td class="resultados">'.array_sum($array_f)."</td>";
+$total_daniel += array_sum($array_f);
 }else{
 echo '<td class="resultados">NO HAY DATOS DE VOTACI&Oacute;N</td>';
-}	
+}
 echo "</tr>";
 
 echo "<tr>";
-echo '<td class="resultados">Unanimidad con 7 votos</td>';
-echo '<td class="resultados">'.$total7.'</td>';
-echo "<td></td>";
+//echo '<td class="resultados">Unanimidad con 7 votos</td>';
+//echo '<td class="resultados">'.$total7.'</td>';
+//echo "<td></td>";
 
 echo '<td class="resultados">EN CONTRA</td>';
 if($cuantos1<1){
 	echo '<td class="resultados">NO HAY DATOS DE VOTACI&Oacute;N</td>';
 }else{
 	echo '<td class="resultados">'.array_sum($array_c).'</td>';
+	$total_daniel += array_sum($array_c);
 }
 echo "</tr>";
 
 echo "<tr>";
-echo '<td class="resultados">Unanimidad o Mayor&iacute;a con 6 votos</td>';
-echo '<td class="resultados">'.$total6.'</td>';
-echo "<td></td>";
+//echo '<td class="resultados">Unanimidad o Mayor&iacute;a con 6 votos</td>';
+//echo '<td class="resultados">'.$total6.'</td>';
+//echo "<td></td>";
 echo '<td class="resultados">EXCUSA</td>';
 	if($cuantos1<1){
 		echo '<td class="resultados">NO HAY DATOS DE VOTACI&Oacute;N</td>';
 	}else{
 		echo '<td class="resultados">'.array_sum($array_d).'</td>';
+		$total_daniel += array_sum($array_d);
 	}
 echo "</tr>";
+/*
 echo "<tr>";
 echo '<td class="resultados">Unanimidad o Mayor&iacute;a con 5 votos</td>';
 echo '<td class="resultados">'.$total5.'</td>';
@@ -348,14 +363,14 @@ echo "</tr>";
 echo "<tr>";
 echo '<td class="resultados">Unanimidad o Mayor&iacute;a con 4 votos</td>';
 echo '<td class="resultados">'.$total4.'</td>';
-echo "</tr>";
+echo "</tr>";*/
 echo "<tr>";
 echo '<td class="resultados">TOTAL</td>';
-echo '<td class="resultados">'.$grantotal.'</td>';
+echo '<td class="resultados">'.$total_daniel.'</td>';
 echo "</tr>";
 echo "</table>";
 echo "</div>";
 
-sqlsrv_free_stmt($result); 
+sqlsrv_free_stmt($result);
 sqlsrv_close($conn);
 ?>

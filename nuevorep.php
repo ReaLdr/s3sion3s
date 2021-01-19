@@ -67,9 +67,15 @@ require("config_open_db.php");
 	//echo $sql_fecha;
 $r_fecha=sqlsrv_query($conn, $sql_fecha);
 $d_date=sqlsrv_fetch_array ($r_fecha);
-	
-$fecha_act=$d_date['fecha'];
-        
+
+//$fecha_act=$d_date['fecha'];
+$fecha_hoy= date('Y-n-d');
+$fecha_partida=explode("-", $fecha_hoy);
+
+$anio=$fecha_partida[0];
+$mes=$fecha_partida[1];
+$dia=$fecha_partida[2];
+
 
 $nosesion=$_REQUEST['nosesion'];
 $typesess=$_REQUEST['tiposesion'];
@@ -77,7 +83,7 @@ $desc=$_REQUEST['descsesion'];
 
 //$encabezado = "SELECT i.fecha_inicio_real, s.fecha_inicio_prog, s.nosesion,s.tipo_sesion,s.desc_sesion FROM sisesecd_inicio as i, sisesecd_sesiones as s WHERE s.nosesion=".$nosesion." and s.tipo_sesion=".$typesess." and s.desc_sesion= ".$desc." and s.estatus=1";
 
-/// es la fecha de la sesion programada 
+/// es la fecha de la sesion programada
 $encabezado = "SELECT * FROM sisesecd_sesiones  WHERE nosesion=".$nosesion." and tipo_sesion=".$typesess." and desc_sesion= ".$desc." and estatus=1 and id_distrito =40";
 //echo $encabezado;
 
@@ -109,6 +115,7 @@ include ("arreglos.php");
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 echo"<th colspan=30>";
 //echo "<img src='http://distritos.iedf.org.mx/sisesecd2015/images/iedf.PNG'/>";
+echo "<img src='https://aplicaciones.iecm.mx/sesiones2020/images/logo-header.png' style='vertical-align:middle;' alt='IECM'>";
 echo "</th>";
 echo "<tr>";
 echo "<th colspan=36 padding: 16px; >SECRETARIA EJECUTIVA</th>";
@@ -136,7 +143,8 @@ echo "</tr>";
 
 echo "<tr> ";
 echo "<td colspan=36 align='center'>";
-echo "<font style='font-size:14px;font-weight:bold;'>FECHA DE SESI&Oacute;N: ".$dia." DEL MES ".$mes." DE ".$anio."</font><br>";
+//echo "<font style='font-size:14px;font-weight:bold;'>FECHA DE SESI&Oacute;N: ".$dia." DEL MES ".$mes." DE ".$anio."</font><br>";
+echo "<font style='font-size:14px;font-weight:bold;'>FECHA: ".$dia. " DE " .$ar_mes[$mes] ." DE ".$anio."</font><br>";
 echo "</td>";
 echo "</tr>";
 echo"<th colspan=36>";
@@ -160,7 +168,7 @@ echo '<td width=42 rowspan=4 align="center" class="borde_tabla"><strong>srio</st
 echo "</tr>";
 
 echo '<tr border=1>';
-echo  '<td colspan=22 align="center" class="borde_tabla">partidos politicos</td>';   
+echo  '<td colspan=22 align="center" class="borde_tabla">partidos politicos</td>';
 /* Se cambian de lugar*/
 echo  '<td colspan=2 rowspan=2 align="center" class="borde_tabla"><strong>CI1</strong></td>';
 echo  '<td colspan=2 rowspan=2 align="center" class="borde_tabla"><strong>CI2</strong></td>';
@@ -170,19 +178,19 @@ echo  '<td colspan=2 rowspan=2 align="center" class="borde_tabla"><strong>CI4</s
 echo "</tr>";
 
 echo '<tr border=1>';
-    
+
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PAN</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PRI</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PRD</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PVEM</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PT</strong></td>';
 
-echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PMC</strong></td>';
+echo  '<td colspan=2 align="center" class="borde_tabla"><strong>MC</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>MORENA</strong></td>';
-echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PELG</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PES</strong></td>';
-echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PRSP</strong></td>';
-echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PFSM</strong></td>';
+echo  '<td colspan=2 align="center" class="borde_tabla"><strong>RSP</strong></td>';
+echo  '<td colspan=2 align="center" class="borde_tabla"><strong>FSM</strong></td>';
+echo  '<td colspan=2 align="center" class="borde_tabla"><strong>ELIGE</strong></td>';
 
 
 echo "</tr>";
@@ -249,16 +257,16 @@ echo '<td width=34 align="center" class="borde_tabla"><strong>T.V.</strong></td>
 echo  "</tr>";
 
 
-$indice=0;	
+$indice=0;
 $sql ="SELECT s.id_distrito, i.id_sesion, fecha_inicio_real, hora_inicio_real,qi_cp, qi_c1,qi_c2, qi_c3, qi_c4, qi_c5, qi_c6, qi_se, qi_pan_p, qi_pan_s, qi_pri_p, qi_pri_s, qi_prd_p, qi_prd_s, qi_pt_p, qi_pt_s, qi_pvem_p, qi_pvem_s, qi_pmc_p, qi_pmc_s, qi_elg_p, qi_elg_s, qi_pes_p, qi_pes_s, qi_prsp_p, qi_prsp_s, qi_pfsm_p, qi_pfsm_s, qi_morena_p, qi_morena_s, qi_ci1_p, qi_ci1_s, qi_ci2_p, qi_ci2_s, qi_ci3_p, qi_ci3_s, qi_ci4_p, qi_ci4_s, qi_prensa, qi_radio, qi_tv, quorumini, asistencia, CAST(observaini as CHAR(2048)) as observaini, domicilio FROM sisesecd_sesiones as s, sisesecd_inicio as i
 WHERE s.id_sesion=i.id_sesion and s.id_sesion in(select id_sesion from sisesecd_sesiones where nosesion=$nosesion and tipo_sesion=$typesess and estatus=1 and desc_sesion=$desc and id_distrito!=41)order by s.id_distrito asc";
 
-echo $sql;
+//echo $sql;
 //$result=ifx_query($sql,$conn);
 $result=sqlsrv_query($conn, $sql);
 while($datos = sqlsrv_fetch_array ($result))
 {
-	
+
 	$observaini =  utf8_decode(htmlspecialchars(trim($datos['observaini'])));
 	echo'<tr>';
 	echo'<td align="center" class="resultados">'.$datos['id_distrito'].'</td>';
@@ -286,8 +294,6 @@ while($datos = sqlsrv_fetch_array ($result))
 	echo'<td align="center" class="resultados">'.$datos['qi_pmc_s'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_morena_p'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_morena_s'].'</td>';
-	echo'<td align="center" class="resultados">'.$datos['qi_elg_p'].'</td>';
-	echo'<td align="center" class="resultados">'.$datos['qi_elg_s'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_pes_p'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_pes_s'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_prsp_p'].'</td>';
@@ -295,6 +301,9 @@ while($datos = sqlsrv_fetch_array ($result))
 
 	echo'<td align="center" class="resultados">'.$datos['qi_pfsm_p'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_pfsm_s'].'</td>';
+
+	echo'<td align="center" class="resultados">'.$datos['qi_elg_p'].'</td>';
+	echo'<td align="center" class="resultados">'.$datos['qi_elg_s'].'</td>';
 
 	echo'<td align="center" class="resultados">'.$datos['qi_ci1_p'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_ci1_s'].'</td>';
@@ -307,23 +316,17 @@ while($datos = sqlsrv_fetch_array ($result))
 
 
 	echo'<td align="center" class="resultados">'.($datos['qi_se']+$datos['qi_cp']+$datos['qi_c1']+$datos['qi_c2']+$datos['qi_c3']+$datos['qi_c4']+$datos['qi_c5']+$datos['qi_c6']+$datos['qi_pan_p']+$datos['qi_pan_s']+$datos['qi_pri_p']+$datos['qi_pri_s']+$datos['qi_prd_p']+$datos['qi_prd_s']+$datos['qi_pt_p']+$datos['qi_pt_s']+$datos['qi_pvem_p']+$datos['qi_pvem_s']+$datos['qi_pmc_p']+$datos['qi_pmc_s']+$datos['qi_elg_p']+$datos['qi_elg_s']+ $datos['qi_pes_p']+$datos['qi_pes_s']+$datos['qi_prsp_p']+$datos['qi_prsp_s']+$datos['qi_morena_p']+$datos['qi_morena_s']+$datos['qi_ci1_p']+$datos['qi_ci1_s']+$datos['qi_ci2_p']+$datos['qi_ci2_s']+$datos['qi_ci3_p']+$datos['qi_ci3_s']+$datos['qi_ci4_p']+$datos['qi_ci4_s']).'</td>'; //quorum asistencia suma de cols.
-	
+
 	echo'<td align="center" class="resultados">'.$datos['qi_prensa'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_radio'].'</td>';
-	echo'<td align="center" class="resultados">'.$datos['qi_tv'].'</td>';	
-	echo'<td align="center" class="resultados">'.$observaini.'</td>';	
-	echo'<td align="center" class="resultados">'.utf8_decode($datos['domicilio']).'</td>';	
+	echo'<td align="center" class="resultados">'.$datos['qi_tv'].'</td>';
+	echo'<td align="center" class="resultados">'.$observaini.'</td>';
+	echo'<td align="center" class="resultados">'.utf8_decode($datos['domicilio']).'</td>';
 	echo'</tr>';
 	$indice++;
 }
-
-echo "<tr>";
-echo'<td align="center" colspan="30">'.$fecha_act.'</td>';
-echo "</tr>";
-echo "<tr>";
-echo "</tr>";
 echo "</table>";
 
-sqlsrv_free_stmt($result); 
+sqlsrv_free_stmt($result);
 sqlsrv_close($conn);
 ?>

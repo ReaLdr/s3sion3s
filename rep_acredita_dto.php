@@ -3,7 +3,7 @@ header('Content-type: application/vnd.ms-excel');
 header("Content-Disposition: attachment; filename=Reporte de acreditacion Rep.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-header("Content-Type: text/html;charset=utf-8"); 
+header("Content-Type: text/html;charset=utf-8");
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 include 'config_open_db.php';
@@ -15,7 +15,7 @@ $iddistrito=$_REQUEST[id_distrito];
 	include("bitacora.php");
 			$accion="GeneraReporte Intervenciones CENTRAL";
 			bitacora($accion);
-  
+
 ?>
 <style>
 th { vertical-align: baseline }
@@ -66,40 +66,51 @@ td { vertical-align: middle }
 }
 </style>
 <?php
+$fecha_hoy= date('Y-n-d');
+$fecha_partida=explode("-", $fecha_hoy);
+
+$anio=$fecha_partida[0];
+$mes=$fecha_partida[1];
+$dia=$fecha_partida[2];
 
 
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 echo"<th colspan=30>";
 //echo "<img src='http://distritos.iedf.org.mx/sisesecd2015/images/iedf.PNG'/>";
+echo "<img src='https://aplicaciones.iecm.mx/sesiones2020/images/logo-header.png' style='vertical-align:middle' alt='IECM'>";
 echo "</th>";
 echo "<tr>";
-echo "<th colspan=6 padding: 16px; >SECRETARIA EJECUTIVA</th>";
+echo "<th colspan=11 padding: 16px; >SECRETARIA EJECUTIVA</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=6>";
+echo "<th colspan=11>";
 echo "<font style='font-size:16px;font-weight:bold;'>DIRECCI&Oacute;N EJECUTIVA DE ORGANIZACI&Oacute;N ELECTORAL Y GEOESTAD&Iacute;STICA.<br>";
 echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=6>";
+echo "<th colspan=11>";
 echo "<font style='font-size:16px;font-weight:bold;'>PROCESO ELECTORAL LOCAL ORDINARIO 2020-2021.<br>";
 echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=6 align='center'>";
+echo "<th colspan=11 align='center'>";
 echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE ACREDITACIONES DE LOS REPRESENTANTES DE PARTIDOS POLITICOS Y CANDIDATURAS SIN PARTIDO <br></font><br>";
 echo "</th>";
 echo "</tr>";
 echo "<tr> ";
-echo "<th colspan=6 align='center'>";
+echo "<th colspan=11 align='center'>";
 echo "<font style='font-size:16px;font-weight:bold;'>DISTRITO ".$iddistrito."<br></font><br>";
 echo "</th>";
 echo "</tr>";
 echo "<tr> ";
-echo "<th colspan=6 align='center'>";
+echo "<th colspan=11 align='center'>";
 echo "<font style='font-size:16px;font-weight:bold;'> <br></font><br>";
 echo "</th>";
 echo "</tr>";
+echo "<td colspan=11 align='center'>";
+//echo "<font style='font-size:14px;font-weight:bold;'>FECHA DEL D&Iacute;A: ".$dia." DEL MES ",$mes." DE 2021</font><br>";
+echo "<font style='font-size:14px;font-weight:bold;'>FECHA: ".$dia. " DE " .$ar_mes[$mes] ." DE ".$anio."</font><br>";
+echo "</td>";
 echo '<tr>';
 //echo "<th class='borde_tabla'>Distrito</th>";
 echo "<th class='borde_tabla'>Nombre del Partido</th>";
@@ -129,13 +140,13 @@ while($rowsesion = sqlsrv_fetch_array($consulta_sesiones))
 {
 
 		echo "<tr>" ;
-	
+
 	//	echo "<td>".$rowsesion['id_distrito']."</td>";
 		echo "<td>".$rowsesion['partido']."</td>";
 	    echo "<td>".$rowsesion['nombre']."</td>";
 		echo "<td>".$rowsesion['paterno']."</td>";
 		echo "<td>".$rowsesion['materno']."</td>";
-	
+
 		echo "<td>".$rowsesion['tipo_acredita']."</td>";
 		echo "<td>".$rowsesion['fecha_notifica']."</td>";
 		echo "<td>".$rowsesion['oficio']."</td>";

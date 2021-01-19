@@ -3,7 +3,7 @@ header('Content-type: application/vnd.ms-excel');
 header("Content-Disposition: attachment; filename=Reportes de Integracion Consejo.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-//header("Content-Type: text/html;charset=utf-8"); 
+//header("Content-Type: text/html;charset=utf-8");
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 include 'config_open_db.php';
@@ -19,9 +19,9 @@ $desc=$_REQUEST[descsesion];
 //echo $desc;
 
 
-     
 
-  
+
+
 include 'arreglos.php';
 
 $sql_consultad = "Select id_sesion, fecha_inicio_prog from sisesecd_sesiones where nosesion=$n_sesion and tipo_sesion=$t_sesion and desc_sesion=$desc and id_distrito!=40";
@@ -37,35 +37,37 @@ $mes=$fecha_partida[1];
 $dia=$fecha_partida[2];
 
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
-echo"<th colspan=10>";
+echo"<th colspan=7>";
+echo "<img src='https://aplicaciones.iecm.mx/sesiones2020/images/logo-header.png' style='vertical-align:middle;' alt='IECM'>";
 echo "</th>";
 echo "<tr>";
-echo "<th colspan=10 padding: 16px; >SECRETARIA EJECUTIVA</th>";
+echo "<th colspan=7 padding: 16px; >SECRETARIA EJECUTIVA</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=10>";
+echo "<th colspan=7>";
 echo "<font style='font-size:16px;font-weight:bold;'>DIRECCI&Oacute;N EJECUTIVA DE ORGANIZACI&Oacute;N ELECTORAL Y GEOESTAD&Iacute;STICA.<br>";
 echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=10>";
+echo "<th colspan=7>";
 echo "<font style='font-size:16px;font-weight:bold;'>PROCESO ELECTORAL LOCAL ORDINARIO 2020-2021.<br>";
-echo "</th>"; 
+echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=10 align='center'>";
+echo "<th colspan=7 align='center'>";
 echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE INTEGRANTES DE LOS CONSEJOS DISTRITALES <br></font><br>";
 echo "</th>";
 echo "</tr>";
 echo "<tr>";
-echo "<th colspan=10>";
+echo "<th colspan=7>";
 echo "<font style='font-size:14px;font-weight:bold;'>".$nom_sesion[$n_sesion]." SESION DE LOS CONSEJOS DISTRITALES ($tipo_ses[$t_sesion] 0$desc)<br></font><br>";
 echo "</th>";
 echo "</tr>";
 
 echo "<tr> ";
-echo "<td colspan=10 align='center'>";
-echo "<font style='font-size:14px;font-weight:bold;'>FECHA: ".$dia." DE ",$month[$mes]." DEL " .$anio." </font><br>";
+echo "<td colspan=7 align='center'>";
+//echo "<font style='font-size:14px;font-weight:bold;'>FECHA: ".$dia." DE ",$month[$mes]." DEL " .$anio." </font><br>";
+echo "<font style='font-size:14px;font-weight:bold;'>FECHA: ".$dia. " DE " .$ar_mes[$mes] ." DE ".$anio."</font><br>";
 echo "</td>";
 echo "</tr>";
 echo"<th colspan=30>";
@@ -89,8 +91,8 @@ echo "</table>";
 
 echo "<table border=1 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 
-$sql_consulta = "SELECT s.id_distrito, s.id_sesion, s.nosesion, s.desc_sesion, s.tipo_sesion, f.id_integrante, f.nombre,f.ap_paterno,f.ap_materno,f.tipo_acredor, f.id_integrante, f.candidato, f.puesto 
-FROM sisesecd_sesiones as s, sisesecd_cat_funcionarios as f 
+$sql_consulta = "SELECT s.id_distrito, s.id_sesion, s.nosesion, s.desc_sesion, s.tipo_sesion, f.id_integrante, f.nombre,f.ap_paterno,f.ap_materno,f.tipo_acredor, f.id_integrante, f.candidato, f.puesto
+FROM sisesecd_sesiones as s, sisesecd_cat_funcionarios as f
 WHERE s.id_sesion=f.id_sesion order by id_distrito asc";
 
 $consulta_sesiones = sqlsrv_query($conn, $sql_consulta);
@@ -99,8 +101,8 @@ $consulta_sesiones = sqlsrv_query($conn, $sql_consulta);
 $i=0;
 		while($rowsesion = sqlsrv_fetch_array($consulta_sesiones))
 		{
-	
-		$i++;	
+
+		$i++;
 		echo "<tr>" ;
 		echo "<td>"	.$i."</td>";
 		echo "<td>"	.$rowsesion['id_distrito']."</td>";
@@ -112,9 +114,9 @@ $i=0;
 		//echo "<td>".$rowsesion['candidato']."</td>";
 		//echo "<td>".$rowsesion['puesto']."</td>";
 		echo "</tr>";
-		
-		}// cierro el primer while 
-	
+
+		}// cierro el primer while
+
 
 echo "</table>";
 ?>

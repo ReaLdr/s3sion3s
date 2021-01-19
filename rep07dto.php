@@ -3,7 +3,7 @@ header('Content-type: application/vnd.ms-excel');
 header("Content-Disposition: attachment; filename=Reportes de Integracion Consejo.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-header("Content-Type: text/html;charset=utf-8"); 
+header("Content-Type: text/html;charset=utf-8");
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 include 'config_open_db.php';
@@ -30,8 +30,8 @@ $undato=sqlsrv_fetch_array($resultado);
 $desc=$undato['desc_sesion'];
 $typesess= $undato['tipo_sesion'];
 $nosesion=$undato['nosesion'];
-//$fecha_hoy= date('Y-n-d');
-$fecha_hoy=$undato['fecha_inicio_prog'];
+$fecha_hoy= date('Y-n-d');
+//$fecha_hoy=$undato['fecha_inicio_prog'];
 
 $fecha_partida=explode("-", $fecha_hoy);
 
@@ -60,33 +60,38 @@ $dia=$fecha_partida[2];
 */
 
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
+echo"<th colspan=8>";
+//echo "<img src='http://distritos.iedf.org.mx/sisesecd2015/images/iedf.PNG'/>";
+echo "<img src='https://aplicaciones.iecm.mx/sesiones2020/images/logo-header.png' style='vertical-align:middle' alt='IECM'>";
+echo "</th>";
 echo "<tr>";
-echo "<th colspan=10 padding: 16px; >SECRETARIA EJECUTIVA</th>";
+echo "<th colspan=8 padding: 16px; >SECRETARIA EJECUTIVA</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=10>";
+echo "<th colspan=8>";
 echo "<font style='font-size:16px;font-weight:bold;'>DIRECCI&Oacute;N EJECUTIVA DE ORGANIZACI&Oacute;N ELECTORAL Y GEOESTAD&Iacute;STICA.<br>";
 echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=10>";
+echo "<th colspan=8>";
 echo "<font style='font-size:16px;font-weight:bold;'>PROCESO ELECTORAL LOCAL ORDINARIO 2020-2021.<br>";
 echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=10 align='center'>";
+echo "<th colspan=8 align='center'>";
 echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE INTEGRANTES DE LOS CONSEJOS DISTRITALES <br></font><br>";
 echo "</th>";
 echo "</tr>";
 echo "<tr>";
-echo "<th colspan=10>";
+echo "<th colspan=8>";
 echo "<font style='font-size:14px;font-weight:bold;'> DE LOS CONSEJOS DISTRITALES ($tipo_ses[$typesess] 0$desc)<br></font><br>";
 echo "</th>";
 echo "</tr>";
 
 echo "<tr> ";
-echo "<td colspan=10 align='center'>";
-echo "<font style='font-size:14px;font-weight:bold;'>FECHA DEL D&Iacute;A: ".$dia." DEL MES ",$mes." DE 2021</font><br>";
+echo "<td colspan=8 align='center'>";
+//echo "<font style='font-size:14px;font-weight:bold;'>FECHA DEL D&Iacute;A: ".$dia." DEL MES ",$mes." DE 2021</font><br>";
+echo "<font style='font-size:14px;font-weight:bold;'>FECHA: ".$dia. " DE " .$ar_mes[$mes] ." DE ".$anio."</font><br>";
 echo "</td>";
 echo "</tr>";
 echo "<p>&nbsp;</p>";
@@ -105,8 +110,8 @@ echo "</table>";
 
 echo "<table border=1 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 
-$sql_consulta = "SELECT s.id_distrito, s.id_sesion, s.nosesion, s.desc_sesion, s.tipo_sesion, f.nombre,f.ap_paterno,f.ap_materno,f.tipo_acredor, f.id_integrante, f.candidato, f.puesto FROM sisesecd_sesiones as s, sisesecd_cat_funcionarios as f WHERE s.id_sesion=f.id_sesion 
-and f.id_sesion in(select id_sesion  from sisesecd_sesiones 
+$sql_consulta = "SELECT s.id_distrito, s.id_sesion, s.nosesion, s.desc_sesion, s.tipo_sesion, f.nombre,f.ap_paterno,f.ap_materno,f.tipo_acredor, f.id_integrante, f.candidato, f.puesto FROM sisesecd_sesiones as s, sisesecd_cat_funcionarios as f WHERE s.id_sesion=f.id_sesion
+and f.id_sesion in(select id_sesion  from sisesecd_sesiones
 where id_sesion=$id_sesion and id_distrito= $id_distrito and estatus=1 )";
 
 $consulta_sesiones = sqlsrv_query($conn, $sql_consulta);
@@ -115,8 +120,8 @@ $consulta_sesiones = sqlsrv_query($conn, $sql_consulta);
 $i=0;
 		while($rowsesion = sqlsrv_fetch_array($consulta_sesiones))
 		{
-	
-		$i++;	
+
+		$i++;
 		echo "<tr>" ;
 		echo "<td>".$i."</td>";
 
@@ -128,9 +133,9 @@ $i=0;
 		echo "<td>".utf8_decode($rowsesion['candidato'])."</td>";
 		echo "<td>".utf8_decode($rowsesion['puesto'])."</td>";
 		echo "</tr>";
-		
-		}// cierro el primer while 
-	
+
+		}// cierro el primer while
+
 
 echo "</table>";
 ?>
