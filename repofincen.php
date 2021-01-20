@@ -256,8 +256,99 @@ select id_sesion from sisesecd_sesiones where nosesion=$nosesion and tipo_sesion
 
 //echo $sql;
 $result=sqlsrv_query($conn, $sql);
+$sum_qf_cp = 0;
+$sum_qf_c1 = 0;
+$sum_qf_c2 = 0;
+$sum_qf_c3 = 0;
+$sum_qf_c4 = 0;
+$sum_qf_c5 = 0;
+$sum_qf_c6 = 0;
+$sum_quorumfin = 0;
+$sum_qf_se = 0;
+$sum_qf_pan_p = 0;
+$sum_qf_pan_s = 0;
+$sum_qf_pri_p = 0;
+$sum_qf_pri_s = 0;
+$sum_qf_prd_p = 0;
+$sum_qf_prd_s = 0;
+$sum_qf_pvem_p = 0;
+$sum_qf_pvem_s = 0;
+$sum_qf_pt_p = 0;
+$sum_qf_pt_s = 0;
+
+$sum_qf_pmc_p = 0;
+$sum_qf_pmc_s = 0;
+$sum_qf_morena_p = 0;
+$sum_qf_morena_s = 0;
+$sum_qf_pes_p = 0;
+$sum_qf_pes_s = 0;
+$sum_qf_prsp_p = 0;
+$sum_qf_prsp_s = 0;
+$sum_qf_pfsm_p = 0;
+$sum_qf_pfsm_s = 0;
+$sum_qf_elg_p = 0;
+$sum_qf_elg_s = 0;
+$sum_qf_ci1_p = 0;
+$sum_qf_ci1_s = 0;
+$sum_qf_ci2_p = 0;
+$sum_qf_ci2_s = 0;
+$sum_qf_ci3_p = 0;
+$sum_qf_ci3_s = 0;
+$sum_qf_ci4_p = 0;
+$sum_pf_ci4_s = 0;
+
+$sum_qf_prensa = 0;
+$sum_qf_radio = 0;
+$sum_qf_tv = 0;
+
+$sum_quorum_asistencia = 0;
 while($datos = sqlsrv_fetch_array ($result))
 {
+
+	$sum_qf_cp += $datos['qf_cp'];
+	$sum_qf_c1 += $datos['qf_c1'];
+	$sum_qf_c2 += $datos['qf_c2'];
+	$sum_qf_c3 += $datos['qf_c3'];
+	$sum_qf_c4 += $datos['qf_c4'];
+	$sum_qf_c5 += $datos['qf_c5'];
+	$sum_qf_c6 += $datos['qf_c6'];
+	$sum_quorumfin += $datos['quorumfin'];
+	$sum_qf_se += $datos['qf_se'];
+	$sum_qf_pan_p += $datos['qf_pan_p'];
+	$sum_qf_pan_s += $datos['qf_pan_s'];
+	$sum_qf_pri_p += $datos['qf_pri_p'];
+	$sum_qf_pri_s += $datos['qf_pri_s'];
+	$sum_qf_prd_p += $datos['qf_prd_p'];
+	$sum_qf_prd_s += $datos['qf_prd_s'];
+	$sum_qf_pvem_p += $datos['qf_pvem_p'];
+	$sum_qf_pvem_s += $datos['qf_pvem_s'];
+	$sum_qf_pt_p += $datos['qf_pt_p'];
+	$sum_qf_pt_s += $datos['qf_pt_s'];
+
+	$sum_qf_pmc_p += $datos['qf_pmc_p'];
+$sum_qf_pmc_s += $datos['qf_pmc_s'];
+$sum_qf_morena_p += $datos['qf_morena_p'];
+$sum_qf_morena_s += $datos['qf_morena_s'];
+$sum_qf_pes_p += $datos['qf_pes_p'];
+$sum_qf_pes_s += $datos['qf_pes_s'];
+$sum_qf_prsp_p += $datos['qf_prsp_p'];
+$sum_qf_prsp_s += $datos['qf_prsp_s'];
+$sum_qf_pfsm_p += $datos['qf_pfsm_p'];
+$sum_qf_pfsm_s += $datos['qf_pfsm_s'];
+$sum_qf_elg_p += $datos['qf_elg_p'];
+$sum_qf_elg_s += $datos['qf_elg_s'];
+$sum_qf_ci1_p += $datos['qf_ci1_p'];
+$sum_qf_ci1_s += $datos['qf_ci1_s'];
+$sum_qf_ci2_p += $datos['qf_ci2_p'];
+$sum_qf_ci2_s += $datos['qf_ci2_s'];
+$sum_qf_ci3_p += $datos['qf_ci3_p'];
+$sum_qf_ci3_s += $datos['qf_ci3_s'];
+$sum_qf_ci4_p += $datos['qf_ci4_p'];
+$sum_pf_ci4_s += $datos['pf_ci4_s'];
+
+$sum_qf_prensa += $datos['qf_prensa'];
+$sum_qf_radio += $datos['qf_radio'];
+$sum_qf_tv += $datos['qf_tv'];
 
 $duracion=calcular_tiempo_trasnc($datos['hora_inicio_real'],$datos['hora_fin_final']);
 
@@ -312,8 +403,9 @@ $duracion=calcular_tiempo_trasnc($datos['hora_inicio_real'],$datos['hora_fin_fin
 	echo'<td align="center" class="resultados">'.$datos['qf_ci3_s'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qf_ci4_p'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['pf_ci4_s'].'</td>';
-
-	echo'<td align="center" class="resultados">'.($datos['qf_se']+$datos['qf_cp']+$datos['qf_c1']+$datos['qf_c2']+$datos['qf_c3']+$datos['qf_c4']+$datos['qf_c5']+$datos['qf_c6']+$datos['qf_pan_p']+$datos['qf_pan_s']+$datos['qf_pri_p']+$datos['qf_pri_s']+$datos['qf_prd_p']+$datos['qf_prd_s']+$datos['qf_pt_p']+$datos['qf_pt_s']+$datos['qf_pvem_p']+$datos['qf_pvem_s']+$datos['qf_pmc_p']+$datos['qf_pmc_s']+$datos['qf_elg_p']+$datos['qf_elg_s']+$datos['qf_pes_p']+$datos['qf_pes_s']+$datos['qf_prsp_p']+$datos['qf_prsp_s']+$datos['qf_morena_p']+$datos['qf_morena_s']+$datos['qf_ci1_p']+$datos['qf_ci1_s']+$datos['qf_ci2_p']+$datos['qf_ci2_s']+$datos['qf_ci3_p']+$datos['qf_ci3_s']+$datos['qf_ci4_p']+$datos['pf_ci4_s']).'</td>'; //quorum asistencia suma de cols.
+$quorum_asistencia = ($datos['qf_se']+$datos['qf_cp']+$datos['qf_c1']+$datos['qf_c2']+$datos['qf_c3']+$datos['qf_c4']+$datos['qf_c5']+$datos['qf_c6']+$datos['qf_pan_p']+$datos['qf_pan_s']+$datos['qf_pri_p']+$datos['qf_pri_s']+$datos['qf_prd_p']+$datos['qf_prd_s']+$datos['qf_pt_p']+$datos['qf_pt_s']+$datos['qf_pvem_p']+$datos['qf_pvem_s']+$datos['qf_pmc_p']+$datos['qf_pmc_s']+$datos['qf_elg_p']+$datos['qf_elg_s']+$datos['qf_pes_p']+$datos['qf_pes_s']+$datos['qf_prsp_p']+$datos['qf_prsp_s']+$datos['qf_morena_p']+$datos['qf_morena_s']+$datos['qf_ci1_p']+$datos['qf_ci1_s']+$datos['qf_ci2_p']+$datos['qf_ci2_s']+$datos['qf_ci3_p']+$datos['qf_ci3_s']+$datos['qf_ci4_p']+$datos['pf_ci4_s']);
+	echo'<td align="center" class="resultados">'.$quorum_asistencia.'</td>'; //quorum asistencia suma de cols.
+	$sum_quorum_asistencia += $quorum_asistencia;
 	echo'<td align="center" class="resultados">'.$datos['qf_prensa'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qf_radio'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qf_tv'].'</td>';
@@ -321,6 +413,53 @@ $duracion=calcular_tiempo_trasnc($datos['hora_inicio_real'],$datos['hora_fin_fin
 	echo'</tr>';
 	$indice++;
 }
+echo '<tr border=1>
+<td colspan=4 class="resultados">Total</td>
+<td class="resultados">'.$sum_qf_cp.'</td>
+<td class="resultados">'.$sum_qf_c1.'</td>
+<td class="resultados">'.$sum_qf_c2.'</td>
+<td class="resultados">'.$sum_qf_c3.'</td>
+<td class="resultados">'.$sum_qf_c4.'</td>
+<td class="resultados">'.$sum_qf_c5.'</td>
+<td class="resultados">'.$sum_qf_c6.'</td>
+<td class="resultados">'.$sum_quorumfin.'</td>
+<td class="resultados">'.$sum_qf_se.'</td>
+<td class="resultados">'.$sum_qf_pan_p.'</td>
+<td class="resultados">'.$sum_qf_pan_s.'</td>
+<td class="resultados">'.$sum_qf_pri_p.'</td>
+<td class="resultados">'.$sum_qf_pri_s.'</td>
+<td class="resultados">'.$sum_qf_prd_p.'</td>
+<td class="resultados">'.$sum_qf_prd_s.'</td>
+<td class="resultados">'.$sum_qf_pvem_p.'</td>
+<td class="resultados">'.$sum_qf_pvem_s.'</td>
+<td class="resultados">'.$sum_qf_pt_p.'</td>
+<td class="resultados">'.$sum_qf_pt_s.'</td>
+<td class="resultados">'.$sum_qf_pmc_p.'</td>
+<td class="resultados">'.$sum_qf_pmc_s.'</td>
+<td class="resultados">'.$sum_qf_morena_p.'</td>
+<td class="resultados">'.$sum_qf_morena_s.'</td>
+<td class="resultados">'.$sum_qf_pes_p.'</td>
+<td class="resultados">'.$sum_qf_pes_s.'</td>
+<td class="resultados">'.$sum_qf_prsp_p.'</td>
+<td class="resultados">'.$sum_qf_prsp_s.'</td>
+<td class="resultados">'.$sum_qf_pfsm_p.'</td>
+<td class="resultados">'.$sum_qf_pfsm_s.'</td>
+<td class="resultados">'.$sum_qf_elg_p.'</td>
+<td class="resultados">'.$sum_qf_elg_s.'</td>
+<td class="resultados">'.$sum_qf_ci1_p.'</td>
+<td class="resultados">'.$sum_qf_ci1_s.'</td>
+<td class="resultados">'.$sum_qf_ci2_p.'</td>
+<td class="resultados">'.$sum_qf_ci2_s.'</td>
+<td class="resultados">'.$sum_qf_ci3_p.'</td>
+<td class="resultados">'.$sum_qf_ci3_s.'</td>
+<td class="resultados">'.$sum_qf_ci4_p.'</td>
+<td class="resultados">'.$sum_pf_ci4_s.'</td>
+<td class="resultados">'.$sum_quorum_asistencia.'</td>
+<td class="resultados">'.$sum_qf_prensa.'</td>
+<td class="resultados">'.$sum_qf_radio.'</td>
+<td class="resultados">'.$sum_qf_tv.'</td>
+</tr>';
+
 echo "</table>";
 //ifx_free_result($result);
 sqlsrv_close($conn);

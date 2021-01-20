@@ -12,14 +12,7 @@ if($host == "145.0.40.76"){
 // echo json_encode($_GET);
 // exit;
 header('Content-Type: application/octet-stream');
-if(substr($row['file'], -3) != "zip"){
-  header('Content-Disposition: attachment; filename='.$_GET['file'].'.pdf');
-  $extension = ".pdf";
-} else{
-  header('Content-Disposition: attachment; filename='.$_GET['file']);
-  $extension = "";
-}
-
+header('Content-Disposition: attachment; filename='.$_GET['file']);
 readfile(URL_SISTEMA.$_GET['file']);
 //echo "<script>alert('".$row['file_principal']."');</script>";
 

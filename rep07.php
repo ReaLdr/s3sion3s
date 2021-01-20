@@ -3,7 +3,7 @@ header('Content-type: application/vnd.ms-excel');
 header("Content-Disposition: attachment; filename=Reportes de Integracion Consejo.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-//header("Content-Type: text/html;charset=utf-8");
+header("Content-Type: text/html;charset=utf-8");
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 include 'config_open_db.php';

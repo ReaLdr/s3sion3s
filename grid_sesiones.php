@@ -9,17 +9,17 @@ if (isset($_SESSION['user'])) {
 
 $name= $_SESSION['transaccion'];
 $grup=$_SESSION['grupo'];
-$id_distrito=$_SESSION['id_distrito'];	
-	
+$id_distrito=$_SESSION['id_distrito'];
+
 }
 else
 {
-echo' 	alert("Debe iniciar una sesion")';	
+echo' 	alert("Debe iniciar una sesion")';
 	echo'<SCRIPT LANGUAGE="javascript">';
 	echo'	location.href = "index.php";';
 	echo'	</SCRIPT>';
 }
-	
+
 
 ?>
 
@@ -69,9 +69,9 @@ echo' 	alert("Debe iniciar una sesion")';
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>
-  <?php 
+  <?php
 include ('config_open_db.php');
-include ('arreglos.php');
+//include ('arreglos.php');
 
 $nosesion=$_REQUEST['nosesion'];
 $id_sesion=$_REQUEST['id_sesion'];
@@ -82,7 +82,7 @@ $desc_sesion=$_REQUEST['desc_sesion'];
 	$accion="Ingresa Modulo Sesion ".$id_distrito;
 	bitacora($accion);	*/
 
-	
+
 ///para traer lo que necesito de la sesion y crear una para el distrito
 
 $sql_1 = "SELECT * FROM sisesecd_sesiones WHERE nosesion=$nosesion and tipo_sesion=$tipo_sesion and desc_sesion= '$desc_sesion' and id_distrito=40 and estatus=1";
@@ -94,17 +94,17 @@ $rows = sqlsrv_fetch_array($result);
 
 //echo $id_sesion;
 
- 
-///// verifico si ya existe una sesion con el distrito 
+
+///// verifico si ya existe una sesion con el distrito
 //////////////////////////////////////////////////////////////////
 $sql_count="select count(*) as cuantos from sisesecd_sesiones where id_distrito=$id_distrito and nosesion=$nosesion  and tipo_sesion=$tipo_sesion and desc_sesion=$desc_sesion and estatus=1";
-	
+
 //echo $sql_count;
 $res_count=sqlsrv_query($conn,$sql_count);
 $rows_count = sqlsrv_fetch_array($res_count);
 $cuantos= $rows_count['cuantos'];
 //echo $cuantos;
-	
+
 ///si no existe la sesion la creo insertando los datos
 if($cuantos == 0)
 {
@@ -117,10 +117,10 @@ $hora_inicio_prog = $rows['hora_inicio_prog'];
 $sql_nuevo="INSERT INTO sisesecd_sesiones(id_distrito, nosesion,desc_sesion, tipo_sesion, fecha_inicio_prog, hora_inicio_prog,estatus) values (".$id_distrito.",".$nosesion.",".$desc_sesion.", ".$tipo_sesion.",'".$fecha_inicio_prog."','".$hora_inicio_prog."',1);";
 //echo $sql_nuevo;
 if($res1=sqlsrv_query($conn,$sql_nuevo)){
-	
+
 }
 
-////consulta solo para traerme la sesion ////	
+////consulta solo para traerme la sesion ////
 $sql = "SELECT * FROM sisesecd_sesiones WHERE id_distrito=$id_distrito and nosesion=$nosesion and desc_sesion=$desc_sesion and tipo_sesion=$tipo_sesion and estatus=1";
 //echo $sql;
 $result=sqlsrv_query($conn,$sql);
@@ -130,19 +130,19 @@ $r_idsesion=sqlsrv_fetch_array($undato);
 $id_sesion=$r_idsesion['id_sesion'];
 $iddistrito=$r_idsesion['id_distrito'];
 	//echo "nuevo ID".$id_sesion;
-	
+
 ////////Genero consulta de catalogo de funcionarios ////////////////
-	
+
 $sql_catalogo="select * from sisesecd_catfuncionarios_central where id_distrito =$id_distrito order by id_integrante, tipo_acredor asc";
 	//echo $sql_catalogo;
-		
+
 	$result_catalogo=sqlsrv_query($conn,$sql_catalogo);
 	//$r_cat=ifx_fetch_row($result_catalogo);
-	
-	
+
+
 while ($r_cat=sqlsrv_fetch_array($result_catalogo))
 {
-		
+
 		//$i=0;
 	//$id_sesion[$i]= $r_idsesion['id_sesion'];
 	$id_integrante[$i]= $r_cat['id_integrante'];
@@ -152,18 +152,18 @@ while ($r_cat=sqlsrv_fetch_array($result_catalogo))
 	$tipo_acredor[$i]= $r_cat['tipo_acredor'];
 	$estatus[$i]= $r_cat['estatus'];
 	$fecha_alta= date('d/m/Y');
-	
-	
+
+
 		//for($i=1;$i<=36;$i++)
 		//		{
 /////inserto el catalogo con la sesion actual por distrito //////////////
 	$insert_catalogo="INSERT INTO sisesecd_cat_funcionarios(id_sesion, id_distrito, id_integrante,nombre, ap_paterno,ap_materno, tipo_acredor,estatus,fecha_alta) values ($id_sesion, $iddistrito,$id_integrante[$i],'$nombre[$i]','$ap_paterno[$i]','$ap_materno[$i]','$tipo_acredor[$i]',1,'$fecha_alta');";
 	//echo $insert_catalogo;
-	
-	sqlsrv_query($conn,$insert_catalogo);	
+
+	sqlsrv_query($conn,$insert_catalogo);
 		//		}
-} //cierrra while 
-	
+} //cierrra while
+
 } //cierra el if del conteo
 /////////////////////////////////////////////////////////////////
 
@@ -180,19 +180,19 @@ $id_sesion=$r_idsesion['id_sesion'];
 
 
 
-	
 
-	
+
+
 ////// Para que muestre El estado de la sesion en que se encuentra
-$sql_estado= "select estado_sesion,id_estado  
-from sisesecd_estado_sesion 
-WHERE id_sesion=$id_sesion 
+$sql_estado= "select estado_sesion,id_estado
+from sisesecd_estado_sesion
+WHERE id_sesion=$id_sesion
 and id_distrito=$id_distrito
-group by id_estado, estado_sesion,id_sesion 
+group by id_estado, estado_sesion,id_sesion
 order by id_estado DESC";
 
 //echo $sql_estado;
-	
+
 $result_est=sqlsrv_query($conn, $sql_estado);
 $r_estado= sqlsrv_fetch_array ($result_est);
 
@@ -219,10 +219,10 @@ $tipo_s[3]= "PERMANENTE";
 
 while($datos = sqlsrv_fetch_array($result))
 {
-	
+
 $tipo=$datos[tipo_sesion];
 //echo 'se pintaaaaa:'.$tipo_s[$tipo];
- 
+
   echo'<tr>';
   echo'<td>'.$nom_sesion[$datos[nosesion]].' SESIÓN '.$tipo_s[$tipo].' 0'.$datos[desc_sesion].'</td>';
   echo'<td>'.$datos[fecha_inicio_prog].'</td>';
@@ -241,7 +241,7 @@ $tipo=$datos[tipo_sesion];
   {
   echo'<td><a  class="btn btn-default" href="actualizarfin.php?id_sesion='.$datos[id_sesion].'&nosesion='.$datos[nosesion].'&tipo_sesion='.$datos[tipo_sesion].'&desc_sesion='.$datos[desc_sesion].'"> Fin de sesión</a></td>';//<img src="images/fin.png" title="Reporte de Termino" alt="Reporte de Termino" border="0" />
   }
-  else 
+  else
   {
     echo'<td> <div class="alert alert-warning">Debe de ingresar la sesión y los votos</div> </td>'; //<img src="images/application_key.png" title="Debe de ingresar primero la votación" alt="Debe de ingresar primero la votación border="0" />
   }
@@ -257,11 +257,11 @@ echo'<td><a class="btn btn-default" href="catpersonas.php?id_sesion='.$datos[id_
   echo'<td><a  class="btn btn-primary" href="rep03.php?id_sesion='.$datos[id_sesion].'&id_distrito='.$id_distrito.'" target="_new">Intervencion</a></td>';//<img src="images/rpt_intervenciones.png" title="Reporte Intervenciones" alt="Reporte Intervenciones" border="0" />
   echo'<td><a  class="btn btn-primary" href="rep04.php?id_sesion='.$datos[id_sesion].'&id_distrito='.$id_distrito.'" target="_new">Incidente</a></td>';//<img src="images/rpt_incidentes.png" title="Reporte de Incidentes" alt="Reporte Incidentes" border="0" />
    echo'<td><a  class="btn btn-primary" href="rep07dto.php?id_sesion='.$datos[id_sesion].'&id_distrito='.$id_distrito.'" target="_new">Integrantes Consejo</a></td>';
-	
+
  	echo'<td><a  class="btn btn-primary" href="rep_acredita_dto.php?&id_distrito='.$id_distrito.'" target="_new">Representantes de Partido Politicos y CP</a></td>';
-	
+
 	echo'<td><a class="btn btn-primary" href="repestados.php?id_sesion='.$datos[id_sesion].'&nosesion='.$datos[nosesion].'&tipo_sesion='.$datos[tipo_sesion].'&desc_sesion='.$datos[desc_sesion].'&id_distrito='.$id_distrito.'" target="_new">Estados de la sesion</a></td>';
-   
+
    echo'<td><a  class="btn btn-primary" id="nuevo" href="subir_acta.php?id_sesion='.$datos[id_sesion].'&id_distrito='.$id_distrito.'" >Subir Acta</a></td>';//<img src="images/printer_add.png" title="Subir acta" alt="Subir Acta" border="0" />
 
 $acta_principal=$datos[acta_principal];
@@ -275,10 +275,10 @@ echo '<td>';
 	echo'<a  class="btn btn-primary" href="./'.$acta_principal.'" target="_blank">Ver Acta</a>';
 	}
 echo '</td>';
-	
-	
+
+
 	echo'<td><a  class="btn btn-primary" id="nuevo" href="subir_docto.php?id_sesion='.$datos[id_sesion].'&id_distrito='.$id_distrito.'" >Subir Documentos de la sesión</a></td>';
-	
+
 	$doctos_principal=$datos[doctos_principal];
 echo '<td>';
 	if($doctos_principal=='')
@@ -291,7 +291,7 @@ echo '<td>';
 	}
 echo '</td>';
 echo'</tr>';
-  
+
 }
 
 ?>

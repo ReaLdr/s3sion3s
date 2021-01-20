@@ -3,7 +3,7 @@ header('Content-type: application/vnd.ms-excel');
 header("Content-Disposition: attachment; filename=Reporte de estados.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-//header("Content-Type: text/html;charset=utf-8");
+header("Content-Type: text/html;charset=utf-8");
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 include 'config_open_db.php';
@@ -164,7 +164,7 @@ $sql_consulta1 = "SELECT id_estado, id_sesion, id_distrito,estado_sesion, CAST(d
 	    echo "<td>".$consulta1_row['hora_inicio']."</td>";
 		echo "<td>".$consulta1_row['hora_termino']."</td>";
 		echo "<td>".$array_estado[$consulta1_row['estado_sesion']]."</td>";
-		echo "<td>".$consulta1_row['descripcion']."</td>";
+		echo "<td>".utf8_decode($consulta1_row['descripcion'])."</td>";
 		echo "</tr>";
 		}// cierro el primer while intervenciones
 

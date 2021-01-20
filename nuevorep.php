@@ -3,6 +3,7 @@ header("Content-type: application/vnd.ms-excel");
 header("Content-Disposition: attachment; filename=Reporte_de_Inicio_de_sesion_consejos_distritales.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
+
 //header("Content-Type: text/html;charset=utf-8");
 session_start();
 error_reporting(E_ERROR | E_PARSE);
@@ -264,8 +265,95 @@ WHERE s.id_sesion=i.id_sesion and s.id_sesion in(select id_sesion from sisesecd_
 //echo $sql;
 //$result=ifx_query($sql,$conn);
 $result=sqlsrv_query($conn, $sql);
+$sum_qi_cp = 0;
+$sum_qi_c1 = 0;
+$sum_qi_c2 = 0;
+$sum_qi_c3 = 0;
+$sum_qi_c4 = 0;
+$sum_qi_c5 = 0;
+$sum_qi_c6 = 0;
+$sum_quorumini = 0;
+$sum_qi_se = 0;
+$sum_qi_pan_p = 0;
+$sum_qi_pan_s = 0;
+$sum_qi_pri_p = 0;
+$sum_qi_pri_s = 0;
+$sum_qi_prd_p = 0;
+$sum_qi_prd_s = 0;
+$sum_qi_pvem_p = 0;
+$sum_qi_pvem_s = 0;
+$sum_qi_pt_p = 0;
+$sum_qi_pt_s = 0;
+$sum_qi_pmc_p = 0;
+$sum_qi_pmc_s = 0;
+$sum_qi_morena_p = 0;
+$sum_qi_morena_s = 0;
+$sum_qi_pes_p = 0;
+$sum_qi_pes_s = 0;
+$sum_qi_prsp_p = 0;
+$sum_qi_prsp_s = 0;
+$sum_qi_pfsm_p = 0;
+$sum_qi_pfsm_s = 0;
+$sum_qi_elg_p = 0;
+$sum_qi_elg_s = 0;
+$sum_qi_ci1_p = 0;
+$sum_qi_ci1_s = 0;
+$sum_qi_ci2_p = 0;
+$sum_qi_ci2_s = 0;
+$sum_qi_ci3_p = 0;
+$sum_qi_ci3_s = 0;
+$sum_qi_ci4_p = 0;
+$sum_qi_ci4_s = 0;
+$sum_quorum_asistencia = 0;
+
+$sum_qi_prensa = 0;
+$sum_qi_radio = 0;
+$sum_qi_tv = 0;
 while($datos = sqlsrv_fetch_array ($result))
 {
+	$sum_qi_cp += $datos['qi_cp'];
+	$sum_qi_c1 += $datos['qi_c1'];
+	$sum_qi_c2 += $datos['qi_c2'];
+	$sum_qi_c3 += $datos['qi_c3'];
+	$sum_qi_c4 += $datos['qi_c4'];
+	$sum_qi_c5 += $datos['qi_c5'];
+	$sum_qi_c6 += $datos['qi_c6'];
+	$sum_quorumini += $datos['quorumini'];
+	$sum_qi_se += $datos['qi_se'];
+	$sum_qi_pan_p += $datos['qi_pan_p'];
+	$sum_qi_pan_s += $datos['qi_pan_s'];
+	$sum_qi_pri_p += $datos['qi_pri_p'];
+	$sum_qi_pri_s += $datos['qi_pri_s'];
+	$sum_qi_prd_p += $datos['qi_prd_p'];
+	$sum_qi_prd_s += $datos['qi_prd_s'];
+	$sum_qi_pvem_p += $datos['qi_pvem_p'];
+	$sum_qi_pvem_s += $datos['qi_pvem_s'];
+	$sum_qi_pt_p += $datos['qi_pt_p'];
+	$sum_qi_pt_s += $datos['qi_pt_s'];
+	$sum_qi_pmc_p += $datos['qi_pmc_p'];
+	$sum_qi_pmc_s += $datos['qi_pmc_s'];
+	$sum_qi_morena_p += $datos['qi_morena_p'];
+	$sum_qi_morena_s += $datos['qi_morena_s'];
+	$sum_qi_pes_p += $datos['qi_pes_p'];
+	$sum_qi_pes_s += $datos['qi_pes_s'];
+	$sum_qi_prsp_p += $datos['qi_prsp_p'];
+	$sum_qi_prsp_s += $datos['qi_prsp_s'];
+	$sum_qi_pfsm_p += $datos['qi_pfsm_p'];
+	$sum_qi_pfsm_s += $datos['qi_pfsm_s'];
+	$sum_qi_elg_p += $datos['qi_elg_p'];
+	$sum_qi_elg_s += $datos['qi_elg_s'];
+	$sum_qi_ci1_p += $datos['qi_ci1_p'];
+	$sum_qi_ci1_s += $datos['qi_ci1_s'];
+	$sum_qi_ci2_p += $datos['qi_ci2_p'];
+	$sum_qi_ci2_s += $datos['qi_ci2_s'];
+	$sum_qi_ci3_p += $datos['qi_ci3_p'];
+	$sum_qi_ci3_s += $datos['qi_ci3_s'];
+	$sum_qi_ci4_p += $datos['qi_ci4_p'];
+	$sum_qi_ci4_s += $datos['qi_ci4_s'];
+
+	$sum_qi_prensa += $datos['qi_prensa'];
+$sum_qi_radio += $datos['qi_radio'];
+$sum_qi_tv += $datos['qi_tv'];
 
 	$observaini =  utf8_decode(htmlspecialchars(trim($datos['observaini'])));
 	echo'<tr>';
@@ -314,8 +402,10 @@ while($datos = sqlsrv_fetch_array ($result))
 	echo'<td align="center" class="resultados">'.$datos['qi_ci4_p'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_ci4_s'].'</td>';
 
+$quorum_asistencia = ($datos['qi_se']+$datos['qi_cp']+$datos['qi_c1']+$datos['qi_c2']+$datos['qi_c3']+$datos['qi_c4']+$datos['qi_c5']+$datos['qi_c6']+$datos['qi_pan_p']+$datos['qi_pan_s']+$datos['qi_pri_p']+$datos['qi_pri_s']+$datos['qi_prd_p']+$datos['qi_prd_s']+$datos['qi_pt_p']+$datos['qi_pt_s']+$datos['qi_pvem_p']+$datos['qi_pvem_s']+$datos['qi_pmc_p']+$datos['qi_pmc_s']+$datos['qi_elg_p']+$datos['qi_elg_s']+ $datos['qi_pes_p']+$datos['qi_pes_s']+$datos['qi_prsp_p']+$datos['qi_prsp_s']+$datos['qi_morena_p']+$datos['qi_morena_s']+$datos['qi_ci1_p']+$datos['qi_ci1_s']+$datos['qi_ci2_p']+$datos['qi_ci2_s']+$datos['qi_ci3_p']+$datos['qi_ci3_s']+$datos['qi_ci4_p']+$datos['qi_ci4_s']);
+	echo'<td align="center" class="resultados">'.$quorum_asistencia.'</td>'; //quorum asistencia suma de cols.
 
-	echo'<td align="center" class="resultados">'.($datos['qi_se']+$datos['qi_cp']+$datos['qi_c1']+$datos['qi_c2']+$datos['qi_c3']+$datos['qi_c4']+$datos['qi_c5']+$datos['qi_c6']+$datos['qi_pan_p']+$datos['qi_pan_s']+$datos['qi_pri_p']+$datos['qi_pri_s']+$datos['qi_prd_p']+$datos['qi_prd_s']+$datos['qi_pt_p']+$datos['qi_pt_s']+$datos['qi_pvem_p']+$datos['qi_pvem_s']+$datos['qi_pmc_p']+$datos['qi_pmc_s']+$datos['qi_elg_p']+$datos['qi_elg_s']+ $datos['qi_pes_p']+$datos['qi_pes_s']+$datos['qi_prsp_p']+$datos['qi_prsp_s']+$datos['qi_morena_p']+$datos['qi_morena_s']+$datos['qi_ci1_p']+$datos['qi_ci1_s']+$datos['qi_ci2_p']+$datos['qi_ci2_s']+$datos['qi_ci3_p']+$datos['qi_ci3_s']+$datos['qi_ci4_p']+$datos['qi_ci4_s']).'</td>'; //quorum asistencia suma de cols.
+	$sum_quorum_asistencia += $quorum_asistencia;
 
 	echo'<td align="center" class="resultados">'.$datos['qi_prensa'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_radio'].'</td>';
@@ -325,6 +415,52 @@ while($datos = sqlsrv_fetch_array ($result))
 	echo'</tr>';
 	$indice++;
 }
+echo '<tr border=1>
+<td colspan=2 class="resultados">Total</td>
+<td class="resultados">'.$sum_qi_cp.'</td>
+<td class="resultados">'.$sum_qi_c1.'</td>
+<td class="resultados">'.$sum_qi_c2.'</td>
+<td class="resultados">'.$sum_qi_c3.'</td>
+<td class="resultados">'.$sum_qi_c4.'</td>
+<td class="resultados">'.$sum_qi_c5.'</td>
+<td class="resultados">'.$sum_qi_c6.'</td>
+<td class="resultados">'.$sum_quorumini.'</td>
+<td class="resultados">'.$sum_qi_se.'</td>
+<td class="resultados">'.$sum_qi_pan_p.'</td>
+<td class="resultados">'.$sum_qi_pan_s.'</td>
+<td class="resultados">'.$sum_qi_pri_p.'</td>
+<td class="resultados">'.$sum_qi_pri_s.'</td>
+<td class="resultados">'.$sum_qi_prd_p.'</td>
+<td class="resultados">'.$sum_qi_prd_s.'</td>
+<td class="resultados">'.$sum_qi_pvem_p.'</td>
+<td class="resultados">'.$sum_qi_pvem_s.'</td>
+<td class="resultados">'.$sum_qi_pt_p.'</td>
+<td class="resultados">'.$sum_qi_pt_s.'</td>
+<td class="resultados">'.$sum_qi_pmc_p.'</td>
+<td class="resultados">'.$sum_qi_pmc_s.'</td>
+<td class="resultados">'.$sum_qi_morena_p.'</td>
+<td class="resultados">'.$sum_qi_morena_s.'</td>
+<td class="resultados">'.$sum_qi_pes_p.'</td>
+<td class="resultados">'.$sum_qi_pes_s.'</td>
+<td class="resultados">'.$sum_qi_prsp_p.'</td>
+<td class="resultados">'.$sum_qi_prsp_s.'</td>
+<td class="resultados">'.$sum_qi_pfsm_p.'</td>
+<td class="resultados">'.$sum_qi_pfsm_s.'</td>
+<td class="resultados">'.$sum_qi_elg_p.'</td>
+<td class="resultados">'.$sum_qi_elg_s.'</td>
+<td class="resultados">'.$sum_qi_ci1_p.'</td>
+<td class="resultados">'.$sum_qi_ci1_s.'</td>
+<td class="resultados">'.$sum_qi_ci2_p.'</td>
+<td class="resultados">'.$sum_qi_ci2_s.'</td>
+<td class="resultados">'.$sum_qi_ci3_p.'</td>
+<td class="resultados">'.$sum_qi_ci3_s.'</td>
+<td class="resultados">'.$sum_qi_ci4_p.'</td>
+<td class="resultados">'.$sum_qi_ci4_s.'</td>
+<td class="resultados">'.$sum_quorum_asistencia.'</td>
+<td class="resultados">'.$sum_qi_prensa.'</td>
+<td class="resultados">'.$sum_qi_radio.'</td>
+<td class="resultados">'.$sum_qi_tv.'</td>
+</tr>';
 echo "</table>";
 
 sqlsrv_free_stmt($result);

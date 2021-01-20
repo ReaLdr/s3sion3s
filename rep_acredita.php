@@ -149,13 +149,13 @@ $iddistrito=$rowsesion['id_distrito'];
 		echo "<tr>" ;
 		echo "<td>".$rowsesion['id_distrito']."</td>";
 		echo "<td>".$rowsesion['partido']."</td>";
-	    echo "<td>".$rowsesion['nombre']."</td>";
-		echo "<td>".$rowsesion['paterno']."</td>";
-		echo "<td>".$rowsesion['materno']."</td>";
+	    echo "<td>".utf8_decode($rowsesion['nombre'])."</td>";
+		echo "<td>".utf8_decode($rowsesion['paterno'])."</td>";
+		echo "<td>".utf8_decode($rowsesion['materno'])."</td>";
 
 		echo "<td>".$rowsesion['tipo_acredita']."</td>";
 		echo "<td>".$rowsesion['fecha_notifica']."</td>";
-		echo "<td>".$rowsesion['oficio']."</td>";
+		echo "<td>".utf8_decode($rowsesion['oficio'])."</td>";
 		echo "<td>".$rowsesion['presenta']."</td>";
 		echo "<td>".$rowsesion['fecha_concluye']."</td>";
 		echo "<td>".$rowsesion['oficio_concluye']."</td>";
