@@ -5,11 +5,11 @@ error_reporting(E_ERROR | E_PARSE);
 $id_distrito=$_SESSION[id_distrito];
 include 'config_open_db.php';
 if (isset($_SESSION['user'])) {
-	
+
 }
 else
 {
-echo' 	alert("Debe iniciar una sesion")';	
+echo' 	alert("Debe iniciar una sesion")';
 	echo'<SCRIPT LANGUAGE="javascript">';
 	echo'	location.href = "index.php";';
 	echo'	</SCRIPT>';
@@ -33,7 +33,7 @@ $distritos_sesion = json_encode($_POST[checkbox_distrito]);
   //array_push($distritos_sesion);
   $corchetes = ['[', ']', '"'];
   $replace = ['', '', ''];
-	
+
   $replace_array = str_replace($corchetes, $replace, $distritos_sesion);
 //echo $replace_array;
   //echo json_encode($_POST);
@@ -47,16 +47,16 @@ $sql1="SELECT count(*)as cuantos FROM sisesecd_sesiones WHERE estatus=1 and nose
 $sql2="SELECT id_sesion FROM sisesecd_sesiones WHERE estatus=1 and nosesion=".$nosesion." and tipo_sesion=".$tiposesion." and desc_sesion=".$descsesion." ;";
 		$consesion = sqlsrv_query($conn,$sql2);
 		$c_sesion = sqlsrv_fetch_array($consesion);
-		$idmark=$c_sesion[idsesion];		
+		$idmark=$c_sesion[idsesion];
 		if($cuantos>0 && $idsesion!=$idmark){
 		//echo "estoy en el if";
 		echo'	<SCRIPT LANGUAGE="javascript">';
-		echo' 	alert("No se actualiz� la sesion.\n Ya existe otra sesion con esas caracteristicas.")';
+		echo' 	alert("No se actualiz� la sesion.\n Ya existe otra sesion con esas caracteristicas.")';
 		echo'	</SCRIPT>';
 		echo'<SCRIPT LANGUAGE="javascript">';
 		echo'	location.href = "./grid_sesiones_central.php";';
 		echo'	</SCRIPT>';
-	
+
 			}
 			else{
 
@@ -64,7 +64,7 @@ $update="UPDATE sisesecd_sesiones set id_distrito = ".$id_distrito.", nosesion="
 
 //echo $update;
 $update=(string)$update;
-$update=str_replace("\n","",$update);	
+$update=str_replace("\n","",$update);
 $update=str_replace("\r","",$update);
 		if(sqlsrv_query($conn, $update)){
 			echo'<p>&nbsp;</p>';
@@ -79,7 +79,7 @@ $update=str_replace("\r","",$update);
 			echo "</table>";
 			echo '</div>';
 				echo'	<SCRIPT LANGUAGE="javascript">';
-				echo' 	alert("La Sesion se actualizo Exitosamente")';
+				echo' 	alert("La sesión se actualizó exitosamente")';
 				echo'	</SCRIPT>';
 				echo'<SCRIPT LANGUAGE="javascript">';
 				echo'history.go(-1)';
@@ -88,9 +88,9 @@ $update=str_replace("\r","",$update);
 				//ifx_errormsg();
 			sqlsrv_error();
 			}
-	
+
 	}
-	//ifx_close($conn);	
+	//ifx_close($conn);
 	sqlsrv_close($conn);
 
 

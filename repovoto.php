@@ -120,7 +120,7 @@ $totalcon=0;
 eval("\$descripcion = \"$descripcion\";");
 
 include ("funciones.php");
-include ("arreglos.php");
+//include ("arreglos.php");
 echo '<div id="contenedor">';
 
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";

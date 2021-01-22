@@ -3,11 +3,11 @@ session_start();
 $id_distrito=$_SESSION[id_distrito];
 include 'config_open_db.php';
 if (isset($_SESSION['k_username'])) {
-	
+
 }
 else
 {
-echo' 	alert("Debe iniciar una sesion")';	
+echo' 	alert("Debe iniciar una sesion")';
 	echo'<SCRIPT LANGUAGE="javascript">';
 	echo'	location.href = "index.php";';
 	echo'	</SCRIPT>';
@@ -41,7 +41,7 @@ $idsesion=$_POST[idsesion];
 {
 $id_partido=0;
 }
-	
+
 $tipo_propaganda= $_POST["tipo_propaganda"];
 if($tipopropaganda=='')
 {
@@ -184,14 +184,14 @@ $palabra_insert=$palabra_concat;
 $update="UPDATE sesiones set iddistrito = ".$id_distrito.", nosesion=".$nosesion.",descsesion = '".$descsesion."', tiposesion = ".$tiposesion.", fechainicioprog = '".$fechainicioprog."', horainicioprog = '".$horainicioprog."' where idsesion=$idsesion;";
 //echo $update;
 $update=(string)$update;
-$update=str_replace("\n","",$update);	
+$update=str_replace("\n","",$update);
 $update=str_replace("\r","",$update);
 					if(ifx_query($update, $conn))
 					{
 					echo'	<SCRIPT LANGUAGE="javascript">';
-					
-					echo' 	alert("La Sesion se actualizo Exitosamente")';
-					
+
+					echo' 	alert("La sesión se actualizó exitosamente")';
+
 					echo'	</SCRIPT>';
 					echo'<SCRIPT LANGUAGE="javascript">';
 					echo'history.go(-1)
@@ -202,5 +202,5 @@ $update=str_replace("\r","",$update);
 					{
 					ifx_errormsg();
 					}
-					ifx_close($conn);	
+					ifx_close($conn);
 ?>

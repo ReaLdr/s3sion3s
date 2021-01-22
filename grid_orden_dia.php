@@ -15,7 +15,7 @@ $tipo_sesion=$_REQUEST['tipo_sesion'];
 
 //echo "es el tipo".$tipo_sesion;
 
-include 'arreglos.php';
+//include 'arreglos.php';
 }
 else
 {
@@ -170,7 +170,7 @@ if($cuantos==0){
 /////para traerlos ya con el distrito y pintarlos
 $sql = "select id_orden,id_sesion, punto, CAST(desc_punto as CHAR(2084)) as desc_punto, estatus_noaplica from sisesecd_ordendia where id_sesion=$id_sesion and estatus=1";
 
-	echo $sql;
+	//echo $sql;
 
 $result=sqlsrv_query($conn,$sql);
 $i=0;

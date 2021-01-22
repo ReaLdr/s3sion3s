@@ -50,7 +50,7 @@ echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
 echo "<th colspan=7>";
-echo "<font style='font-size:16px;font-weight:bold;'>PROCESO ELECTORAL LOCAL ORDINARIO 2017-2018.<br>";
+echo "<font style='font-size:16px;font-weight:bold;'>PROCESO ELECTORAL LOCAL ORDINARIO 2020-2021.<br>";
 echo "</th>";
 echo "</tr> ";
 echo "<tr> ";

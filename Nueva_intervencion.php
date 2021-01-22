@@ -1,25 +1,28 @@
-<?php 
+<?php
 session_start();
 error_reporting(E_ERROR | E_PARSE);
-echo $nosesion=$_GET['nosesion'];
-echo " - ";
-echo $id_sesion=$_GET['id_sesion'];
-echo " - ";
-echo $id_orden=$_GET['id_orden'];
+$nosesion=$_GET['nosesion'];
+$id_sesion=$_GET['id_sesion'];
+$id_orden=$_GET['id_orden'];
+// echo $nosesion=$_GET['nosesion'];
+// echo " - ";
+// echo $id_sesion=$_GET['id_sesion'];
+// echo " - ";
+// echo $id_orden=$_GET['id_orden'];
 
 
 
 //echo 'Bienvenido, ';
 if (isset($_SESSION['user'])) {
-	
+
 $name= $_SESSION['transaccion'];
 $grup=$_SESSION['grupo'];
-$id_distrito=$_SESSION['id_distrito'];	
-	
+$id_distrito=$_SESSION['id_distrito'];
+
 }
 else
 {
-echo'alert("Debe iniciar una sesion")';	
+echo'alert("Debe iniciar una sesion")';
 	echo'<SCRIPT LANGUAGE="javascript">';
 	echo'location.href = "index.php";';
 	echo'</SCRIPT>';
@@ -36,22 +39,22 @@ echo'alert("Debe iniciar una sesion")';
 <script src="js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
-	
-	
+
+
 <title>.: SISESECD 2018 :.</title>
 </head>
 
   <script>
-function validar_texto(a) { 
-    tecl = (document.all) ? a.keyCode : a.which; 
-    if (tecl==8) return true; 
-//    patro =/[a-zA-Záéíóúäëïöü0ñÑ.-9\s]/; 
+function validar_texto(a) {
+    tecl = (document.all) ? a.keyCode : a.which;
+    if (tecl==8) return true;
+//    patro =/[a-zA-Záéíóúäëïöü0ñÑ.-9\s]/;
 	patro =/[a-z A-Z áéíóúäëïöü0ñÑ 0-9\-\.\?\,\"\@\:\()\;\*\+&%\$#_]/;
-    t = String.fromCharCode(tecl); 
-    return patro.test(t); 
-} 
+    t = String.fromCharCode(tecl);
+    return patro.test(t);
+}
 
-</script> 
+</script>
 	<style>
 .titulo{
 
@@ -80,13 +83,13 @@ font - family: Arial, Helvetica, sans-serif;
                     <div class="container-fluid">
 	            <h1 class="mt-4"><img src="images/logo-header.png"></h1>
 	<p>&nbsp;</p>
-						
+
 <div class="top-menu">
 <table style="width: 95%;">
   <tr>
     <td width="396" height="25" align="left" class="well">Usuario: <?php echo $name; ?></td>
     <td width="797" align="left" class="well">Consejo Distrital: <?php echo $id_distrito; ?></td>
-    
+
     <td width="395" align="right"><a href="logout.php"><p class="btn btn-default">Cerrar Sesion</p></a></td>
   </tr>
 </table>
@@ -113,7 +116,7 @@ if(isset($_POST['submit'])){
 
 	$id_orden=$_REQUEST[id_orden];
 	$id_sesion=$_REQUEST[id_sesion];
-	$page =  htmlspecialchars(trim($_POST['page'])); 
+	$page =  htmlspecialchars(trim($_POST['page']));
 	$inter_cp = htmlspecialchars(trim($_POST['ck_cp']));
 	$inter_cp = ($inter_cp != 1 ? 0 : 1);
 	$inter_c1 = htmlspecialchars(trim($_POST['ck_c1']));
@@ -130,48 +133,48 @@ if(isset($_POST['submit'])){
 	$inter_c6 = ($inter_c6 != 1 ? 0 : 1);
 	$inter_se = htmlspecialchars(trim($_POST['ck_sc']));
 	$inter_se = ($inter_se != 1 ? 0 : 1);
-	
+
 	$inter_panp = htmlspecialchars(trim($_POST['pan']));
 	$inter_panp = ($inter_panp != 1 ? 0 : 1);
 	$inter_pans = htmlspecialchars(trim($_POST['pan']));
 	$inter_pans = ($inter_pans != 2 ? 0 : 1);
-	
+
 	$inter_prip = htmlspecialchars(trim($_POST['pri']));
 	$inter_prip = ($inter_prip != 1 ? 0 : 1);
 	$inter_pris = htmlspecialchars(trim($_POST['pri']));
 	$inter_pris = ($inter_pris != 2 ? 0 : 1);
-	
+
 	$inter_prdp = htmlspecialchars(trim($_POST['prd']));
 	$inter_prdp = ($inter_prdp != 1 ? 0 : 1);
 	$inter_prds = htmlspecialchars(trim($_POST['prd']));
 	$inter_prds = ($inter_prds != 2 ? 0 : 1);
-	
+
 	$inter_ptp = htmlspecialchars(trim($_POST['pt']));
 	$inter_ptp = ($inter_ptp != 1 ? 0 : 1);
 
 	$inter_pts = htmlspecialchars(trim($_POST['pt']));
 	$inter_pts = ($inter_pts != 2 ? 0 : 1);
-	
+
 	$inter_pvemp = htmlspecialchars(trim($_POST['pvem']));
 	$inter_pvemp = ($inter_pvemp != 1 ? 0 : 1);
 	$inter_pvems = htmlspecialchars(trim($_POST['pvem']));
 	$inter_pvems = ($inter_pvems != 2 ? 0 : 1);
-	
+
 	$inter_pmcp = htmlspecialchars(trim($_POST['pmc']));
 	$inter_pmcp = ($inter_pmcp != 1 ? 0 : 1);
 	$inter_pmcs = htmlspecialchars(trim($_POST['pmc']));
 	$inter_pmcs = ($inter_pmcs != 2 ? 0 : 1);
-	
+
 	$inter_pelgp = htmlspecialchars(trim($_POST['elg']));
 	$inter_pelgp = ($inter_pelgp != 1 ? 0 : 1);
 	$inter_pelgs = htmlspecialchars(trim($_POST['elg']));
 	$inter_pelgs = ($inter_pelgs != 2 ? 0 : 1);
-	
+
 	$inter_pesp = htmlspecialchars(trim($_POST['pes']));
 	$inter_pesp = ($inter_pesp != 1 ? 0 : 1);
 	$inter_pess = htmlspecialchars(trim($_POST['pes']));
 	$inter_pess = ($inter_pess != 2 ? 0 : 1);
-	
+
 	$inter_prspp = htmlspecialchars(trim($_POST['prsp']));
 	$inter_prspp = ($inter_prspp != 1 ? 0 : 1);
 	$inter_prsps = htmlspecialchars(trim($_POST['prsp']));
@@ -179,54 +182,64 @@ if(isset($_POST['submit'])){
 
 	$inter_morenap = htmlspecialchars(trim($_POST['morena']));
 	$inter_morenap = ($inter_morenap != 1 ? 0 : 1);
-	
+
 	$inter_morenas = htmlspecialchars(trim($_POST['morena']));
 	$inter_morenas = ($inter_morenas != 2 ? 0 : 1);
-	
+
 	$inter_pfsmp = htmlspecialchars(trim($_POST['pfsm']));
 	$inter_pfsmp = ($inter_pfsmp == 1 ? 1 : 0);
 
 	$inter_pfsms = htmlspecialchars(trim($_POST['pfsm']));
 	$inter_pfsms = ($inter_pfsms == 2 ? 1 : 0);
 
-	
-/////// candidatos independientes /////////	
+
+/////// candidatos independientes /////////
 	$inter_ci1p = htmlspecialchars(trim($_POST['ci1']));
 	$inter_ci1p = ($inter_ci1p == 1 ? 1 : 0);
-		
+
 	$inter_ci1s = htmlspecialchars(trim($_POST['ci1']));
 	$inter_ci1s = ($inter_ci1s == 2 ? 1 : 0);
-	
+
 	$inter_ci2p = htmlspecialchars(trim($_POST['ci2']));
 	$inter_ci2p = ($inter_ci2p == 1 ? 1 : 0);
-	
+
 	$inter_ci2s = htmlspecialchars(trim($_POST['ci2']));
 	$inter_ci2s = ($inter_ci2s == 2 ? 1 : 0);
-	
+
 	$inter_ci3p = htmlspecialchars(trim($_POST['ci3']));
 	$inter_ci3p = ($inter_ci3p == 1 ? 1 : 0);
-	
+
 	$inter_ci3s = htmlspecialchars(trim($_POST['ci3']));
 	$inter_ci3s = ($inter_ci3s == 2 ? 1 : 0);
-	
+
 	$inter_ci4p = htmlspecialchars(trim($_POST['ci4']));
 	$inter_ci4p = ($inter_ci4p == 1 ? 1 : 0);
-	
+
 	$inter_ci4s = htmlspecialchars(trim($_POST['ci4']));
 	$inter_ci4s = ($inter_ci4s == 2 ? 1 : 0);
-	
+
 	$intervencion=htmlspecialchars(trim($_POST['intervencion']));
 	$intervencion=str_replace("'",'"',$intervencion);
 
 	$replica=htmlspecialchars(trim($_POST['replica']));
 	$replica=str_replace("'",'"',$replica);
-	
+
 	$movimiento=htmlspecialchars(trim($_POST['movimiento']));
-	
+
 	$punto=htmlspecialchars(trim($_POST['numintervencion']));
-	
+
+	if($punto == "" || $punto == 0){
+		echo'<SCRIPT LANGUAGE="javascript">';
+		echo'alert("Seleccione el número de intervención")';
+		echo'</SCRIPT>';
+		echo'<SCRIPT LANGUAGE="javascript">';
+		echo'history.go(-1)';
+		echo'	</SCRIPT>';
+		exit;
+	}
+
 //	echo"nuevo campo ". $punto;
-	
+
 	$tmpSQL="";
 
 		if($movimiento=="NUEVO")
@@ -236,7 +249,7 @@ if(isset($_POST['submit'])){
 		$id_sesion=$_POST[id_sesion];
 
 			//$tmpSQL="INSERT INTO sisesecd_intervenciones(id_sesion,id_distrito,id_orden, tipo_intervencion, inter_cp, inter_c1,inter_c2, inter_c3, inter_c4, inter_c5, inter_c6, inter_se, inter_panp, inter_pans, inter_prip, inter_pris, inter_prdp, inter_prds, inter_ptp, inter_pts, inter_pvemp, inter_pvems, inter_pmcp, inter_pmcs, inter_pnap, inter_pnas,inter_pesp, inter_pess, inter_php, inter_phs, inter_morenap, inter_morenas, inter_ci1p, inter_ci1s, inter_ci2p, inter_ci2s, inter_ci3p, inter_ci3s, inter_ci4p, inter_ci4s, intervencion,replica) values (".$id_sesion.",".$id_distrito.", ".$id_orden.", 0, ".$inter_cp.", ".$inter_c1.", ".$inter_c2.",  ".$inter_c3.", ".$inter_c4.", ".$inter_c5.", ".$inter_c6.", ".$inter_se.", ".$inter_panp.", ".$inter_pans.", ".$inter_prip.", ".$inter_pris.", ".$inter_prdp.", ".$inter_prds.", ".$inter_ptp.", ".$inter_pts.", ".$inter_pvemp.", ".$inter_pvems.", ".$inter_pmcp.", ".$inter_pmcs.", ".$inter_pnap.", ".$inter_pnas.",".$inter_pesp.", ".$inter_pess.", ".$inter_php.",".$inter_phs.",".$inter_morenap.",".$inter_morenas.",".$inter_ci1p.", ".$inter_ci1s.", ".$inter_ci2p.", ".$inter_ci2s.", ".$inter_ci3p.", ".$inter_ci3s.", ".$inter_ci4p.", ".$inter_ci4s.",'".$intervencion."','".$replica."');";
-			
+
 			$tmpSQL="INSERT INTO sisesecd_intervenciones(id_sesion,id_distrito,id_orden, tipo_intervencion, inter_cp, inter_c1,inter_c2, inter_c3, inter_c4, inter_c5, inter_c6, inter_se, inter_panp, inter_pans, inter_prip, inter_pris, inter_prdp, inter_prds, inter_ptp, inter_pts, inter_pvemp, inter_pvems, inter_pmcp, inter_pmcs, inter_pelgp, inter_pelgs, inter_pesp, inter_pess, inter_prspp, inter_prsps, inter_morenap, inter_morenas, inter_pfsmp, inter_pfsms, inter_ci1p, inter_ci1s, inter_ci2p, inter_ci2s, inter_ci3p, inter_ci3s, inter_ci4p, inter_ci4s, intervencion,replica, punto) values (".$id_sesion.",".$id_distrito.", ".$id_orden.", 0, ".$inter_cp.", ".$inter_c1.", ".$inter_c2.",  ".$inter_c3.", ".$inter_c4.", ".$inter_c5.", ".$inter_c6.", ".$inter_se.", ".$inter_panp.", ".$inter_pans.", ".$inter_prip.", ".$inter_pris.", ".$inter_prdp.", ".$inter_prds.", ".$inter_ptp.", ".$inter_pts.", ".$inter_pvemp.", ".$inter_pvems.", ".$inter_pmcp.", ".$inter_pmcs.", ".$inter_pelgp.",".$inter_pelgs.",".$inter_pesp.", ".$inter_pess.", ".$inter_prspp.",".$inter_prsps.", ".$inter_morenap.",".$inter_morenas.",   ".$inter_pfsmp.",".$inter_pfsms.", ".$inter_ci1p.", ".$inter_ci1s.", ".$inter_ci2p.", ".$inter_ci2s.", ".$inter_ci3p.", ".$inter_ci3s.", ".$inter_ci4p.", ".$inter_ci4s.",'".$intervencion."','".$replica."',".$punto.");";
 
 
@@ -256,13 +269,13 @@ if(isset($_POST['submit'])){
 		include("bitacora.php");
 		$accion="Nuevo Intervencion ".$id_orden;
 		bitacora($accion);
-		
+
 		$sql_update="UPDATE sisesecd_sesiones SET con_intervencion = 1 WHERE id_sesion=$id_sesion;";
 
 		if (sqlsrv_query($conn,$sql_update)== true){
-			
+
 					echo'<SCRIPT LANGUAGE="javascript">';
-					echo'alert("La Intervención se guardó Exitosamente")';
+					echo'alert("La Intervención se guardó exitosamente")';
 					echo'</SCRIPT>';
 					echo'<SCRIPT LANGUAGE="javascript">';
 					echo'history.go(-2)
@@ -271,16 +284,16 @@ if(isset($_POST['submit'])){
 		}
 		else{
 		echo 'Se produjo un error al guardar historico. Intente nuevamente ';//.ifx_error();
-		} 
+		}
 	}
 	else{
 		echo 'Se produjo un error. Intente nuevamente '.sqlsrv_errors();
-	} 
+	}
 //}else{
 //	$consulta ="";
 //	$cliente ="";
 
-} //cierra e if del submit 
+} //cierra e if del submit
 
 if(isset($_GET['id_sesion']))
 {
@@ -288,12 +301,12 @@ if(isset($_GET['id_sesion']))
 	$tmpSesion= "SELECT tipo_sesion,desc_sesion,nosesion,CAST(desc_punto as CHAR(2084)) as desc_punto,punto FROM sisesecd_sesiones,sisesecd_ordendia WHERE sisesecd_sesiones.id_sesion=sisesecd_ordendia.id_sesion and sisesecd_sesiones.id_sesion =".$id_sesion." and id_orden=".$id_orden.";";
 
 	$consultaSesion = sqlsrv_query($conn,$tmpSesion);
-	
+
 
 	//if ($consultaSesion){
 	//if (ifx_affected_rows($consultaSesion)>0){
 		if (sqlsrv_has_rows($consultaSesion)){
-	
+
 		$registro = sqlsrv_fetch_array($consultaSesion);
 		$typesess=$registro['tipo_sesion'];
 		$desc=$registro['desc_sesion'];
@@ -303,9 +316,9 @@ if(isset($_GET['id_sesion']))
 		eval("\$srt = \"$srt\";");
 
 //$encabezado = "<b>".$nom_sesion[$nosesion]." Sesión ".$tipo_ses[$typesess]." de los Consejos Distritales 0".$desc."<b><br/> Punto:".$registro['punto']."".utf8_encode($srt).".";
-		
-  $encabezado = "<b>".$nom_sesion[$nosesion]." Sesión ".$tipo_ses[$typesess]." de los Consejos Distritales 0".$desc."<b><br/> Punto:".$registro['punto']."".utf8_encode($srt).".";	
-		
+
+  $encabezado = "<b>".$nom_sesion[$nosesion]." Sesión ".$tipo_ses[$typesess]." de los Consejos Distritales 0".$desc."<b><br/> Punto:".$registro['punto']."".utf8_encode($srt).".";
+
 	}
 	else{
 		echo 'Se produjo un error. No se encontraron datos de la Sesion Distrital ';
@@ -321,21 +334,21 @@ if(isset($_GET['id_sesion']))
 		    }
 		//.ifx_error();
 		return;
-	} 
-}						
-						
+	}
+}
+
 ?>
 </br>
 <center>
 	<div class="card mb-4">
 	<div class="card-header">
      <b> Nuevo Reporte de Intervención de la  <br><?php echo $encabezado; ?></b>
-	
+
     </div>
-		</br>	
+		</br>
 <form id="frmClienteNuevo" name="frmClienteNuevo" method="post"  onsubmit="ActualizarIncidente(); return false">
   <p>
-    
+
 <input class="text" type="hidden" name="id_distrito" id="id_distrito" value="<?php echo $_SESSION['id_distrito']; ?>"/>
 <input type="hidden" name="id_sesion" id="id_sesion" value="<?php echo $_REQUEST['id_sesion'];?>" />
 <input type="hidden" name="id_orden" id="id_orden" value="<?php echo $_REQUEST['id_orden']; ?>" />
@@ -344,7 +357,7 @@ if(isset($_GET['id_sesion']))
 
     <br />
 	<br />
-  
+
   <?php
  $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesion and id_integrante in (1,2,3,4,5,6,7,8) and id_distrito=$id_distrito";
 
@@ -360,12 +373,12 @@ echo'</tr>';
 	$salta=0;
 	while($row_int = sqlsrv_fetch_array($exec_int))
 	{
-	echo'<tr>';	
+	echo'<tr>';
 
 		if($row_int[id_integrante]==1)
 		{
-			
-		echo'<td colspan="8"><strong>Nombre CP :</strong>&nbsp;'.$row_int[nombre].' '.$row_int[ap_paterno].' '.$row_int[ap_materno].'</td>';	
+
+		echo'<td colspan="8"><strong>Nombre CP :</strong>&nbsp;'.$row_int[nombre].' '.$row_int[ap_paterno].' '.$row_int[ap_materno].'</td>';
 		echo'<td colspan="2">';
 		echo'<input type="checkbox" name="ck_cp" value="1"> CP';
 	    echo'</td>';
@@ -376,8 +389,8 @@ echo'</tr>';
 		echo '<td colspan="2"><input type="checkbox" name="ck_sc" value="1"> SC';
 		echo '</td>';
 		}
-	//echo'</tr>';	
-	
+	//echo'</tr>';
+
 	//echo'<tr>';
 		if($row_int[id_integrante]==3)
 		{
@@ -418,13 +431,13 @@ echo'</tr>';
 		echo '<td colspan="2"><input type="checkbox" name="ck_c6" value="1" /> C6</td>';
 		}
 	//echo'</tr>';
-	
+
 	}// cierro while
 echo'</table>';
 ?>
 
 
-  
+
   <p>
 <input type="hidden" value="<?php  echo $_REQUEST["page"] ?>" id="page" name="page" />
   </p>
@@ -487,7 +500,7 @@ echo'</table>';
 <!--12/01/2021: SE CAMBIA PRELACIÓN -->
 <td colspan="2" align="center">ELIGE</td>
     </tr>
-	  
+
     <tr>
         <td><input type="radio" name="morena" value="1"  />
         <br />
@@ -514,7 +527,7 @@ echo'</table>';
       <td width="0%"><input type="radio" name="pfsm" value="2" />
         <br />
         S </td>
-<!--12/01/2021: SE CAMBIA PRELACIÓN -->		
+<!--12/01/2021: SE CAMBIA PRELACIÓN -->
 	<td><input type="radio" name="elgs" value="1" />
         <br />
         P </td>
@@ -539,7 +552,7 @@ echo'</table>';
     <td width="11%"><input type="radio" name="ci1" value="2" />
     <br />
     S </td>
-		
+
     <td><input type="radio" name="ci2" value="1" />
     <br />
     P </td>
@@ -562,9 +575,9 @@ echo'</table>';
 
  <p>
 	 	</table>
-	
-	
-	
+
+
+
 <table  style="width: 90%;" border="0">
 	   <tr >
       <td  colspan="10" align="center" bgcolor="#CCCCFF"><strong> Detalle de las Intervenciones</strong></td>
@@ -572,17 +585,17 @@ echo'</table>';
 		 </br>
 
 	<tr>
-		 <td>N&uacute;mero de Intervenci&oacute;n<br />	</td> 
+		 <td>N&uacute;mero de Intervenci&oacute;n<br />	</td>
 		<?php
-		
+
 		$sele="select count(punto) as cuantos  from sisesecd_intervenciones where id_sesion=$id_sesion and id_orden=$id_orden";
 	  // echo $sele;
-	   
+
 	 $r_validar=sqlsrv_query($conn, $sele);
-	   
+
  $contar=sqlsrv_fetch_array($r_validar);
  $cuantos=$contar[cuantos];
-	   
+
 	   if($cuantos == 0)
 	   {
 		  echo"<td><select class='form-control'  name='numintervencion' size='1' id='numintervencion'>";
@@ -593,33 +606,33 @@ echo'</table>';
 		  echo"<option value='4'> Cuarta </option>";
 		  echo"<option value='5'> Quinta </option>";
 		  echo"<option value='6'> Sexta </option>";
-          echo"</select>"; 
+          echo"</select>";
 	   }
-	   
-	   else 
+
+	   else
 	   {
-		   
-	  
+
+
 $array_selects[0] = "<option value='1'>Primera</option>";
 $array_selects[1] = "<option value='2'>Segunda</option>";
 $array_selects[2] = "<option value='3'>Tercera</option>";
 $array_selects[3] = "<option value='4'>Cuarta</option>";
 $array_selects[4] = "<option value='5'>Quinta</option>";
-$array_selects[5] = "<option value='6'>Sexta</option>";  
-		   
-		   
+$array_selects[5] = "<option value='6'>Sexta</option>";
+
+
 		   echo"<td><select class='form-control'  name='numintervencion' size='1' id='numintervencion'>";
-		   
+
         echo "  $array_selects[$cuantos] ";
-			   
+
         	echo"</select>";
-		   
+
 	   }
 
 		?>
-		
-	  
-	
+
+
+
 		</td>
 		 <br>
 		</tr>
@@ -630,15 +643,15 @@ $array_selects[5] = "<option value='6'>Sexta</option>";
     <textarea name="intervencion" cols="45" rows="5" id="intervencion" onkeypress="return validar_texto(event)"></textarea>
 	</td>
   		</tr>
-	</br>	
-	
+	</br>
+
   <tr>
     <td>Réplica <br />
     <textarea name="replica" cols="45" rows="5" id="replica" onkeypress="return validar_texto(event)"></textarea>
     </td>
 	  </tr>
   </p>
-	
+
 	</table>
 		<p>&nbsp;</p>
 	<?php
@@ -647,31 +660,31 @@ $array_selects[5] = "<option value='6'>Sexta</option>";
 		   echo "<h6>NO puedes ingresar más Intervenciónes </h6>";
 		   "</br>";
 		   "</br>";
-		   
+
 		   echo "<input class='btn btn-primary name='submit' id='button' value='Enviar'  disabled/>";
 	   }
 
 	  else
 		  {
 	echo" <input type='submit' class='btn btn-primary'  name='submit' id='button' value='Enviar'/>";
-	  
+
 	  }
    ?>
-	  
+
 	  <!--<input type="submit"  class="btn btn-primary"   name="submit" id="button" value="Enviar"/>-->
 				<p>&nbsp;</p>
     <input type="button" class="btn btn-default" name="cancelar" id="cancelar" value="Cancelar" onclick="javascript:history.go(-1)" />
 
   </p>
 </form>
-	</center>		
+	</center>
 
 <footer class="py-4 bg-light mt-auto">
         <?php include('footer.php'); ?>
 	</footer>
-				
-				
-				
+
+
+
 </div>
 </div>
 
