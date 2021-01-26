@@ -1,18 +1,18 @@
-<?php 
+<?php
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 include ('config_open_db.php');
 
 if (isset($_SESSION['user'])) {
-	
+
 $id_distrito = $_SESSION['id_distrito'];
 $name= $_SESSION['transaccion'];
 $grup=$_SESSION['grupo'];
-	
+
 }
 else
 {
-echo' 	alert("Debe iniciar una sesion")';	
+echo' 	alert("Debe iniciar una sesion")';
 	echo'<SCRIPT LANGUAGE="javascript">';
 	echo'	location.href = "index.php";';
 	echo'	</SCRIPT>';
@@ -43,7 +43,7 @@ function detalle(codigophp){
 			if (confirm('¿Desea borrar la sesión?'))
 				{
 	document.location.href ="eliminar_sesion.php?idsesion=" + codigophp;
-    
+
 			}
 			}
 	</script>
@@ -56,7 +56,7 @@ function detalle(codigophp){
 
 <h1 class="mt-4"><img src="images/logo-header.png"></h1>
 <br />
-	
+
 
 
 <br />
@@ -69,18 +69,19 @@ function detalle(codigophp){
 	<td colspan="2">	<p align="center" ><h5>Selecciona la sesión a celebrar:</h5></p></td>
 </tr>
 	</br>
-	
+
 	</br>
 	</br>
 	<tr>
 <td width="73%"  height="25" align="left">
 <?php
 
-	
-$sql2="SELECT * FROM (SELECT value distritos, nosesion, tipo_sesion, desc_sesion, id_sesion FROM sisesecd_sesiones CROSS APPLY STRING_SPLIT(distritos_sesiones, ',')  WHERE id_distrito= 40 and estatus= 1) AS pru WHERE distritos = $id_distrito"; 
-//$sql2="SELECT * FROM sisesecd_sesiones where id_distrito= 40 and estatus= 1"; 
+
+$sql2="SELECT * FROM (SELECT value distritos, nosesion, tipo_sesion, desc_sesion, id_sesion FROM sisesecd_sesiones CROSS APPLY STRING_SPLIT(distritos_sesiones, ',')  WHERE id_distrito= 40 and estatus= 1) AS pru WHERE distritos = $id_distrito";
+//$sql2="SELECT * FROM sisesecd_sesiones where id_distrito= 40 and estatus= 1";
 //$resultado2 = sqlsrv_query($conn,$sql2);
 /**/
+//echo $sql2;
 $params = array();
 $options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
 $resultado2 = sqlsrv_query ($conn, $sql2, $params, $options);
@@ -88,31 +89,26 @@ $row_count = sqlsrv_num_rows($resultado2);
 /**/
 if($row_count){
 
-	echo'<select name="id_sesion" id="id_sesion" class="form-control">';	
-	while($row2 = sqlsrv_fetch_array($resultado2))
-	 
+	echo'<select name="id_sesion" id="id_sesion" class="form-control">';
+	while($row2 = sqlsrv_fetch_array($resultado2)){
+		//echo '<option value='.$row[id_sesion].'>'.$nom_sesion[$row[nosesion]].' SESIÓN '.$tipo_ses[$row[tipo_sesion]].' 0'.$row[desc_sesion].'  </option>';
+		echo '<option value='.$row2[id_sesion].'>'.$tipo_ses[$row2[tipo_sesion]].' 0'.$row2[desc_sesion].'  </option>';
+	}
 
-
-	{
-	//echo '<option value='.$row[id_sesion].'>'.$nom_sesion[$row[nosesion]].' SESIÓN '.$tipo_ses[$row[tipo_sesion]].' 0'.$row[desc_sesion].'  </option>';
-	echo '<option value='.$row2[id_sesion].'>'.$tipo_ses[$row2[tipo_sesion]].' 0'.$row2[desc_sesion].'  </option>';
-		 
-	  }	 
-	
 	  echo '</select>
-	
+
 	  <td>   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input  class="btn btn-default" type="submit" value="Ir" />   &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>';
-	
-	 
+
+
 } else{
-	
+
 	echo "<p algin='center'><h2>No cuenta con una sesión a celebrar</h2> </p>";
 }
-	
-	
-		
+
+
+
   ?>
-  
+
 
 </td>
 

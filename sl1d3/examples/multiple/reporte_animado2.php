@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	
+
 <title>SISESECD-Reporte de Seguimiento a las Sesiones</title>
 
-	
+
 	<style type="text/css" media="screen">
-	
+
 .borde_tabla {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -16,7 +16,7 @@
 	text-align: center;
 	background-color: #666;
 	border: thin solid #666;
-	vertical-align:middle	
+	vertical-align:middle
 }
 .peque {
 	background-color: #FFF;
@@ -32,7 +32,7 @@
 }
 
 .celdita{
-	vertical-align:middle	
+	vertical-align:middle
 }
 .titulos {
 	font-family: Arial, Helvetica, sans-serif;
@@ -69,7 +69,7 @@ body {
 		/*
 			Load CSS before JavaScript
 		*/
-		
+
 		/*
 			Slides container
 			Important:
@@ -97,7 +97,7 @@ h1 {
 }
 .tablita {
 	border: thin solid #CCC;
-	
+
 }
 #footer {
 	text-align: center;
@@ -118,13 +118,13 @@ h1 {
 			If height not specified height will be set by the slide content
 			Set to display block
 		*/
-		
+
 		#slides .slides_container div {
 			width:570px;
-			
+
 			display:block;
 		}
-		
+
 		/*
 			Slides container
 			Important:
@@ -143,13 +143,13 @@ h1 {
 			If height not specified height will be set by the slide content
 			Set to display block
 		*/
-		
+
 		#slides_two .slides_container div {
 			width:250px;
 			height:250px;
 			display:block;
 		}
-		
+
 		/*
 			Slides container
 			Important:
@@ -168,14 +168,14 @@ h1 {
 			If height not specified height will be set by the slide content
 			Set to display block
 		*/
-		
+
 		#slides_three .slides_container div {
 			width:200px;
 			height:100px;
 			display:block;
 		}
-		
-		/* 
+
+		/*
 			Example only
 		*/
 		.pagination {
@@ -200,13 +200,13 @@ h1 {
 		.pagination .current a {
 	color:#FFF;
 		}
-		
+
 	#generales {
 	height: 800px;
 	width: 470px;
 	float: left;
 	margin-left: 30px;
-	padding-left: 30px;	
+	padding-left: 30px;
 }
 
 .division {
@@ -214,7 +214,7 @@ h1 {
 	border-right-style: solid;
 	border-right-color: #999;
 }
-    
+
 .pagination a {
 	color:#FFF;
 	font-family: Arial, Helvetica, sans-serif;
@@ -263,16 +263,16 @@ function refresca(){
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="js/slides.min.jquery.js"></script>
     <script src="jquery-tooltip/jquery.tooltip.js" type="text/javascript"></script>
-	
+
 	<script>
 		$(function(){
 			$('#slides').slides({
 				generatePagination:false,
 				generateNextPrev: true,
 				play: 10000,
-				
+
 			});
-			
+
 		});
 	</script>
     <script type="text/javascript">
@@ -327,14 +327,15 @@ con_fin,estatus,id_inicio,i.id_sesion,fecha_inicio_real,hora_inicio_real,
 qi_cp,qi_c1,qi_c2,qi_c3,qi_c4,qi_c5,qi_c6,qi_se,qi_pan_p,qi_pan_s,qi_pri_p,qi_pri_s,qi_prd_p,qi_prd_s,
 qi_pt_p,qi_pt_s,qi_pvem_p,qi_pvem_s,qi_pmc_p, qi_pmc_s, qi_pna_p, qi_pna_s, qi_pes_p, qi_pes_s, qi_ph_p, qi_ph_s, qi_morena_p, qi_morena_s, qi_ci1_p, qi_ci1_s, qi_ci2_p, qi_ci2_s, qi_ci3_p, qi_ci3_s, qi_prensa, qi_radio, qi_tv, CAST(observaini as CHAR(2084))as observaini,quorumini,asistencia
 FROM sisesecd_sesiones as s,sisesecd_inicio as i
-WHERE s.id_sesion=i.id_sesion 
-and s.id_sesion in(select id_sesion from sisesecd_sesiones 
-									where nosesion=$nosesion 
+WHERE s.id_sesion=i.id_sesion
+and s.id_sesion in(select id_sesion from sisesecd_sesiones
+									where nosesion=$nosesion
 									and tipo_sesion=$typesess
 									and desc_sesion=$descsesion
 									and id_distrito!=40
 									and estatus=1)order by s.id_distrito ASC;";
-						 
+									echo $sql_inicio;
+
 $r_inicio=sqlsrv_query($conn, $sql_inicio);
 //echo $sql_inicio;
 $head=sqlsrv_query($conn, $sql_inicio);
@@ -354,10 +355,10 @@ $fecha=$undato[fecha_inicio_real];
 	//$f1=date_format($fe, 'Y-m-d');
 	$f=date_format($fe, 'd-m-Y');
 	//echo $f;
-	
+
 $sql_count_estado="select count(*) as iniciadas from sisesecd_inicio where id_sesion in(
-														select id_sesion from sisesecd_sesiones 
-															where nosesion=$nosesion 
+														select id_sesion from sisesecd_sesiones
+															where nosesion=$nosesion
 															and tipo_sesion=$typesess
 															and desc_sesion=$descsesion
 															and id_distrito!=40
@@ -367,8 +368,8 @@ $d_iniciadas=sqlsrv_fetch_array($r_iniciadas);
 $iniciada=$d_iniciadas[iniciadas];
 
 $sql_count_estado2="select count(*) as cuantas from sisesecd_estado_sesion where estado_sesion=2 and id_sesion in (
-																		select id_sesion from sisesecd_sesiones 
-																			where nosesion=$nosesion 
+																		select id_sesion from sisesecd_sesiones
+																			where nosesion=$nosesion
 																			and tipo_sesion=$typesess
 																			and desc_sesion=$descsesion
 																			and id_distrito!=40
@@ -378,10 +379,10 @@ $d_sinq=sqlsrv_fetch_array($r_sinq);
 $sinquorum=$d_sinq[cuantas];
 //echo $sql_participaciones;
 
-$sql_count_estado3="select count(*) as cuantas2 from sisesecd_estado_sesion where estado_sesion=3 and id_sesion in 
+$sql_count_estado3="select count(*) as cuantas2 from sisesecd_estado_sesion where estado_sesion=3 and id_sesion in
 					(
- 					select id_sesion from sisesecd_sesiones 
-									where nosesion=$nosesion 
+ 					select id_sesion from sisesecd_sesiones
+									where nosesion=$nosesion
 									and tipo_sesion=$typesess
 									and desc_sesion=$descsesion
 									and id_distrito!=40
@@ -391,8 +392,8 @@ $d_dos=sqlsrv_fetch_array($r_dos);
 $segunda=$d_dos[cuantas2];
 
 $sql_count_estado4="select count(*) as cuantas3 from sisesecd_fin where id_sesion in (
-													select id_sesion from sisesecd_sesiones 
-														where nosesion=$nosesion 
+													select id_sesion from sisesecd_sesiones
+														where nosesion=$nosesion
 														and tipo_sesion=$typesess
 														and desc_sesion=$descsesion
 														and id_distrito!=40
@@ -402,8 +403,8 @@ $d_conc=sqlsrv_fetch_array($r_conc);
 $concluida=$d_conc[cuantas3];
 
 $sql_count_estado5="select count(*) as cuantas4 from sisesecd_estado_sesion where estado_sesion=5 and id_sesion in (
-													select id_sesion from sisesecd_sesiones 
-														where nosesion=$nosesion 
+													select id_sesion from sisesecd_sesiones
+														where nosesion=$nosesion
 														and tipo_sesion=$typesess
 														and desc_sesion=$descsesion
 														and id_distrito!=40
@@ -413,8 +414,8 @@ $d_receso=sqlsrv_fetch_array($r_receso);
 $receso=$d_receso[cuantas4];
 
 $sql_count_estado6="select count(*) as cuantas5 from sisesecd_estado_sesion where estado_sesion=6 and id_sesion in (
-														select id_sesion from sisesecd_sesiones 
-															where nosesion=$nosesion 
+														select id_sesion from sisesecd_sesiones
+															where nosesion=$nosesion
 															and tipo_sesion=$typesess
 															and desc_sesion=$descsesion
 															and id_distrito!=40
@@ -424,8 +425,8 @@ $d_rc=sqlsrv_fetch_array($r_rc);
 $conc_receso=$d_rc[cuantas5];
 
 $sql_count_estado7="select count(*) as cuantas6 from sisesecd_estado_sesion where estado_sesion=7 and id_sesion in
-							(select id_sesion from sisesecd_sesiones 
-									where nosesion=$nosesion 
+							(select id_sesion from sisesecd_sesiones
+									where nosesion=$nosesion
 									and tipo_sesion=$typesess
 									and desc_sesion=$descsesion
 									and id_distrito!=40
@@ -434,9 +435,9 @@ $r_suspendida=sqlsrv_query($conn, $sql_count_estado7);
 $d_suspendida=sqlsrv_fetch_array($r_suspendida);
 $suspendida=$d_suspendida[cuantas6];
 
-$sql_count_estado8="select count(*) as cuantas7 from sisesecd_estado_sesion where estado_sesion=8 and id_sesion in 
-																(select id_sesion from sisesecd_sesiones 
-																					where nosesion=$nosesion 
+$sql_count_estado8="select count(*) as cuantas7 from sisesecd_estado_sesion where estado_sesion=8 and id_sesion in
+																(select id_sesion from sisesecd_sesiones
+																					where nosesion=$nosesion
 																					and tipo_sesion=$typesess
 																					and desc_sesion=$descsesion
 																					and id_distrito!=40
@@ -445,9 +446,9 @@ $r_reanudada=sqlsrv_query($sql_count_estado8,$conn);
 $d_reanudada=sqlsrv_fetch_array($r_reanudada);
 $reanudada=$d_reanudada[cuantas7];
 
-$sql_count_estado9="select count(*) as cuantas8 from sisesecd_estado_sesion where estado_sesion=9 and id_sesion in 
-												( select id_sesion from sisesecd_sesiones 
-												 where nosesion=$nosesion 
+$sql_count_estado9="select count(*) as cuantas8 from sisesecd_estado_sesion where estado_sesion=9 and id_sesion in
+												( select id_sesion from sisesecd_sesiones
+												 where nosesion=$nosesion
 												 and tipo_sesion=$typesess
 												 and desc_sesion=$descsesion
 												 and id_distrito!=40
@@ -496,12 +497,12 @@ echo "<tr>";
 
 
 echo   '<td  align="center" class="borde_tabla"><span id="pretty" title="
-<table> 
+<table>
 <tr>
 <td><strong>&nbsp;&nbsp;&nbsp;&nbsp;Estado&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</strong></td>
 <td></td>
 <td><strong>Dttos.</strong></td>
-</tr> - 
+</tr> -
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;Iniciaron: &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</td>
 <td></td>
@@ -555,21 +556,21 @@ echo   '<td  align="center" class="borde_tabla"><span id="pretty" title="
 echo "</tr>";
 
 
-$indice=0;	
+$indice=0;
 
 while($datos = sqlsrv_fetch_array ($r_inicio))
 {
-	
-	
+
+
 	echo '<tr>';
 	echo'<td align="center" class="resultados">'.$datos[id_distrito].'</td>';
 	echo'<td align="center" class="resultados">'.$datos[hora_inicio_real].'</td>';
-	
+
 
 	if($datos[con_fin]==1){
-		$sql_fin="select f.id_fin, f.id_sesion, f.fecha_inicio_final, f.hora_fin_final, f.qf_cp, f.qf_c1, f.qf_c2, f.qf_c3, f.qf_c4, f.qf_c5, f.qf_c6, f.qf_se, f.qf_pan_p, f.qf_pan_s, f.qf_pri_p, f.qf_pri_s, f.qf_prd_p, f.qf_prd_s, f.qf_pt_p, f.qf_pt_s, f.qf_pvem_p, f.qf_pvem_s, f.qf_pmc_p, f.qf_pmc_s, f.qf_pna_p, f.qf_pna_s, f.qf_pes_p, f.qf_pes_s, f.qf_ph_p, f.qf_ph_s, f.qf_morena_p, f.qf_morena_s, f.qf_ci1_p, f.qf_ci1_s, f.qf_ci2_p, f.qf_ci2_s, f.qf_ci3_p, f.qf_ci3_s, f.qf_prensa, f.qf_radio, f.qf_tv, quorumfin, CAST(f.observafin as CHAR(2048))as observafin from sisesecd_fin as f where id_sesion in( 
-								select id_sesion from sisesecd_sesiones 
-								where nosesion=$nosesion 
+		$sql_fin="select f.id_fin, f.id_sesion, f.fecha_inicio_final, f.hora_fin_final, f.qf_cp, f.qf_c1, f.qf_c2, f.qf_c3, f.qf_c4, f.qf_c5, f.qf_c6, f.qf_se, f.qf_pan_p, f.qf_pan_s, f.qf_pri_p, f.qf_pri_s, f.qf_prd_p, f.qf_prd_s, f.qf_pt_p, f.qf_pt_s, f.qf_pvem_p, f.qf_pvem_s, f.qf_pmc_p, f.qf_pmc_s, f.qf_pna_p, f.qf_pna_s, f.qf_pes_p, f.qf_pes_s, f.qf_ph_p, f.qf_ph_s, f.qf_morena_p, f.qf_morena_s, f.qf_ci1_p, f.qf_ci1_s, f.qf_ci2_p, f.qf_ci2_s, f.qf_ci3_p, f.qf_ci3_s, f.qf_prensa, f.qf_radio, f.qf_tv, quorumfin, CAST(f.observafin as CHAR(2048))as observafin from sisesecd_fin as f where id_sesion in(
+								select id_sesion from sisesecd_sesiones
+								where nosesion=$nosesion
 									and tipo_sesion=$typesess
 									and desc_sesion=$descsesion
 									and id_distrito=$datos[id_distrito]
@@ -581,7 +582,7 @@ $r_final=sqlsrv_query($conn, $sql_fin);
 		while($data = sqlsrv_fetch_array ($r_final))
 		{
 			$duracion=calcular_tiempo_trasnc($data[hora_fin_final],$datos[hora_inicio_real]);
-			
+
 			echo'<td align="center" class="resultados">'.$data[hora_fin_final].'</td>';
 			echo'<td align="center" class="resultados">'.$duracion.'</td>';
 			$index++;
@@ -590,26 +591,26 @@ $r_final=sqlsrv_query($conn, $sql_fin);
 		echo '<td class="resultados">n/d </td>';
 		echo '<td class="resultados">n/d</td>';
 	}
-	
+
 	if($datos[con_incidente]==1){
 		$sql_incidentes="select FIRST 1 s.id_sesion, s.id_distrito, s.nosesion, s.desc_sesion, s.tipo_sesion,
 s.fecha_inicio_prog, s.hora_inicio_prog, s.con_inicio, s.con_orden, s.con_votos, s.con_intervencion, s.con_incidente,
 s.con_fin, s.estatus, CAST(inci.incidente as CHAR(2084)) as incidente from sisesecd_sesiones as s, sisesecd_incidentes as inci WHERE  s.id_sesion=inci.id_sesion
-	and s.id_sesion  in( select id_sesion from sisesecd_sesiones 
-									where nosesion=$nosesion 
+	and s.id_sesion  in( select id_sesion from sisesecd_sesiones
+									where nosesion=$nosesion
 									and tipo_sesion=$typesess
 									and desc_sesion=$descsesion
 									and id_distrito=$datos[id_distrito]
 									and estatus=1)
 									order by inci.id_incidentes desc;";
-		
+
 $r_incidentes=sqlsrv_query($conn, $sql_incidentes);
 //echo $sql_incidentes;
 
 		$in=0;
 		while($dato = sqlsrv_fetch_array ($r_incidentes))
 		{
-					
+
 		/*if($dato[inter_cp]!=0 || $dato[inter_c1]!=0 || $dato[inter_c2]!=0 || $dato[inter_c3]!=0 || $dato[inter_c4]!=0 || $dato[inter_c5]!=0|| $dato[inter_c6]!=0 || $dato[inter_panp]!=0 || $dato[inter_pans]!=0 || $dato[inter_prip]!=0 || $dato[inter_pris]!=0 || $dato[inter_prdp]!=0 || $dato[inter_prds]!=0 || $dato[inter_ptp]!=0 || $dato[inter_pts]!=0 || $dato[inter_pvemp]!=0 || $dato[inter_pvems]!=0 || $dato[inter_pmcp]!=0 || $dato[inter_pmcs]!=0 || $dato[inter_pnap]!=0 || $dato[inter_pnas]!=0 || $dato[inter_pesp]!=0 || $dato[inter_pess]!=0 || $dato[inter_php]!=0 || $dato[inter_phs]!=0  || $dato[inter_morenap]!=0 || $dato[inter_morenas]!=0 || $dato[inter_ci1p]!=0 || $dato[inter_ci1s]!=0 || $dato[inter_ci2p]!=0 || $dato[inter_ci2s]!=0 || $dato[inter_ci3p]!=0 || $dato[inter_ci3s]!=0){*/
 		//echo'<td align="center" class="resultados">'.substr($dato[intervencion],0,40).'</td>';
 		echo'<td align="center" class="resultados"><span id="fancy" title="Intervención Dtto.'.$datos[id_distrito].' para el Punto: '.$dat[punto].'  -  '.$dato[incidente].'"><img src="check.png" width="25" height="20" /></span></td>';
@@ -619,16 +620,16 @@ $r_incidentes=sqlsrv_query($conn, $sql_incidentes);
 	}else{
 		//echo '<td class="resultados">incidente n/d</td>';
 		echo '<td class="resultados"><span id="fancy" title="Dtto.'.$datos[id_distrito].' - sin intervenciones relevantes"><img src="cross.png" width="25" height="26"></span></td>';
-		
+
 	}
-	
+
 	if($datos[con_intervencion]==1){
 		$sql_participaciones ="SELECT FIRST 1 s.id_sesion, s.id_distrito, s.nosesion, s.desc_sesion, s.tipo_sesion,
 s.fecha_inicio_prog, s.hora_inicio_prog, s.con_inicio, s.con_orden, s.con_votos, s.con_intervencion, s.con_incidente,
-s.con_fin, s.estatus, CAST(inter.intervencion as CHAR(2084)) as intervencion FROM sisesecd_sesiones as s, sisesecd_intervenciones as inter 
+s.con_fin, s.estatus, CAST(inter.intervencion as CHAR(2084)) as intervencion FROM sisesecd_sesiones as s, sisesecd_intervenciones as inter
 	WHERE s.id_sesion=inter.id_sesion
-	and s.id_sesion in( select id_sesion from sisesecd_sesiones 
-						where nosesion=$nosesion 
+	and s.id_sesion in( select id_sesion from sisesecd_sesiones
+						where nosesion=$nosesion
 						and tipo_sesion=$typesess
 						and desc_sesion=$descsesion
 						and id_distrito=$datos[id_distrito]
@@ -648,14 +649,14 @@ $r_participaciones=sqlsrv_query($conn, $sql_participaciones);
 	}else{
 		//echo '<td class="resultados">incidente n/d</td>';
 		echo '<td class="resultados"><span id="fancy" title="Dtto.'.$datos[id_distrito].' - sin intervenciones relevantes"><img src="cross.png" width="25" height="26"></span></td>';
-		
+
 	}
 	//if($datos[estado_sesion]!=""){
 		$sql_estado="select FIRST 1 *
 				from sisesecd_estado_sesion
 				where id_sesion in
-				( select id_sesion from sisesecd_sesiones 
-				  where nosesion=$nosesion 
+				( select id_sesion from sisesecd_sesiones
+				  where nosesion=$nosesion
 				  and tipo_sesion=$typesess
 				  and desc_sesion=$descsesion
 				 and id_distrito=$datos[id_distrito]
@@ -664,13 +665,13 @@ $r_participaciones=sqlsrv_query($conn, $sql_participaciones);
 				estado_sesion,descripcion,hora_inicio,hora_termino,fecha_alta
 				order by id_estado desc;";
 	$r_estado=sqlsrv_query($conn, $sql_estado);
-	
-	
+
+
 	while($datos = sqlsrv_fetch_array ($r_estado))
 		{
 		echo'<td align="center" class="resultados">'.utf8_encode($edo_sesion[$datos[estado_sesion]]).'</td>';
 		}
-			
+
 	echo '</tr>';
 	$indice++;
 }
@@ -680,17 +681,17 @@ echo "</table>";
 </div>
 <div id="slides">
 <div class="slides_container">
-     			
+
                 <?php
 
-$sql_pto_a="select punto from sisesecd_ordendia as o, sisesecd_sesiones as s where o.id_sesion=s.id_sesion 
-and o.estatus=1 and s.estatus=1 and con_votos=1 and o.id_sesion in( select id_sesion from sisesecd_sesiones 
-												where nosesion=$nosesion 
-												and estatus=1 
-												and con_votos=1 
+$sql_pto_a="select punto from sisesecd_ordendia as o, sisesecd_sesiones as s where o.id_sesion=s.id_sesion
+and o.estatus=1 and s.estatus=1 and con_votos=1 and o.id_sesion in( select id_sesion from sisesecd_sesiones
+												where nosesion=$nosesion
+												and estatus=1
+												and con_votos=1
 												and tipo_sesion=$typesess
 												and id_distrito!=40
-												and desc_sesion=$descsesion) 
+												and desc_sesion=$descsesion)
 												group by punto
 												order by punto";
 
@@ -714,17 +715,17 @@ for ($ip=0;$ip<$size;$ip++){
 
 $sql2 ="SELECT o.id_orden,0.id_sesion,punto,
 CAST(desc_punto as CHAR(2048)) as desc_punto, o.estatus, voto_cp, voto_c1, voto_c2, voto_c3, voto_c4, voto_c5, voto_c6, observa_punto, s.id_sesion, s.id_distrito, nosesion, desc_sesion, tipo_sesion, fecha_inicio_prog, hora_inicio_prog, con_inicio,con_orden, con_votos, con_intervencion, con_incidente, con_fin, s.estatus, id_inicio, i.id_sesion, fecha_inicio_real, hora_inicio_real, qi_cp, qi_c1, qi_c2, qi_c3, qi_c4, qi_c5, qi_c6, qi_se, qi_pan_p, qi_pan_s, qi_pri_p, qi_pri_s,
-qi_prd_p, qi_prd_s, qi_pt_p, qi_pt_s, qi_pvem_p, qi_pvem_s, qi_pmc_p, qi_pmc_s, qi_pna_p, qi_pna_s, qi_pes_p, qi_pes_s, qi_ph_p, qi_ph_s, qi_morena_p, qi_morena_s, qi_ci1_p, qi_ci1_s, qi_ci2_p, qi_ci2_s, qi_ci3_p, qi_ci3_s, qi_prensa, qi_radio, qi_tv, observaini 
+qi_prd_p, qi_prd_s, qi_pt_p, qi_pt_s, qi_pvem_p, qi_pvem_s, qi_pmc_p, qi_pmc_s, qi_pna_p, qi_pna_s, qi_pes_p, qi_pes_s, qi_ph_p, qi_ph_s, qi_morena_p, qi_morena_s, qi_ci1_p, qi_ci1_s, qi_ci2_p, qi_ci2_s, qi_ci3_p, qi_ci3_s, qi_prensa, qi_radio, qi_tv, observaini
 FROM sisesecd_ordendia as o, sisesecd_sesiones as s, sisesecd_inicio as i
 	WHERE s.id_sesion=o.id_sesion
 	and s.id_sesion=i.id_sesion
 	and o.punto='$arreglo[$ip]'
 	and o.estatus=1
-	and s.id_sesion in( select id_sesion from sisesecd_sesiones where nosesion=".$nosesion." 
+	and s.id_sesion in( select id_sesion from sisesecd_sesiones where nosesion=".$nosesion."
 						and estatus=1 and con_votos=1 and tipo_sesion=".$typesess."
 						and desc_sesion=".$descsesion."
 						and id_distrito!=40)";
-						
+
 
 $sql_cuantos="SELECT count(*)as cuantos FROM sisesecd_ordendia as o, sisesecd_sesiones as s, sisesecd_inicio as i
 WHERE s.id_sesion=o.id_sesion
@@ -743,12 +744,12 @@ $cuantos1=$cuantos[cuantos];
 //$result=ifx_query($sql,$conn);
 $result=sqlsrv_query($conn, $sql2);
 $undato=sqlsrv_fetch_array ($result);
-	
+
 $fecha=$undato[fecha_inicio_real];
 $descripcion=$undato[desc_punto];
 $desc=$undato[desc_sesion];
 $pto=$undato[punto];
-	
+
 $res=sqlsrv_query($conn, $sql2);
 $total=0;
 $total6=0;
@@ -762,11 +763,11 @@ $totalcon=0;
 eval("\$descripcion = \"$descripcion\";");
 ?>
 <div>
-	<?php			
+	<?php
                 echo "<h3>SENTIDO DE LA VOTACION&nbsp;&nbsp;&nbsp;&nbsp;PUNTO:".$pto."</h3><hr><p class='resultados'>".utf8_encode($descripcion)
 ."</p>";
-                
-	
+
+
 				echo "<table id='votos'>";
 		echo "<tr>";
 		if($cuantos1>=1){
@@ -780,11 +781,11 @@ eval("\$descripcion = \"$descripcion\";");
 			echo '<td width=114 class="borde_tabla"><strong>EN CONTRA</strong></td>';
 			echo '<td width=114 class="borde_tabla"><strong>EXCUSADOS</strong></td>';
 		echo "</tr>";
-		$indice=0;	
+		$indice=0;
 
 while($datos = sqlsrv_fetch_array ($res))
 {
-	
+
 	$distrito=$datos[id_distrito];
 	$votocp=$datos[voto_cp];
 	if($votocp==1)
@@ -793,7 +794,7 @@ while($datos = sqlsrv_fetch_array ($res))
 		$encontra++;
 	elseif($votocp==3)
 		$excusa++;
-		
+
 	$votoc1=$datos[voto_c1];
 	if($votoc1==1)
 		$afavor++;
@@ -801,7 +802,7 @@ while($datos = sqlsrv_fetch_array ($res))
 		$encontra++;
 	elseif($votoc1==3)
 		$excusa++;
-	
+
 	$votoc2=$datos[voto_c2];
 	if($votoc2==1)
 		$afavor++;
@@ -809,7 +810,7 @@ while($datos = sqlsrv_fetch_array ($res))
 		$encontra++;
 	elseif($votoc2==3)
 		$excusa++;
-		
+
 	$votoc3=$datos[voto_c3];
 	if($votoc3==1)
 		$afavor++;
@@ -817,7 +818,7 @@ while($datos = sqlsrv_fetch_array ($res))
 		$encontra++;
 	elseif($votoc3==3)
 		$excusa++;
-		
+
 	$votoc4=$datos[voto_c4];
 	if($votoc4==1)
 		$afavor++;
@@ -825,7 +826,7 @@ while($datos = sqlsrv_fetch_array ($res))
 		$encontra++;
 	elseif($votoc4==3)
 		$excusa++;
-		
+
 	$votoc5=$datos[voto_c5];
 	if($votoc5==1)
 		$afavor++;
@@ -833,34 +834,34 @@ while($datos = sqlsrv_fetch_array ($res))
 		$encontra++;
 	elseif($votoc5==3)
 		$excusa++;
-	
+
 	$votoc6=$datos[voto_c6];
 	if($votoc6==1)
 		$afavor++;
 	elseif($votoc6==2)
 		$encontra++;
 	elseif($votoc6==3)
-		$excusa++;	
+		$excusa++;
 
-	
+
 	$array_f[$indice]=$afavor;
 	$array_c[$indice]=$encontra;
 	$array_e[$indice]=$excusa;
-	
+
 	$observaini =  utf8_decode(htmlspecialchars(trim($datos[observapunto])));
-	
+
 	//echo'<tr>';
-	
-		
+
+
 			if($afavor==6 || $encontra==6 || $excusa==6 )
-				$total6++;			
-			
+				$total6++;
+
 			if($afavor==5 || $encontra==5 || $excusa==5)
 				$total5++;
-				
+
 			if($afavor==7 || $encontra==7 || $excusa==7)
 				$total++;
-			
+
 			echo'<td align="center" class="resultados" width=15>'.$distrito.'</td>';
 			if($afavor==0 && $encontra==0 && $excusa==0){
 				echo '<td align="center" class="resultados"> sin votación.</td>';
@@ -871,18 +872,18 @@ while($datos = sqlsrv_fetch_array ($res))
 				echo'<td align="center" class="resultados">'.$encontra.'</td>';
 				echo'<td align="center" class="resultados">'.$excusa.'</td>';
 			}
-				
+
 			//echo'<td align="center" class="resultados">'.utf8_encode($observaini).'</td>';
-				
-			
+
+
 		$grantotal=$total+$total5+$total6;
-		
+
 	echo'</tr>';
-	
+
 	$afavor=0;
 	$encontra=0;
 	$excusa=0;
-	
+
 	$indice++;
 }
 
@@ -890,7 +891,7 @@ while($datos = sqlsrv_fetch_array ($res))
 //echo "<tr>";
 //echo "</tr>";
 echo "<tr>";
-echo "</tr>"; 
+echo "</tr>";
 
 echo "</table>";
 echo "<table border=0  style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
@@ -936,17 +937,17 @@ echo '<td class="resultados">NO HAY DATOS DE VOTACI&Oacute;N</td>';
 
 	echo "</table>";
 	?>
-   
+
   </div>
   <?php
    	$array_f[$indice]=0;
 	$array_c[$indice]=0;
-	
+
     }
 	?>
   </div>
    <div id="footer">
-	
+
    		<p>Fecha y hora de la &uacute;ltima actualizaci&oacute;n:<?php echo $fecha_act ?></p>
    </div>
 </body>

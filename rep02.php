@@ -251,13 +251,13 @@ while($datos = sqlsrv_fetch_array ($resultados))
 	$array_c[$indice]=$encontra;
 	$array_d[$indice]=$excusa;
 
-	$observaini =  utf8_decode(htmlspecialchars(trim($datos['observa_punto'])));
+	$observaini =  htmlspecialchars(trim($datos['observa_punto']));
 
 	echo'<tr>';
 
 	//if($distrito<=10){
 		echo'<td align="center" class="resultados">'.$datos['id_distrito'].'</td>';
-		echo'<td align="center" class="resultados">'.$datos['desc_punto'].'</td>';
+		echo'<td align="center" class="resultados">'.utf8_encode($datos['desc_punto']).'</td>';
 
 
 			if($afavor==6 )

@@ -8,17 +8,17 @@ if (isset($_SESSION['user'])) {
 
 $name= $_SESSION['transaccion'];
 $grup=$_SESSION['grupo'];
-$id_distrito=$_SESSION['id_distrito'];
-
+$id_distrito=$_SESSION['id_distrito'];	
+	
 }
 else
 {
-echo' 	alert("Debe iniciar una sesion")';
+echo' 	alert("Debe iniciar una sesion")';	
 	echo'<SCRIPT LANGUAGE="javascript">';
 	echo'	location.href = "index.php";';
 	echo'	</SCRIPT>';
 }
-
+	
 
 ?>
 
@@ -44,7 +44,7 @@ echo' 	alert("Debe iniciar una sesion")';
 <title>.: SISESECD 2018 :.</title>
 
 </head>
-
+	
 <body>
 <div id="container_blanco">
 
@@ -59,7 +59,7 @@ echo' 	alert("Debe iniciar una sesion")';
   <tr>
     <td width="16%" height="25" align="left" class="well">Usuario: <?php echo $name;?></td>
        <td width="16%" align="center"><?php echo"<a class='btn btn-primary' href='javascript:history.back(-2)'> Menu principal</a>";?></td>
-
+   
     <td width="29%" align="right"><a class="btn btn-default" href="logout.php">Cerrar Sesion</a></td>
   </tr>
 </table>
@@ -113,37 +113,37 @@ $desc=$_REQUEST[descsesion];
 
 
 <div id="content">
-
+	
   <CENTER>
 <br>
-
+	  
 	  <a href="reptodos_integrante.php" >Descargar los 33 integrantes del consejo</a>
 	<br>
 	  <br>
-	  <br>
+	  <br>  
 <div> <span class="titulo">SELECCIONE EL DISTRITO DEL CUAL DESEA SABER SUS INTEGRANTES DEL CONSEJO<BR>
 	</span></center>
-
+	
 	<p>&nbsp;</p>
 	<center>
 <table width="450" border="1" cellspacing="0" cellpadding="0">
   <tr>    <form  id="form1" name="form1" method="post" action="rep07.php"/>
     <td width="58%" class="titulo" align="right">Distrito Electoral:</td>
     <td width="42%">
-
-    <?php
+        	
+    <?php 
 	include 'arreglos.php';
-	echo'<select name="distrito" id="distrito" >';
-
+	echo'<select name="distrito" id="distrito">';
+	
 		for($i=1;$i<=33;$i++)
 		{
-		echo '<option value='.$i.'>'.$i.' </option>';
+		echo '<option value='.$i.'>'.$i.' </option>'; 
 		}
 	echo '</select>';
-
+	
      ?>
-
-
+   
+	
 	</td>
     </tr>
   <tr>

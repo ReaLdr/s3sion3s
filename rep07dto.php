@@ -60,7 +60,7 @@ $dia=$fecha_partida[2];
 */
 
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
-echo"<th colspan=8>";
+echo"<th colspan=10>";
 //echo "<img src='http://distritos.iedf.org.mx/sisesecd2015/images/iedf.PNG'/>";
 echo "<img src='https://aplicaciones.iecm.mx/sesiones2020/images/logo-header.png' style='vertical-align:middle' alt='IECM'>";
 echo "</th>";

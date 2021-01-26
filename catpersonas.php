@@ -15,14 +15,14 @@ else{
 	return;
 }
 
-$variable= $_REQUEST["page"];
+//$variable= $_REQUEST["page"];
 
 //-------------------- 12/01/2021 Variable para imprimir partido ELEGIR AL ULTIMO
 	$integra18 = "";
 
 //echo $id_distrito;
 
-//include('arreglos.php');
+include('arreglos.php');
 $nosesion=$_GET['nosesion'];
 $id_sesion=$_GET['id_sesion'];
 //$tipo_sesion=$_GET['tipo_sesion'];
@@ -105,7 +105,7 @@ input[type="text"]{
 
 //echo "GET PAGE: ".$variable."...";
 //echo "GET ID ".$_REQUEST['idsesion']."...";
-$id_sesion = htmlspecialchars(trim($_REQUEST['id_sesion']));
+$id_sesion = htmlspecialchars(trim($_GET['id_sesion']));
 $movimiento = htmlspecialchars(trim($_POST['movimiento']));
 
 // Consigo datos a desplegar solo de muestra
@@ -114,9 +114,9 @@ $encabezado = "-ERROR DE LECTURA-";
 //require('functions.php');
 
 include 'config_open_db.php';
-//include 'arreglos.php';
+include 'arreglos.php';
 
-$distrito=$d_romano[$_SESSION['id_distrito']];
+//$distrito=$d_romano[$_SESSION['id_distrito']];
 $nosesion=$_REQUEST['nosesion'];
 $tipo_sesion=$_REQUEST['tipo_sesion'];
 $id_sesion=$_REQUEST['id_sesion'];
@@ -133,14 +133,13 @@ $desc_sesion=$_REQUEST['desc_sesion'];
 	$exec_countTMP = sqlsrv_query($conn, $sql_countTMP);
 	$row_count1 = sqlsrv_fetch_array($exec_countTMP);
 
-	$cuantosTMP = $row_count1["cuantosTMP"];
+	$cuantosTMP = $row_count1;
 	$datos_ses = 0;
 
 	// Si trae datos cargamos última
 	if(count($row_count1)>0){
 		$datos_ses = $row_count1["id_sesion"];  // Conseguimos la sesion
 		$sql_select = "select * from sisesecd_cat_funcionarios where id_sesion = ".$datos_ses." and id_distrito = ".$id_distrito." order by id_integrante, tipo_acredor ASC";
-		echo $sql_select;
 
 		$exec = sqlsrv_query($conn, $sql_select);
 
@@ -161,9 +160,9 @@ if(isset($_REQUEST['id_sesion']))
 
 		$registro = sqlsrv_fetch_array($consultaSesion);
 
-		$descripcion=$registro[desc_sesion];
-		$nosesion=$registro[nosesion];
-		$types=$registro[tipo_sesion];
+		$descripcion=$registro['desc_sesion'];
+		$nosesion=$registro['nosesion'];
+		$types=$registro['tipo_sesion'];
 
 
 
@@ -175,7 +174,7 @@ if(isset($_REQUEST['id_sesion']))
 	$exec_count = sqlsrv_query($conn, $sql_count);
 	$row_count1 = sqlsrv_fetch_array($exec_count);
 
-	$cuantos1=$row_count1[cuantos];
+	$cuantos1=$row_count1['cuantos'];
 
 	if ($cuantos1>0){
 		// Aqui consigo datos a desplegar
@@ -570,7 +569,7 @@ $cliente ="";
 		$exec_count2 = sqlsrv_query($conn, $sql_count2);
 		$row_count2 = sqlsrv_fetch_array($exec_count2);
 		$cuantos2=0;
-		$cuantos2=$row_count2[cuantos2];
+		$cuantos2=$row_count2['cuantos2'];
 
 	}
 	if($cuantos2>0)
@@ -979,11 +978,7 @@ else
 
 
 ////////PVEM/////////////
-// echo "integrante: " . $row[id_integrante];
-// echo "<br>";
-// echo "Acredor: " . $row[tipo_acredor];
-// echo "<br>";
-	if($row[id_integrante]==15 && $row[tipo_acredor]=='P')
+	if($row[id_integrante]==14 && $row[tipo_acredor]=='P')
 	{
 
 	echo'<tr>';
@@ -1009,7 +1004,7 @@ else
 
 	}
 
-	if($row[id_integrante]==15 && $row[tipo_acredor]=='S')
+	if($row[id_integrante]==14 && $row[tipo_acredor]=='S')
 	{
         echo'<tr>';
 		echo'<input type="hidden" name="id_func15S" id="id_func15S" value ="'.$row['id_funcionario'].'" />';
@@ -1031,7 +1026,7 @@ else
       echo'</tr>';
 	}
 
-	if($row[id_integrante]==16 && $row[tipo_acredor]=='P')
+	if($row[id_integrante]==15 && $row[tipo_acredor]=='P')
 	{
 
 	echo'<tr>';
@@ -1056,7 +1051,7 @@ else
     echo' </tr>';
 	}
 
-	if($row[id_integrante]==16 && $row[tipo_acredor]=='S')
+	if($row[id_integrante]==15 && $row[tipo_acredor]=='S')
 	{
 	echo' <tr>';
     echo'<input type="hidden" name="id_func14S" id="id_func14S" value ="'.$row['id_funcionario'].'" />';
@@ -1077,7 +1072,7 @@ else
 	}
 
 
-	if($row[id_integrante]==17 && $row[tipo_acredor]=='P')
+	if($row[id_integrante]==16 && $row[tipo_acredor]=='P')
 	{
     echo'<tr>';
     echo' <td width="26%" rowspan="2">Partido Movimiento Ciudadano (PMC)</td>';
@@ -1102,7 +1097,7 @@ else
     echo' </tr>';
 	}
 
-	if($row[id_integrante]==17 && $row[tipo_acredor]=='S')
+	if($row[id_integrante]==16 && $row[tipo_acredor]=='S')
 	{
 	echo'<tr>';
     echo'<input type="hidden" name="id_func16S" id="id_func16S" value ="'.$row['id_funcionario'].'" />';
@@ -1899,7 +1894,7 @@ else
     <tr>
       <td width="25%">Partido Verde Ecologista de Mexico (PVEM)</td>
       <td width="20%"><p>
-        <input type="hidden" value="<?php echo $filas[14]["nombre"]?>" name="id_integra15" id="id_integra14" value ="14" />
+        <input type="hidden" name="id_integra15" id="id_integra14" value ="14" />
         <input type="text" value="<?php echo $filas[14]["nombre"]?>" name= "txt_nombrePVEM-P" id="txt_nombrePVEM-P" onkeypress='return validar_texto(event)' tabindex="19"/>
       </p>
         <p>
@@ -2247,19 +2242,19 @@ S </td>
        <input type="text" value="<?php echo $filas[36]["nombre"]?>" name="txt_nombreCI4-P" id="txt_nombreCI4-P" onkeypress='return validar_texto(event)' tabindex="78"/>
        </p>
        <p>
-       <input type="text" name="txt_nombreCI4-S" id="txt_nombreCI4-S" onkeypress='return validar_texto(event)' tabindex="81"/>
+       <input type="text" value="<?php echo $filas[37]["nombre"]?>" name="txt_nombreCI4-S" id="txt_nombreCI4-S" onkeypress='return validar_texto(event)' tabindex="81"/>
        </p></td>
        <td width="21%"><p>
-        <input type="text" name="txt_paternoCI4-P" id="txt_paternoCI4-P" onkeypress='return validar_texto(event)' tabindex="79"/>
+        <input type="text" value="<?php echo $filas[36]["ap_paterno"]?>" name="txt_paternoCI4-P" id="txt_paternoCI4-P" onkeypress='return validar_texto(event)' tabindex="79"/>
        </p>
        <p>
-       <input type="text" name="txt_paternoCI4-S" id="txt_paternoCI4-S" onkeypress='return validar_texto(event)' tabindex="82"/>
+       <input type="text" value="<?php echo $filas[37]["ap_paterno"]?>" name="txt_paternoCI4-S" id="txt_paternoCI4-S" onkeypress='return validar_texto(event)' tabindex="82"/>
         </p></td>
       <td width="24%"><p>
-        <input type="text" name="txt_maternoCI4-P" id="txt_maternoCI4-P" onkeypress='return validar_texto(event)' tabindex="80"/>
+        <input type="text" value="<?php echo $filas[36]["ap_materno"]?>" name="txt_maternoCI4-P" id="txt_maternoCI4-P" onkeypress='return validar_texto(event)' tabindex="80"/>
         </p>
         <p>
-        <input type="text" name="txt_maternoCI4-S" id="txt_maternoCI4-S" onkeypress='return validar_texto(event)' tabindex="83"/>
+        <input type="text" value="<?php echo $filas[37]["ap_materno"]?>" name="txt_maternoCI4-S" id="txt_maternoCI4-S" onkeypress='return validar_texto(event)' tabindex="83"/>
         </p></td>
       <td width="11%"><input type="checkbox" name="ck_CI4-P" value="P" checked="checked" disabled="disabled"/>
         P <br />

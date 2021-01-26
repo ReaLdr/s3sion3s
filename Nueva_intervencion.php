@@ -275,7 +275,7 @@ if(isset($_POST['submit'])){
 		if (sqlsrv_query($conn,$sql_update)== true){
 
 					echo'<SCRIPT LANGUAGE="javascript">';
-					echo'alert("La Intervención se guardó exitosamente")';
+					echo'alert("La Intervención se guardó Exitosamente")';
 					echo'</SCRIPT>';
 					echo'<SCRIPT LANGUAGE="javascript">';
 					echo'history.go(-2)

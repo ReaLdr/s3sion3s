@@ -556,8 +556,8 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 		echo "<td>".utf8_decode($array)."</td>";
 		echo "<td>".utf8_decode($cargo)."</td>";
 		echo "<td>".utf8_decode($intervenciones_consulta1_row['punto'])."</td>";
-		echo "<td>".utf8_decode($intervenciones_consulta1_row['intervencion'])."</td>";
-		echo "<td>".utf8_decode($intervenciones_consulta1_row['replica'])."</td>";
+		echo "<td>".$intervenciones_consulta1_row['intervencion']."</td>";
+		echo "<td>".$intervenciones_consulta1_row['replica']."</td>";
 		echo "</tr>";
 		}// cierro el primer while intervenciones
 	}

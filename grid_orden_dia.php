@@ -9,13 +9,13 @@ $grup=$_SESSION['grupo'];
 $id_distrito=$_SESSION['id_distrito'];
 
 
-$nosesion=$_REQUEST['nosesion'];
-$id_sesion=$_REQUEST['id_sesion'];
-$tipo_sesion=$_REQUEST['tipo_sesion'];
+$nosesion=$_GET['nosesion'];
+$id_sesion=$_GET['id_sesion'];
+$tipo_sesion=$_GET['tipo_sesion'];
 
 //echo "es el tipo".$tipo_sesion;
 
-//include 'arreglos.php';
+include 'arreglos.php';
 }
 else
 {
@@ -135,31 +135,33 @@ font - family: Arial, Helvetica, sans-serif;
 <?php
 
 include ("config_open_db.php");
+$desc_sesion = $_GET['desc_sesion'];
 //////para traer los puntos y crearlos para ese distrito
-$sql_opciones="select punto,CAST(desc_punto as CHAR(2084)) as desc_punto,obligatorios,para_votar from sisesecd_ordendia where estatus=1 and id_sesion in (select id_sesion from sisesecd_sesiones where id_distrito=40 and nosesion=".$_REQUEST['nosesion']." and tipo_sesion=".$_REQUEST['tipo_sesion'].")";
-//echo $sql_opciones;
+$sql_opciones="select punto,CAST(desc_punto as CHAR(2084)) as desc_punto,obligatorios,para_votar from sisesecd_ordendia where estatus=1 and id_sesion in (select id_sesion from sisesecd_sesiones where id_distrito=40 and nosesion=".$_REQUEST['nosesion']." and tipo_sesion=".$_REQUEST['tipo_sesion']." AND desc_sesion = $desc_sesion)";
+//echo "sql_opciones: " . $sql_opciones."<br>";
 $r_opcion=sqlsrv_query($conn,$sql_opciones);
 
 
  $id_sesion=$_GET['id_sesion'];
  $sql_validar="select count(*) as cuantos from sisesecd_ordendia where id_sesion=$id_sesion and estatus=1";
- //echo  $sql_validar;
+// echo  $sql_validar;
  $r_validar=sqlsrv_query($conn,$sql_validar);
  $d_validar=sqlsrv_fetch_array($r_validar);
- $cuantos=$d_validar[cuantos];
+ $cuantos=$d_validar['cuantos'];
 
 	//echo "cuantos registros de puntos tengo".$cuantos;
 
 ////para insertar los puntos
 //$idsesion=$_GET['idsesion'];
 $indice=0;
-if($cuantos==0){
+if($cuantos<=0){
 
 
 	while($datos=sqlsrv_fetch_array($r_opcion)){
 
 	$sql_insert="INSERT INTO sisesecd_ordendia(id_sesion, punto, desc_punto,obligatorios,para_votar,estatus,estatus_noaplica) VALUES ($id_sesion, '$datos[punto]', '$datos[desc_punto]',$datos[obligatorios],$datos[para_votar],1,1);";
 	sqlsrv_query($conn,$sql_insert);
+	//echo $sql_insert."<br>";
 	$indice++;
 
 	}
@@ -187,13 +189,13 @@ $sql_valid="select obligatorios,para_votar from sisesecd_ordendia where estatus=
 $r_valid=sqlsrv_query($conn,$sql_valid);
  $dat=sqlsrv_fetch_array($r_valid);
 
- $obligatorios=$dat[obligatorios];
- $avotar=$dat[para_votar];
+ $obligatorios=$dat['obligatorios'];
+ $avotar=$dat['para_votar'];
  // echo'<td>'.$i.'</td>';
 //  echo'<td>'.$datos[idsesion].'</td>';
-  echo'<td>'.$row[punto].'.-</td>';
-  $punto=$row[punto];
-  $srt=$row[desc_punto];
+  echo'<td>'.$row['punto'].'.-</td>';
+  $punto=$row['punto'];
+  $srt=$row['desc_punto'];
   eval("\$srt = \"$srt\";");
   echo'<td>'.utf8_encode($srt).'</td>';
 
@@ -201,7 +203,7 @@ $r_valid=sqlsrv_query($conn,$sql_valid);
  // echo"<a href='actualizar2.php?idsesion=".$row['idsesion']."&idorden=".$row['idorden']."'><img src='images/sesion_edit.png' title='Editar' alt='Editar' border='0' /></a></span></td>";
 
 
-	$noaplica = $row[estatus_noaplica];
+	$noaplica = $row['estatus_noaplica'];
 
  // echo "no aplica valor <br>:". $noaplica;
 

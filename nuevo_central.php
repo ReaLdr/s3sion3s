@@ -1,4 +1,4 @@
-<?php 
+<?php
 //include 'arreglos.php';
 session_start();
 error_reporting(E_ERROR | E_PARSE);
@@ -12,7 +12,7 @@ $id_distrito=$_SESSION['id_distrito'];
 }
 else
 {
-	echo' 	alert("Debe iniciar una sesion")';	
+	echo' 	alert("Debe iniciar una sesion")';
 	echo'	<SCRIPT LANGUAGE="javascript">';
 	echo'	location.href = "index.php";';
 	echo'	</SCRIPT>';
@@ -47,48 +47,48 @@ else
       .derecha{float:right;}
       .tableCenter{text-align: center;}
       </style>
-	
-	
+
+
 <script type="text/javascript" src="epoch_classes.js"></script>
 <script type="text/javascript">
 
-	var dp_cal1,dp_cal2;  
-	    
+	var dp_cal1,dp_cal2;
+
 window.onload = function ()
 {
 	dp_cal1  = new Epoch('epoch_popup','popup',document.getElementById('fechainicioprog'));
 
-	
+
 };
 </script>
 <script>
 function validacion(frmClienteNuevo) {
-	
-	
-	
+
+
+
  	if(frmClienteNuevo.tiposesion.value=="")
-    {    
-        alert('Debe seleccionar un tipo de sesion.')   
-        return false   
-    	} 
+    {
+        alert('Debe seleccionar un tipo de sesion.')
+        return false
+    	}
 	if(frmClienteNuevo.descsesion.value=="")
-    {    
-        alert('No ha seleccionado consecutivo de tipo de sesion.')   
-        return false   
-    	} 
+    {
+        alert('No ha seleccionado consecutivo de tipo de sesion.')
+        return false
+    	}
 	if(frmClienteNuevo.horainicioprog.value=="")
-    {    
-        alert('Debe seleccionar una hora de inicio es obligatorio.')   
-        return false   
-    	} 
+    {
+        alert('Debe seleccionar una hora de inicio es obligatorio.')
+        return false
+    	}
 	if(frmClienteNuevo.fechainicioprog.value=="")
-    {    
-        alert('Debe seleccionar una fecha de inicio es obligatorio.')   
-        return false   
+    {
+        alert('Debe seleccionar una fecha de inicio es obligatorio.')
+        return false
     	}
 	}
-	
-	
+
+
 </script>
 
 </head>
@@ -116,13 +116,13 @@ function validacion(frmClienteNuevo) {
             <div id="layoutSidenav_content">
             <main>
                     <div class="container-fluid">
-						
+
                     <h1 class="mt-4"><img src="images/logo-header.png"></h1>
 
 <div align="center">
 <?php
 require('functions.php');
-	
+
 if(isset($_POST['submit'])){
 
 	$id_distrito=$_SESSION[id_distrito];
@@ -134,32 +134,32 @@ if(isset($_POST['submit'])){
 	$fechainicioprog = htmlspecialchars(trim($_POST['fechainicioprog']));
 	$horainicioprog = htmlspecialchars(trim($_POST['horainicioprog']));
 	$domicilio = $_POST['domicilio'];
-	
+
 	$distritos_sesion = json_encode($_POST['checkbox_distrito']);
   //echo $distritos_sesion;
   //array_push($distritos_sesion);
   $corchetes = ['[', ']', '"'];
   $replace = ['', '', ''];
-	
+
   $replace_array = str_replace($corchetes, $replace, $distritos_sesion);
   //echo $replace_array;
   //echo json_encode($_POST);
   //exit;
 
-	
+
 	include 'config_open_db.php';
 
 
 
-$sql1="SELECT count(*)as cuantos FROM sisesecd_sesiones WHERE estatus=1 and nosesion=".$nosesion." and tipo_sesion=".$tiposesion." and desc_sesion=".$descsesion." ;";  
+$sql1="SELECT count(*)as cuantos FROM sisesecd_sesiones WHERE estatus=1 and nosesion=".$nosesion." and tipo_sesion=".$tiposesion." and desc_sesion=".$descsesion." ;";
 
-	
+
 
 		$consult = sqlsrv_query($conn, $sql1);
 		$cl = sqlsrv_fetch_array($consult);
 		$cuantos=$cl[cuantos];
 		//echo $sql1;
-		
+
 
 if($nosesion==0 ){
 		echo'	<SCRIPT LANGUAGE="javascript">';
@@ -168,11 +168,11 @@ if($nosesion==0 ){
 		echo'<SCRIPT LANGUAGE="javascript">';
 		echo'	location.href = "./nuevo_central.php";';
 		echo'	</SCRIPT>';
-	
+
 	}
 	else{
-		
-		
+
+
 		if($cuantos>0){
 		//echo "estoy en el if";
 		echo'	<SCRIPT LANGUAGE="javascript">';
@@ -181,13 +181,13 @@ if($nosesion==0 ){
 		echo'<SCRIPT LANGUAGE="javascript">';
 		echo'	location.href = "./grid_sesiones_central.php";';
 		echo'	</SCRIPT>';
-	
+
 			}
 			else{
 
 			//echo "estoy en el else";
 		 /*
-	
+
   if(is_array($distritos_sesion)){
     echo "<pre>";
     var_dump($distritos_sesion);
@@ -197,17 +197,17 @@ exit;*/
 $sql_nuevo="INSERT INTO sisesecd_sesiones(id_distrito, nosesion,desc_sesion, tipo_sesion, fecha_inicio_prog, hora_inicio_prog,estatus,distritos_sesiones) values (".$id_distrito.",".$nosesion.",".$descsesion.", ".$tiposesion.",'".$fechainicioprog."','".$horainicioprog."',1, '$replace_array');";
 
 
-	
+
 				//echo $sql_nuevo;
         //exit;
-			
+
 $sql_nuevo=(string)$sql_nuevo;
 
-$sql_nuevo=str_replace("\n","",$sql_nuevo);	
+$sql_nuevo=str_replace("\n","",$sql_nuevo);
 $sql_nuevo=str_replace("\r","",$sql_nuevo);
 
 //echo $sql_nuevo;
-					
+
 if(sqlsrv_query($conn,$sql_nuevo)){
 
 
@@ -238,10 +238,10 @@ echo 'Se produjo un error. Intente nuevamente ';
 ifx_errormsg();
 			}
 		}
-		
+
 	}
-	
-}	
+
+}
 else{
 ?>
 
@@ -250,7 +250,7 @@ else{
 <script>
 $("#retrieved-data2").html="";
 $("#retrieved-data2").hide();
-	
+
 </script>
 <style>
 	.tcAlert { color: orange; }
@@ -268,14 +268,14 @@ textarea{
 	<div class="card-header">
      <b>Nueva sesi&oacute;n de Consejo Distrital</b>
     </div>
-	
-	
+
+
 <br><br>
 <form id="frmClienteNuevo" name="frmClienteNuevo" method="post" action="nuevo_central.php" onsubmit="return validacion(this)" >
 
- 
+
 	 <div class="form-group row">
-   
+
  <label class="col-sm-3 control-label"> N&uacute;mero de Sesi&oacute;n:</label>
 
 <div class="col-sm-4" >
@@ -316,27 +316,27 @@ textarea{
 	 <option value=33>Trigesimo Tercero</option>
 	 <option value=34>Trigesimo Cuarta</option>
 	 <option value=35>Trigesimo Quinta</option>
-	 
+
     </select>
 	</div>
  </div>
-   
+
  <div class="form-group row">
  <label class="col-sm-3 control-label"> Consecutivo de Tipo de Sesión:</label>
  	<div class="col-sm-4">
-    <?php 
+    <?php
 	echo'<select class="form-control" name="descsesion" id="descsesion">';
-	
+
 		for($i=1;$i<=50;$i++)
 		{
-		echo '<option value='.$i.'>'.$i.' </option>'; 
+		echo '<option value='.$i.'>'.$i.' </option>';
 		}
 	echo '</select>';
-	
+
      ?>
 	 </div>
 	</div>
-	
+
      <div class="form-group row">
  <label class="col-sm-3 control-label"> Tipo de Sesión:</label>
  	<div class="col-sm-4">
@@ -353,19 +353,19 @@ textarea{
      <div class="form-group row">
  <label class="col-sm-3 control-label"> Fecha de Inicio:</label>
 <div class="col-sm-4">
- <input class="form-control input-small" name="fechainicioprog" type="date" id="fechainicioprog"  value="<?php echo date("Y-m-j"); ?>"  />  
+ <input class="form-control input-small" name="fechainicioprog" type="date" id="fechainicioprog"  value="<?php echo date("Y-m-j"); ?>"  />
 	<input type="hidden">
 </div>
 </div>
-	
-	
+
+
  <div class="form-group row">
 
  <label class="col-sm-3 control-label"> Hora de inicio:</label>
 <div class="col-sm-4">
 <input class="form-control input-small" type="text" id="horainicioprog" name="horainicioprog" value="<?php echo date("H:i");?>" />
 
-	
+
 <input type="hidden" value="<?php  echo $_REQUEST["page"] ?>" id="page" name="page" />
 </div>
 </div>
@@ -408,7 +408,7 @@ textarea{
             <label><input type="checkbox" class="CheckedAK" name="checkbox_distrito[]" id="10" value="10"> Dto 10</label>
          </div>
 		</div>
-	
+
 		 <div class="form-group row">
        <div class="checkbox col-sm-4">
           <label><input type="checkbox" class="CheckedAK" name="checkbox_distrito[]" id="11" value="11"> Dto 11</label>
@@ -441,7 +441,7 @@ textarea{
             <label><input type="checkbox" class="CheckedAK" name="checkbox_distrito[]" id="20" value="20"> Dto 20</label>
          </div>
 		</div>
-	
+
 	<div class="form-group row">
        <div class="checkbox col-sm-4">
           <label><input type="checkbox" class="CheckedAK" name="checkbox_distrito[]" id="21" value="21"> Dto 21</label>
@@ -483,10 +483,10 @@ textarea{
             <label><input type="checkbox" class="CheckedAK" name="checkbox_distrito[]" id="33" value="33"> Dto 33</label>
          </div>
 		</div>
-	
+
 <div align="center">
  <div class="form-group row">
- <div class="checkbox col-sm-4">	 
+ <div class="checkbox col-sm-4">
 <input class="btn btn-info btn-block" type="submit" name="submit" id="button" value="Enviar" />
 	 </div>
  	<div class="checkbox col-sm-4">
@@ -496,7 +496,7 @@ textarea{
 </div>
 
 	</div >	
-	
+
 </form>
  </table>
 	   </div>
@@ -533,7 +533,7 @@ textarea{
             }, 400);
       });
      </script>
-		
+
 <?php
 }
 ?>
@@ -542,7 +542,7 @@ textarea{
                     </div>
                     </div>
             </main>
-				
+
 <footer class="py-4 bg-light mt-auto">
                     <?php include('footer.php'); ?>
                 </footer>

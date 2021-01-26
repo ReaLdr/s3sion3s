@@ -37,14 +37,14 @@ $mes=$fecha_partida[1];
 $dia=$fecha_partida[2];
 
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
-echo"<th colspan=7>";
+echo"<th colspan=10>";
 echo "<img src='https://aplicaciones.iecm.mx/sesiones2020/images/logo-header.png' style='vertical-align:middle;' alt='IECM'>";
 echo "</th>";
 echo "<tr>";
 echo "<th colspan=7 padding: 16px; >SECRETARIA EJECUTIVA</th>";
 echo "</tr> ";
 echo "<tr> ";
-echo "<th colspan=7>";
+echo "<th colspan=9>";
 echo "<font style='font-size:16px;font-weight:bold;'>DIRECCI&Oacute;N EJECUTIVA DE ORGANIZACI&Oacute;N ELECTORAL Y GEOESTAD&Iacute;STICA.<br>";
 echo "</th>";
 echo "</tr> ";
@@ -82,8 +82,8 @@ echo "<th class='borde_tabla'>Nombre </th>";
 echo "<th class='borde_tabla'>Apellido Paterno</th>";
 echo "<th class='borde_tabla'>Apellido Materno </th>";
 echo "<th class='borde_tabla'>Tipo de Acreditacion</th>";
-//echo "<th class='borde_tabla'>Nombre del Representante</th>";
-//echo "<th class='borde_tabla'>Puesto de Representante</th>";
+echo "<th class='borde_tabla'>Nombre del Representante</th>";
+echo "<th class='borde_tabla'>Puesto de Representante</th>";
 
 
 echo "</tr>";
@@ -107,12 +107,12 @@ $i=0;
 		echo "<td>"	.$i."</td>";
 		echo "<td>"	.$rowsesion['id_distrito']."</td>";
 		echo "<td>"	.$tipo_cand[$rowsesion['id_integrante']]."</td>";
-	    echo "<td>".utf8_decode($rowsesion['nombre'])."</td>";
-		echo "<td>".utf8_decode($rowsesion['ap_paterno'])."</td>";
-		echo "<td>".utf8_decode($rowsesion['ap_materno'])."</td>";
+	    echo "<td>".$rowsesion['nombre']."</td>";
+		echo "<td>".$rowsesion['ap_paterno']."</td>";
+		echo "<td>".$rowsesion['ap_materno']."</td>";
 		echo "<td>".$rowsesion['tipo_acredor']."</td>";
-		//echo "<td>".$rowsesion['candidato']."</td>";
-		//echo "<td>".$rowsesion['puesto']."</td>";
+		echo "<td>".$rowsesion['candidato']."</td>";
+		echo "<td>".$rowsesion['puesto']."</td>";
 		echo "</tr>";
 
 		}// cierro el primer while

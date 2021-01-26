@@ -79,7 +79,8 @@ if ($_POST["action"] == "upload")
 	//echo "entroooo";
 	// obtenemos los datos del archivo
 	$tamano = $_FILES["archivo"]['size'];
-	$upload_max=4000000;
+	$upload_max=50000000;
+	//$upload_max=4000000;
 	//echo $tamano;
 	$tipo = $_FILES["archivo"]['type'];
 	//echo 	$tipo;
@@ -207,7 +208,7 @@ if ($_POST["action"] == "upload")
     <td width="413" height="40" class="titulo">&nbsp;</td>
   </tr>
   <tr>
-    <td class="text">Por favor seleccione el archivo a subir, NO mas de 4 MB:</td>
+    <td class="text">Por favor seleccione el archivo a subir, NO mayores a 50 MB:</td>
   </tr>
   <tr>
   	<?php

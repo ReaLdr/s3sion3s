@@ -176,7 +176,7 @@ echo'<table width="166" border="0" cellpadding="0" cellspacing="0">
 </table>';
 			echo'	<SCRIPT LANGUAGE="javascript">';
 
-					echo' 	alert("La sesión se actualizó exitosamente")';
+					echo' 	alert("La Sesion se actualizo Exitosamente")';
 
 					echo'	</SCRIPT>';
 					echo'<SCRIPT LANGUAGE="javascript">';
@@ -294,6 +294,11 @@ echo'<table width="166" border="0" cellpadding="0" cellspacing="0">
 }
 	$(function() {
             $('#hora_fin').timepicker({
+                'timeFormat': 'HH:mm'
+            });
+        });
+	$(function() {
+            $('#hora_inicio').timepicker({
                 'timeFormat': 'HH:mm'
             });
         });

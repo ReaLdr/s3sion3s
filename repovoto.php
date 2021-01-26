@@ -1,8 +1,8 @@
 <?php
-// header("Content-type: application/vnd.ms-excel");
-// header("Content-Disposition: attachment; filename=Reporte_de_Sentido_del_voto_de_las_sesiones_de_consejos_distritales.xls");
-// header("Pragma: no-cache");
-// header("Expires: 0");
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=Reporte_de_Sentido_del_voto_de_las_sesiones_de_consejos_distritales.xls");
+header("Pragma: no-cache");
+header("Expires: 0");
 //header("Content-Type: text/html;charset=utf-8");
 session_start();
 error_reporting(E_ERROR | E_PARSE);
@@ -82,7 +82,7 @@ and o.punto='$punto'
 and o.estatus=1
 and s.id_sesion in(
 select id_sesion from sisesecd_sesiones where nosesion=$nosesion and estatus=1 and con_votos=1 and tipo_sesion=$typesess and desc_sesion=$desc)order by s.id_distrito asc";
-echo $sql;
+//echo $sql;
 
 $sql_cuantos="SELECT count(*)as cuantos FROM sisesecd_ordendia as o, sisesecd_sesiones as s, sisesecd_inicio as i
 WHERE s.id_sesion=o.id_sesion
@@ -120,7 +120,7 @@ $totalcon=0;
 eval("\$descripcion = \"$descripcion\";");
 
 include ("funciones.php");
-//include ("arreglos.php");
+include ("arreglos.php");
 echo '<div id="contenedor">';
 
 echo "<table border=0 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";

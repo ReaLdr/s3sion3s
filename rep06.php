@@ -149,7 +149,7 @@ echo "</table>";
 
 echo "<table border=1 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 
-$sql_consulta = "SELECT * FROM sisesecd_sesiones WHERE nosesion=$nosesion AND tipo_sesion=$typesess and desc_sesion=$desc and id_distrito!=41 AND estatus=1 ORDER BY sisesecd_sesiones.id_distrito ASC";
+$sql_consulta = "SELECT * FROM sisesecd_sesiones WHERE nosesion=$nosesion AND tipo_sesion=$typesess and desc_sesion=$desc and id_distrito!=40 AND estatus=1 ORDER BY sisesecd_sesiones.id_distrito ASC";
 $consulta_sesiones = sqlsrv_query($conn, $sql_consulta);
 //echo $sql_consulta;
 

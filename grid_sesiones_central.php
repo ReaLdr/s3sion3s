@@ -19,7 +19,7 @@ echo' 	alert("Debe iniciar una sesion")';
 	echo'	</SCRIPT>';
 }
 
-//include 'arreglos.php';
+include 'arreglos.php';
 ?>
 
 
