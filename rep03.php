@@ -458,7 +458,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_pfsmp']==1)
 					{
-						 $cargo.="PFSM-P. <br>";
+						 $cargo.="FSM-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -467,7 +467,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_pfsms']==1)
 					{
-						 $cargo.="PFSM-S. <br>";
+						 $cargo.="FSM-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -552,8 +552,8 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 
 		echo "<tr>" ;
 		echo "<td>"	.$rowsesion['id_distrito']."</td>";
-	    echo "<td>"	.$orden_row['desc_punto']."</td>";
-		echo "<td>".utf8_decode($array)."</td>";
+	    echo "<td>"	.utf8_encode($orden_row['desc_punto'])."</td>";
+		echo "<td>".$array."</td>";
 		echo "<td>".utf8_decode($cargo)."</td>";
 		echo "<td>".utf8_decode($intervenciones_consulta1_row['punto'])."</td>";
 		echo "<td>".$intervenciones_consulta1_row['intervencion']."</td>";

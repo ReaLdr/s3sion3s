@@ -1,6 +1,7 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
 error_reporting(E_ERROR | E_PARSE);
+set_time_limit(0);
 session_start();
 //echo 'Bienvenido,';
 
@@ -201,45 +202,46 @@ if ($_POST["action"] == "upload")
 ?>
 
 <body>
+	<script type="text/javascript">
+		function escondeActualiza(){
+			document.getElementById('enviar').disabled = true;
+			document.getElementById('loading').style.display= 'block';
+		}
+	</script>
 <div align="center">
-<strong>SELECCIONE EL ARCHIVO EN PDF QUE DESEA INCLUIR</strong>
-<table width="413" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="413" height="40" class="titulo">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="text">Por favor seleccione el archivo a subir, NO mayores a 50 MB:</td>
-  </tr>
+
   <tr>
   	<?php
     $id_sesion=$_GET[id_sesion];
 	?>
 
-  <form action="subir_acta.php" method="post" enctype="multipart/form-data">
-    <td class="text">
-      <input name="archivo" type="file" class="casilla" id="archivo" size="35" accept=".pdf, .rar, .zip" /></td>
+  <form action="subir_acta.php" method="post" enctype="multipart/form-data" onSubmit="return escondeActualiza();">
 
-      <td class="text">
-		  <input name="enviar" type="submit" class="boton" id="enviar" value="Subir Acta" /></td>
+	  <div class="card" style="font-size: 14px;">
+		  <div class="card-header">
+		    SELECCIONE EL ARCHIVO EN PDF o ZIP  QUE DESEA INCLUIR
+		  </div>
+		  <div class="card-body">
 
-       <input name="id_sesion" id="id_sesion" type="hidden" value="<?php echo "$id_sesion"; ?>">
-	  <input name="action" type="hidden" value="upload" />
+		  	<div class="mb-3">
+		  		<label for="formFile" class="form-label">Por favor seleccione el archivo a subir, NO mayores a 50 MB:</label>
+		  		<input class="form-control" name="archivo" type="file" class="casilla" id="archivo" size="35" accept=".pdf, .rar, .zip" id="formFile">
+		  		<input name="id_sesion" id="id_sesion" type="hidden" value="<?php echo "$id_sesion"; ?>">
+		  		<input name="action" type="hidden" value="upload" />
+		  		<div id="loading" style="display: none; background-color: #f8d7da;">
+		  		  Favor de esperar un momento...
+		  		</div>
+		  		<input name="enviar" class="btn btn-primary btn-sm" type="submit" class="boton" id="enviar" value="Subir Acta" />
+		  	</div>
+		  </div>
+	  </div>
+
+
 	</form>
-  </tr>
-  <tr>
-    <td class="text" style="color:#F00"><?php echo $status; ?>
 	<br>
-      <p><strong>Recuerde que las actas que ingrese al sistema deberan estar escaneadas en blanco y negro <br> Puede ingresar un archivo  en formato PDF o ZIP</strong></p></td>
-  </tr>
-  <tr>
-    <td height="30" class="subtitulo">
-	</td>
-  </tr>
-  <tr>
-
-  </tr>
-</table>
-
+	<div class=" mb-3alert alert-danger" role="alert" style="max-width: 50%; text-align: justify;">
+	  <p><strong>&bull;Recuerde que los documentos que ingrese al sistema deberan estar escaneadas en blanco y negro <br>&bull;Puede ingresar un archivo en formato PDF o varios en un ZIP</strong></p>
+	</div>
 <p>&nbsp;</p>
  <p>&nbsp;</p>
  <p>&nbsp;</p>

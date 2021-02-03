@@ -1,6 +1,7 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
 error_reporting(E_ERROR | E_PARSE);
+set_time_limit(0);
 session_start();
 //echo 'Bienvenido,';
 
@@ -46,6 +47,12 @@ echo' 	alert("Debe iniciar una sesion")';
 </head>
 
 <body>
+	<script type="text/javascript">
+		function escondeActualiza(){
+			document.getElementById('enviar').disabled = true;
+			document.getElementById('loading').style.display= 'block';
+		}
+	</script>
 <div id="container_blanco">
 
   <?php include('header.php');?>
@@ -77,6 +84,7 @@ if ($_POST["action"] == "upload")
 {
 
 	//echo "entroooo";
+	//exit;
 	// obtenemos los datos del archivo
 	$tamano = $_FILES["archivo"]['size'];
 	$upload_max=50000000;
@@ -202,44 +210,46 @@ if ($_POST["action"] == "upload")
 
 <body>
 <div align="center">
-<strong>SELECCIONE EL ARCHIVO EN PDF o ZIP  QUE DESEA INCLUIR</strong>
-<table width="413" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="413" height="40" class="titulo">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="text">Por favor seleccione el archivo a subir, NO mayores a 50 MB:</td>
-  </tr>
-  <tr>
+<!-- <strong>SELECCIONE EL ARCHIVO EN PDF o ZIP  QUE DESEA INCLUIR</strong> -->
+<!-- <p>Por favor seleccione el archivo a subir, NO mayores a 50 MB:</p> -->
   	<?php
     $id_sesion=$_GET[id_sesion];
 	?>
 
-  <form action="subir_docto.php" method="post" enctype="multipart/form-data">
-    <td class="text">
-      <input name="archivo" type="file" class="casilla" id="archivo" size="35" accept=".pdf, .rar, .zip" /></td>
+  <form action="subir_docto.php" class="form" method="post" enctype="multipart/form-data" onSubmit="return escondeActualiza();">
 
-      <td class="text">
-		  <input name="enviar" type="submit" class="boton" id="enviar" value="Subir Documento" /></td>
+      <!-- <input name="archivo" type="file" class="casilla" id="archivo" size="35" accept=".pdf, .rar, .zip" /> -->
 
-       <input name="id_sesion" id="id_sesion" type="hidden" value="<?php echo "$id_sesion"; ?>">
 
-	  <input name="action" type="hidden" value="upload" />
+		<!-- <div class="mb-3 alert alert-warning" role="alert" id="loading">
+			    Cargando
+			  </div> -->
+			  <div class="card" style="font-size: 14px;">
+		  	  <div class="card-header">
+		  	    SELECCIONE EL ARCHIVO EN PDF o ZIP  QUE DESEA INCLUIR
+		  	  </div>
+		  	  <div class="card-body">
+
+				  <div class="mb-3">
+					  <label for="formFile" class="form-label">Por favor seleccione el archivo a subir, NO mayores a 50 MB:</label>
+					  <input class="form-control" name="archivo" type="file" class="casilla" id="archivo" size="35" accept=".pdf, .rar, .zip" id="formFile">
+					  <input name="id_sesion" id="id_sesion" type="hidden" value="<?php echo "$id_sesion"; ?>">
+					  <input name="action" type="hidden" value="upload" />
+					  <div id="loading" style="display: none; background-color: #f8d7da;">
+					  	Favor de esperar un momento...
+					  </div>
+					  <input name="enviar" class="btn btn-primary btn-sm" type="submit" class="boton" id="enviar" value="Subir Documento" />
+				  </div>
+		  	  </div>
+		  	</div>
 	</form>
-  </tr>
-  <tr>
-    <td class="text" style="color:#F00"><?php echo $status; ?>
-	<br>
-      <p><strong>Recuerde que los Documentos que ingrese al sistema deberan estar escaneadas en blanco y negro <br> Puede ingresar un archivo en formato PDF o varios en un ZIP</strong></p></td>
-  </tr>
-  <tr>
-    <td height="30" class="subtitulo">
-	</td>
-  </tr>
-  <tr>
 
-  </tr>
-</table>
+	<br>
+	<div class=" mb-3alert alert-danger" role="alert" style="max-width: 50%; text-align: justify;">
+	  <p><strong>&bull;Recuerde que los documentos que ingrese al sistema deberan estar escaneadas en blanco y negro <br>&bull;Puede ingresar un archivo en formato PDF o varios en un ZIP</strong></p>
+	</div>
+
+
 
 <p>&nbsp;</p>
  <p>&nbsp;</p>

@@ -135,6 +135,7 @@ font - family: Arial, Helvetica, sans-serif;
 <?php
 
 include ("config_open_db.php");
+	
 $desc_sesion = $_GET['desc_sesion'];
 //////para traer los puntos y crearlos para ese distrito
 $sql_opciones="select punto,CAST(desc_punto as CHAR(2084)) as desc_punto,obligatorios,para_votar from sisesecd_ordendia where estatus=1 and id_sesion in (select id_sesion from sisesecd_sesiones where id_distrito=40 and nosesion=".$_REQUEST['nosesion']." and tipo_sesion=".$_REQUEST['tipo_sesion']." AND desc_sesion = $desc_sesion)";
@@ -170,8 +171,14 @@ if($cuantos<=0){
 
 
 /////para traerlos ya con el distrito y pintarlos
-$sql = "select id_orden,id_sesion, punto, CAST(desc_punto as CHAR(2084)) as desc_punto, estatus_noaplica from sisesecd_ordendia where id_sesion=$id_sesion and estatus=1";
+//$sql = "select id_orden,id_sesion, punto, CAST(desc_punto as CHAR(2084)) as desc_punto, estatus_noaplica from sisesecd_ordendia where id_sesion=$id_sesion and estatus=1 order by id_orden";
 
+	
+	$sql= "SELECT ROW_NUMBER() OVER(
+       ORDER BY punto) AS RowNum, * from sisesecd_ordendia A where id_sesion=$id_sesion and punto like 'PP%'
+UNION ALL
+SELECT ROW_NUMBER() OVER(
+       ORDER BY punto) AS RowNum,* from sisesecd_ordendia where id_sesion=$id_sesion and punto not like 'PP%'";
 	//echo $sql;
 
 $result=sqlsrv_query($conn,$sql);
