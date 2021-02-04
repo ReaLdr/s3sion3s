@@ -134,10 +134,10 @@ echo "</table>";
 echo "<table border=1 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 
 
-		$array_estado[1]='Incio de la sesion';
+		$array_estado[1]=utf8_decode('Incio de la sesión');
 		$array_estado[2]='Sin Quorum';
         $array_estado[3]='Segunda Convocatoria';
-		$array_estado[4]='Fin de la sesion';
+		$array_estado[4]=utf8_decode('Fin de la sesión');
         $array_estado[5]='En receso';
         $array_estado[6]='Concluyo receso';
         $array_estado[7]='Suspendida';

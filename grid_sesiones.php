@@ -14,8 +14,10 @@ $id_distrito=$_SESSION['id_distrito'];
 }
 else
 {
-	header('Location: index.php');
-	exit;
+	echo'<SCRIPT LANGUAGE="javascript">';
+	echo' 	alert("Debe iniciar una sesion")';
+	echo'	location.href = "index.php";';
+	echo'	</SCRIPT>';
 }
 
 
@@ -102,27 +104,18 @@ if($cuantos <= 0){
 	$rows = sqlsrv_fetch_array($result);
 	//$idsesion= $rows['idsesion'];
 	//echo $id_sesion;
-	if($rows){
+	$nosesion= $rows['nosesion'];
+	$desc_sesion= $rows['desc_sesion'];
+	$tipo_sesion= $rows['tipo_sesion'];
+	$fecha_inicio_prog= $rows['fecha_inicio_prog'];
+	$hora_inicio_prog = $rows['hora_inicio_prog'];
 
-		$nosesion= $rows['nosesion'];
-		$desc_sesion= $rows['desc_sesion'];
-		$tipo_sesion= $rows['tipo_sesion'];
-		$fecha_inicio_prog= $rows['fecha_inicio_prog'];
-		$hora_inicio_prog = $rows['hora_inicio_prog'];
+	$sql_nuevo="INSERT INTO sisesecd_sesiones(id_distrito, nosesion,desc_sesion, tipo_sesion, fecha_inicio_prog, hora_inicio_prog,estatus) values (".$id_distrito.",".$nosesion.",".$desc_sesion.", ".$tipo_sesion.",'".$fecha_inicio_prog."','".$hora_inicio_prog."',1);";
+	//echo $sql_nuevo;
 
-		$sql_nuevo="INSERT INTO sisesecd_sesiones(id_distrito, nosesion,desc_sesion, tipo_sesion, fecha_inicio_prog, hora_inicio_prog,estatus) values (".$id_distrito.",".$nosesion.",".$desc_sesion.", ".$tipo_sesion.",'".$fecha_inicio_prog."','".$hora_inicio_prog."',1);";
-		//echo $sql_nuevo;
-
-		$res1=sqlsrv_query($conn,$sql_nuevo);
-		if(!$res1){
-			echo "<script>alert('Ocurrió un error al iniciar el proceso (INS)');</script>";
-		}
-	} else{
-		echo "No se encontró información, favor de cerrar sesión y esperar instrucciones (SEL to INS)";
-		session_destroy();
-		echo'<SCRIPT LANGUAGE="javascript">';
-		echo'	location.href = "index.php";';
-		echo'	</SCRIPT>';
+	$res1=sqlsrv_query($conn,$sql_nuevo);
+	if(!$res1){
+		echo "<script>alert('Ocurrió un error al iniciar el proceso (INS)');</script>";
 	}
 
 }

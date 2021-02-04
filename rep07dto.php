@@ -129,7 +129,7 @@ $i=0;
 	    echo "<td>".utf8_decode($rowsesion['nombre'])."</td>";
 		echo "<td>".utf8_decode($rowsesion['ap_paterno'])."</td>";
 		echo "<td>".utf8_decode($rowsesion['ap_materno'])."</td>";
-		echo "<td>".utf8_decode($rowsesion['tipo_acredor'])."</td>";
+		echo "<td>".$rowsesion['tipo_acredor']."</td>";
 		echo "<td>".utf8_decode($rowsesion['candidato'])."</td>";
 		echo "<td>".utf8_decode($rowsesion['puesto'])."</td>";
 		echo "</tr>";

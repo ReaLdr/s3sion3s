@@ -306,7 +306,7 @@ $('#pretty').tooltip({
 						
 		require("config_open_db.php");
 		include ("funciones.php");
-		include ("arreglos.php");
+		//include ("arreglos.php");
 		$nosesion=$_REQUEST[nosesion];
 		$typesess=$_REQUEST[tiposesion];
 		$descsesion=$_REQUEST[descsesion];
@@ -336,7 +336,7 @@ and s.id_sesion in(select id_sesion from sisesecd_sesiones
 									and estatus=1)order by s.id_distrito ASC;";
 						 
 $r_inicio=ifx_query($sql_inicio,$conn);
-echo $sql_inicio;
+//echo $sql_inicio;
 $head=ifx_query($sql_inicio,$conn);
 $undato = ifx_fetch_row ($head);
 $fecha=$undato[fecha_inicio_real];

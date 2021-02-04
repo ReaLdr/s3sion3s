@@ -178,7 +178,7 @@ $iddistrito=$rowsesion['id_distrito'];
 
 if($procede==1)
 {
-$sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id_orden, tipo_intervencion, inter_cp, inter_c1, inter_c2, inter_c3, inter_c4, inter_c5, inter_c6, inter_se, inter_panp, inter_pans, inter_prip, inter_pris, inter_prdp, inter_prds, inter_ptp, inter_pts, inter_pvemp, inter_pvems, inter_pmcp, inter_pmcs, inter_pelgp, inter_pelgs,inter_pesp, inter_pess, inter_prspp, inter_prsps, inter_morenap, inter_morenas, inter_pfsmp, inter_pfsms, inter_ci1p, inter_ci1s, inter_ci2p, inter_ci2s, inter_ci3p, inter_ci3s, inter_ci4p, inter_ci4s, CAST(intervencion as CHAR(2048))as intervencion, CAST(replica as CHAR(2048))as replica, punto FROM sisesecd_intervenciones as inter, sisesecd_inicio as ini WHERE inter.id_sesion=ini.id_sesion and inter.id_sesion=$idsesion ";
+$sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id_orden, tipo_intervencion, inter_cp, inter_c1, inter_c2, inter_c3, inter_c4, inter_c5, inter_c6, inter_se, inter_panp, inter_pans, inter_prip, inter_pris, inter_prdp, inter_prds, inter_ptp, inter_pts, inter_pvemp, inter_pvems, inter_pmcp, inter_pmcs, inter_pelgp, inter_pelgs,inter_pesp, inter_pess, inter_prspp, inter_prsps, inter_morenap, inter_morenas, inter_pfsmp, inter_pfsms, inter_ci1p, inter_ci1s, inter_ci2p, inter_ci2s, inter_ci3p, inter_ci3s, inter_ci4p, inter_ci4s, CAST(intervencion as CHAR(2048))as intervencion, CAST(replica as CHAR(2048))as replica, punto FROM sisesecd_intervenciones as inter, sisesecd_inicio as ini WHERE inter.id_sesion=ini.id_sesion and inter.id_sesion=$idsesion ORDER BY punto ASC";
 //echo $sql_consulta1;
 	$intervenciones_consulta1 = sqlsrv_query($conn, $sql_consulta1);
 
@@ -552,12 +552,12 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 
 		echo "<tr>" ;
 		echo "<td>"	.$rowsesion['id_distrito']."</td>";
-	    echo "<td>"	.utf8_encode($orden_row['desc_punto'])."</td>";
-		echo "<td>".$array."</td>";
-		echo "<td>".utf8_decode($cargo)."</td>";
-		echo "<td>".utf8_decode($intervenciones_consulta1_row['punto'])."</td>";
-		echo "<td>".$intervenciones_consulta1_row['intervencion']."</td>";
-		echo "<td>".$intervenciones_consulta1_row['replica']."</td>";
+	    echo "<td>"	.$orden_row['desc_punto']."</td>";
+		echo "<td>".utf8_decode($array)."</td>";
+		echo "<td>".$cargo."</td>";
+		echo "<td>".$intervenciones_consulta1_row['punto']."</td>";
+		echo "<td>".utf8_decode($intervenciones_consulta1_row['intervencion'])."</td>";
+		echo "<td>".utf8_decode($intervenciones_consulta1_row['replica'])."</td>";
 		echo "</tr>";
 		}// cierro el primer while intervenciones
 	}

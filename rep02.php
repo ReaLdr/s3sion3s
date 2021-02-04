@@ -257,7 +257,7 @@ while($datos = sqlsrv_fetch_array ($resultados))
 
 	//if($distrito<=10){
 		echo'<td align="center" class="resultados">'.$datos['id_distrito'].'</td>';
-		echo'<td align="center" class="resultados">'.utf8_encode($datos['desc_punto']).'</td>';
+		echo'<td align="center" class="resultados">'.$datos['desc_punto'].'</td>';
 
 
 			if($afavor==6 )
@@ -276,7 +276,7 @@ while($datos = sqlsrv_fetch_array ($resultados))
 			echo'<td align="center" class="resultados">'.$afavor.'</td>';
 			echo'<td align="center" class="resultados">'.$encontra.'</td>';
 			echo'<td align="center" class="resultados">'.$excusa.'</td>';
-			echo'<td align="center" class="resultados">'.$observaini.'</td>';
+			echo'<td align="center" class="resultados">'.utf8_decode($observaini).'</td>';
 
 		$grantotal=$total7+$total5+$total6+$total4;
 

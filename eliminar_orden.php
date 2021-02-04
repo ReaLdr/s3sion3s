@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 echo'<p>&nbsp;</p>';echo'<p>&nbsp;</p>';echo'<p>&nbsp;</p>';echo'<p>&nbsp;</p>';echo'<p>&nbsp;</p>';echo'<p>&nbsp;</p>';
 echo '<div align="center">';
 echo'<table width="166" border="0" cellpadding="0" cellspacing="0">
@@ -55,7 +56,7 @@ else
 {
 	
 echo'<SCRIPT LANGUAGE="javascript">';
-echo'history.go(-2)';
+echo'history.go(-1)';
 echo'</SCRIPT>';
 }
 ?>

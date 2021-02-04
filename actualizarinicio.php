@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 
@@ -6,20 +6,20 @@ date_default_timezone_set("America/Mexico_City");
 $iddistrito="0";
 
 if (isset($_SESSION['user'])) {
-
+	
 $name= $_SESSION['transaccion'];
 $grup=$_SESSION['grupo'];
-$id_distrito=$_SESSION['id_distrito'];
+$id_distrito=$_SESSION['id_distrito'];	
 }
 else
 {
-
+	
 	echo'<SCRIPT LANGUAGE="javascript">';
 	echo'	location.href = "index.php";';
 	echo'	</SCRIPT>';
 }
 
-//$variable= $_REQUEST["page"];
+$variable= $_REQUEST["page"];
 $name= $_SESSION['transaccion'];
 $grup=$_SESSION['grupo'];
 //$grup=$_SESSION['transaccion'];
@@ -47,27 +47,27 @@ $tipo_sesion=$_GET['tipo_sesion'];
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
+    
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-
+    
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 <title>.: SISESECD 2018 :.</title>
 <script>
 function validar_texto(a)
- {
-    tecl = (document.all) ? a.keyCode : a.which;
-    if (tecl==8) return true;
+ { 
+    tecl = (document.all) ? a.keyCode : a.which; 
+    if (tecl==8) return true; 
 	patro =/[a-z A-Z áéíóúäëïöü0ñÑ 0-9\-\.\?\,\"\@\:\()\;\*\+&%\$#_]/;
-    t = String.fromCharCode(tecl);
-    return patro.test(t);
-}
+    t = String.fromCharCode(tecl); 
+    return patro.test(t); 
+} 
 </script>
 </head>
 
 
   <?php include("header.php");?>
-
+	
 <body class="sb-nav-fixed">
         <div id="layoutSidenav">
             <div id="layoutSidenav_content">
@@ -91,7 +91,7 @@ function validar_texto(a)
 //echo "GET PAGE: ".$variable."...";
 //echo "GET ID ".$_REQUEST['idsesion']."...";
 $id_sesion = htmlspecialchars(trim($_REQUEST['id_sesion']));
-//$movimiento = htmlspecialchars(trim($_POST['movimiento']));
+$movimiento = htmlspecialchars(trim($_POST['movimiento']));
 
 // Consigo datos a desplegar solo de muestra
 $encabezado = "-ERROR DE LECTURA-";
@@ -100,7 +100,7 @@ require('functions.php');
 include 'config_open_db.php';
 include 'arreglos.php';
 
-//$distrito=$d_romano[$_SESSION['id_distrito']];
+$distrito=$d_romano[$_SESSION['id_distrito']];
 $nosesion=$_REQUEST['nosesion'];
 $tipo_sesion=$_REQUEST['tipo_sesion'];
 $id_sesion=$_REQUEST['id_sesion'];
@@ -108,29 +108,29 @@ $desc_sesion=$_REQUEST['desc_sesion'];
 //echo $descsesion;
 //echo $nosesion;
 
-if(isset($_GET['id_sesion']))
+if(isset($_REQUEST['id_sesion']))
 {
 	//contar primero
-	$sql_count="Select count(*) as cuantos from sisesecd_sesiones where id_sesion=$_REQUEST[id_sesion];";
+	$sql_count="Select count(*) as cuantos from sisesecd_sesiones where id_sesion=$_REQUEST[id_sesion];";		
 	$exec_count = sqlsrv_query($conn,$sql_count);
 		//$cliente = mysql_fetch_array($consulta);
 		$row_count1 = sqlsrv_fetch_array($exec_count);
 		$cuantos1=0;
-		$cuantos1=$row_count1['cuantos'];
-
+		$cuantos1=$row_count1[cuantos];
+			
 	$tmpSesion="Select * from sisesecd_sesiones where id_sesion=".$_REQUEST['id_sesion'].";";
 //	$consultaSesion = mysql_query($tmpSesion);
 	$consultaSesion = sqlsrv_query($conn,$tmpSesion);
 	//echo $tmpSesion;
-
-
+	
+	
 	if ($cuantos1>0){
-		// Aqui consigo datos a desplegar
+		// Aqui consigo datos a desplegar 
 //	$registro = mysql_fetch_array($consultaSesion);
 		$registro = sqlsrv_fetch_array($consultaSesion);
-		$descripcion=$registro['desc_sesion'];
-		$typesess=$registro['tipo_sesion'];
-
+		$descripcion=$registro[desc_sesion];
+		$typesess=$registro[tipo_sesion];
+		
 		//$encabezado = "<b>".$nom_sesion[$registro['nosesion']]." Sesión ".$tipo_ses[$typesess]." de los Consejos Distritales 0".$descripcion."</b>";
 			$encabezado = "<b>".$tipo_ses[$typesess]." de los Consejos Distritales 0".$descripcion."</b>";
 
@@ -138,14 +138,11 @@ if(isset($_GET['id_sesion']))
 	else{
 		echo 'Se produjo un error. No se encontraron datos de la Sesión Distrital:  ';//.ifx_error();
 		return;
-	}
+	} 
 }
 
 if(isset($_POST['submit'])){
-
-	//echo json_encode($_POST);
-	//exit;
-
+	
 	$fechainicioreal = htmlspecialchars(trim($_POST['fechainicioreal']));
 	if($fechainicioreal != ""){
 		$explode_fecha_inicial = explode("/", $fechainicioreal);
@@ -167,41 +164,41 @@ if(isset($_POST['submit'])){
 	}
 	//echo $fechainicioreal;
 	$horainicioreal = htmlspecialchars(trim($_POST['horainicioreal']));
-	$page =  htmlspecialchars(trim($_POST['page']));
+	$page =  htmlspecialchars(trim($_POST['page'])); 
 	$asistenciaini =0;
 	$qi_cp = htmlspecialchars(trim($_POST['ck_cp']));
 	$qi_cp = ($qi_cp != 1 ? 0 : 1);
 	$asistenciaini +=intval($qi_cp);
-
+	
 	$qi_c1 = htmlspecialchars(trim($_POST['ck_c1']));
 	$qi_c1 = ($qi_c1 != 1 ? 0 : 1);
 	$asistenciaini +=intval($qi_c1);
-
+	
 	$qi_c2 = htmlspecialchars(trim($_POST['ck_c2']));
 	$qi_c2 = ($qi_c2 != 1 ? 0 : 1);
 	$asistenciaini +=intval($qi_c2);
-
+	
 	$qi_c3 = htmlspecialchars(trim($_POST['ck_c3']));
 	$qi_c3 = ($qi_c3 != 1 ? 0 : 1);
 	$asistenciaini +=intval($qi_c3);
-
+	
 	$qi_c4 = htmlspecialchars(trim($_POST['ck_c4']));
 	$qi_c4 = ($qi_c4 != 1 ? 0 : 1);
 	$asistenciaini +=intval($qi_c4);
-
+	
 	$qi_c5 = htmlspecialchars(trim($_POST['ck_c5']));
 	$qi_c5 = ($qi_c5 != 1 ? 0 : 1);
 	$asistenciaini +=intval($qi_c5);
-
+	
 	$qi_c6 = htmlspecialchars(trim($_POST['ck_c6']));
 	$qi_c6 = ($qi_c6 != 1 ? 0 : 1);
 	$asistenciaini +=intval($qi_c6);
-
+	
 	$qi_sc = htmlspecialchars(trim($_POST['ck_sc']));
 	$qi_sc = ($qi_sc != 1 ? 0 : 1);
 	$asistenciaini +=intval($qi_sc);
-
-//////partidos politicos///
+	
+//////partidos politicos///	
 	$qi_panp = htmlspecialchars(trim($_POST['pan']));
 	$qi_panp = ($qi_panp == 1 ? 1 : 0);
 	$asistenciaini +=intval($qi_panp);
@@ -238,36 +235,36 @@ if(isset($_POST['submit'])){
 	$qi_pmcs = htmlspecialchars(trim($_POST['pmc']));
 	$qi_pmcs = ($qi_pmcs == 2 ? 1 : 0);
 	$asistenciaini +=intval($qi_pmcs);
-
+	
 	$qi_morenap = htmlspecialchars(trim($_POST['morena']));
 	$qi_morenap = ($qi_morenap == 1 ? 1 : 0);
 	$asistenciaini +=intval($qi_morenap);
 	$qi_morenas = htmlspecialchars(trim($_POST['morena']));
 	$qi_morenas = ($qi_morenas == 2 ? 1 : 0);
 	$asistenciaini +=intval($qi_morenas);
-
+	
 	$qi_elgp = htmlspecialchars(trim($_POST['elg']));
 	$qi_elgp = ($qi_elgp == 1 ? 1 : 0);
 	$asistenciaini +=intval($qi_elgp);
-
+	
 	$qi_elgs = htmlspecialchars(trim($_POST['elg']));
 	$qi_elgs = ($qi_elgs == 2 ? 1 : 0);
 	$asistenciaini +=intval($qi_elgs);
-
+	
 	$qi_pesp = htmlspecialchars(trim($_POST['pes']));
 	$qi_pesp = ($qi_pesp == 1 ? 1 : 0);
 	$asistenciaini +=intval($qi_pesp);
 	$qi_pess = htmlspecialchars(trim($_POST['pes']));
 	$qi_pess = ($qi_pess == 2 ? 1 : 0);
 	$asistenciaini +=intval($qi_pess);
-
+	
 	$qi_prsp = htmlspecialchars(trim($_POST['prsp']));
 	$qi_prsp = ($qi_prsp == 1 ? 1 : 0);
 	$asistenciaini +=intval($qi_prsp);
 	$qi_prss = htmlspecialchars(trim($_POST['prsp']));
 	$qi_prss = ($qi_prss == 2 ? 1 : 0);
 	$asistenciaini +=intval($qi_prss);
-
+	
 	$qi_pfsmp = htmlspecialchars(trim($_POST['pfsm']));
 	$qi_pfsmp = ($qi_pfsmp == 1 ? 1 : 0);
 	$asistenciaini +=intval($qi_pfsmp);
@@ -275,56 +272,56 @@ if(isset($_POST['submit'])){
 	$qi_pfsms = ($qi_pfsms == 2 ? 1 : 0);
 	$asistenciaini +=intval($qi_pfsms);
 
-//// candidatos independientes/////
+//// candidatos independientes/////	
 	$qi_ci1p = htmlspecialchars(trim($_POST['ci1']));
 	$qi_ci1p = ($qi_ci1p == 1 ? 1 : 0);
 	$asistenciaini +=intval($qi_ci1p);
-
+	
 	$qi_ci1s = htmlspecialchars(trim($_POST['ci1']));
 	$qi_ci1s = ($qi_ci1s == 2 ? 1 : 0);
 	$asistenciaini +=intval($qi_ci1s);
-
+	
 	$qi_ci2p = htmlspecialchars(trim($_POST['ci2']));
 	$qi_ci2p = ($qi_ci2p == 1 ? 1 : 0);
 	$asistenciaini +=intval($qi_ci2p);
-
+	
 	$qi_ci2s = htmlspecialchars(trim($_POST['ci2']));
 	$qi_ci2s = ($qi_ci2s == 2 ? 1 : 0);
 	$asistenciaini +=intval($qi_ci2s);
-
+	
 	$qi_ci3p = htmlspecialchars(trim($_POST['ci3']));
 	$qi_ci3p = ($qi_ci3p == 1 ? 1 : 0);
 	$asistenciaini +=intval($qi_ci3p);
-
+	
 	$qi_ci3s = htmlspecialchars(trim($_POST['ci3']));
 	$qi_ci3s = ($qi_ci3s == 2 ? 1 : 0);
 	$asistenciaini +=intval($qi_ci3s);
-
+	
 	$qi_ci4p = htmlspecialchars(trim($_POST['ci4']));
 	$qi_ci4p = ($qi_ci4p == 1 ? 1 : 0);
 	$asistenciaini +=intval($qi_ci4p);
-
+	
 	$qi_ci4s = htmlspecialchars(trim($_POST['ci4']));
 	$qi_ci4s = ($qi_ci4s == 2 ? 1 : 0);
 	$asistenciaini +=intval($qi_ci4s);
-
-
+	
+	
 	$qi_prensa = htmlspecialchars(trim($_POST['qi_prensa']));
 	$qi_prensa = ($qi_prensa != 1 ? 0 : 1);
 	$qi_radio = htmlspecialchars(trim($_POST['qi_radio']));
 	$qi_radio = ($qi_radio != 1 ? 0 : 1);
 	$qi_tv = htmlspecialchars(trim($_POST['qi_tv']));
 	$qi_tv = ($qi_tv != 1 ? 0 : 1);
-
-	$domicilio= htmlspecialchars(trim($_POST['domicilio']));
+	
+	$domicilio= htmlspecialchars(trim($_POST['domicilio'])); 
 
 	$observaini =htmlspecialchars(trim($_POST['observaini']));
 	$observaini=str_replace("'",'"',$observaini);
 
 $quorumini =intval($qi_cp)+intval($qi_c1)+intval($qi_c2)+intval($qi_c3)+intval($qi_c4)+intval($qi_c5)+intval($qi_c6);
 $fecha_alta=date('d-m-Y');
-
-	$movimiento=htmlspecialchars(trim($_POST['movimiento']));
+	
+	$movimiento=htmlspecialchars(trim($_POST['movimiento'])); 
 	$tmpSQL="";
 
 	if($movimiento=="EDITAR")
@@ -334,32 +331,32 @@ $fecha_alta=date('d-m-Y');
 	else
 	{
 		$tmpSQL="INSERT INTO sisesecd_inicio(id_sesion, fecha_inicio_real, hora_inicio_real, qi_cp, qi_c1,qi_c2, qi_c3, qi_c4, qi_c5, qi_c6, qi_se, qi_pan_p, qi_pan_s, qi_pri_p, qi_pri_s, qi_prd_p, qi_prd_s, qi_pt_p, qi_pt_s, qi_pvem_p, qi_pvem_s, qi_pmc_p, qi_pmc_s, qi_elg_p, qi_elg_s, qi_pes_p, qi_pes_s, qi_prsp_p, qi_prsp_s, qi_morena_p, qi_morena_s, qi_pfsm_p, qi_pfsm_s, qi_ci1_p, qi_ci1_s, qi_ci2_p, qi_ci2_s, qi_ci3_p, qi_ci3_s, qi_ci4_p, qi_ci4_s, qi_prensa, qi_radio, qi_tv, quorumini, observaini, asistencia,domicilio) values (".$id_sesion.", '".$fechainicioreal."','".$horainicioreal."',".$qi_cp.", ".$qi_c1.", ".$qi_c2.",  ".$qi_c3.", ".$qi_c4.", ".$qi_c5.", ".$qi_c6.", ".$qi_sc.", ".$qi_panp.", ".$qi_pans.", ".$qi_prip.", ".$qi_pris.", ".$qi_prdp.", ".$qi_prds.", ".$qi_ptp.", ".$qi_pts.", ".$qi_pvemp.", ".$qi_pvems.", ".$qi_pmcp.",".$qi_pmcs.", ".$qi_elgp.",".$qi_elgs.", ".$qi_pesp.",".$qi_pess.",".$qi_prsp.",".$qi_prss.", ".$qi_morenap.",".$qi_morenas.",".$qi_pfsmp.",".$qi_pfsms.",".$qi_ci1p.",".$qi_ci1s.",".$qi_ci2p.",".$qi_ci2s.",".$qi_ci3p.",".$qi_ci3s.",".$qi_ci4p.",".$qi_ci4s.",".$qi_prensa.", ".$qi_radio.", ".$qi_tv.", ".$quorumini.",'".$observaini."',".$asistenciaini.",'".$domicilio."');";
-
-
-
-
+	
+		
+		
+		
 	$sql_insert="INSERT INTO sisesecd_estado_sesion VALUES(".$id_sesion.",".$id_distrito.",1,'INICIO DE LA  SESION','".$horainicioreal."','','".$fecha_alta."');";
 	//echo $sql_insert;
 	sqlsrv_query($conn, $sql_insert);
-
+	
 	}
 
-	//echo $tmpSQL;
+	//echo $tmpSQL;	
 	//exit;
-
-	if (sqlsrv_query($conn,$tmpSQL)== true)
+	
+	if (sqlsrv_query($conn,$tmpSQL)== true) 
 	{
 		echo 'Datos guardados';
-
+		
 		include("bitacora.php");
 		$accion="Inicio sesion ".$id_distrito;
-		bitacora($accion);
-
-
+		bitacora($accion);	
+		
+		
 		$sql_update="UPDATE sisesecd_sesiones SET con_inicio=1 WHERE id_sesion=$id_sesion";
 		if (sqlsrv_query($conn,$sql_update))
 				{
-
+							
 		echo'<table width="166" border="0" cellpadding="0" cellspacing="0">
   		<tr>
     	<td width="156" align="center"><img src="images/ajax-loader.gif" width="160" height="24" /></td>
@@ -374,7 +371,7 @@ $fecha_alta=date('d-m-Y');
 				echo'<SCRIPT LANGUAGE="javascript">';
 				echo'location.href = "./grid_sesiones.php?nosesion='.$nosesion.'&tipo_sesion='.$tipo_sesion.'&desc_sesion='.$desc_sesion.'";';
 				echo'</SCRIPT>';
-
+								
 		}
 		else{
 			echo 'Se produjo un error al guardar historico. Intente nuevamente ';
@@ -388,7 +385,7 @@ $fecha_alta=date('d-m-Y');
 				    }
 
 			////////.ifx_error();
-		}
+		} 
 	}
 	else{
 		echo 'Se produjo un error. Intente nuevamente ';
@@ -402,8 +399,8 @@ $fecha_alta=date('d-m-Y');
 				    }
 
 			////////.ifx_error();
-	}
-
+	} 
+	
  }
 
 else{
@@ -411,26 +408,26 @@ else{
 	$cliente ="";
 
 	if(isset($id_sesion)){
-
-		$sql_count2="SELECT count(*) as cuantos2 FROM sisesecd_inicio WHERE id_sesion = ".$_GET['id_sesion'];
+		
+		$sql_count2="SELECT count(*) as cuantos2 FROM sisesecd_inicio WHERE id_sesion =$_REQUEST[id_sesion]";
 		$exec_count2 = sqlsrv_query($conn,$sql_count2);
 		$row_count2 = sqlsrv_fetch_array($exec_count2);
 		$cuantos2=0;
-		$cuantos2=$row_count2['cuantos2'];
+		$cuantos2=$row_count2[cuantos2];
+		
 
-
-		$sql_consulta="SELECT * FROM sisesecd_inicio WHERE id_sesion = " . $_GET['id_sesion'];
+		$sql_consulta="SELECT * FROM sisesecd_inicio WHERE id_sesion =$_REQUEST[id_sesion]";
 		//		$consulta = mysql_query("SELECT * FROM iniciosesion WHERE idsesion =".$_REQUEST['idsesion']);
-
-
+		
+		
 		//echo $sql_consulta;
 		$consulta = sqlsrv_query($conn,$sql_consulta);
 		$cliente = sqlsrv_fetch_array($consulta);
 
-
-
-
-
+		
+	
+		
+		
 	}
 	if($cuantos2>0)
 	{
@@ -458,8 +455,8 @@ $sql_select = "select * from sisesecd_sesiones  where id_sesion=$id_sesion";
 
 
 ?>
-
-	</br>
+						
+	</br>					
 	</br>
 		<center>
 	<div class="card mb-4">
@@ -475,7 +472,7 @@ $sql_select = "select * from sisesecd_sesiones  where id_sesion=$id_sesion";
   <input class="text" type="hidden" name="id_distrito" id="id_distrito" value="<?php echo $_SESSION['id_distrito']; ?>"/>
 
     <label>
-
+	
    </label>
   </p>
 
@@ -495,9 +492,9 @@ $sql_select = "select * from sisesecd_sesiones  where id_sesion=$id_sesion";
  <label>Domicilio de la Sede Distrital:</label>
   </br>
 <textarea name="domicilio" cols="45" rows="5" id="domicilio" onkeypress="return validar_texto(event)"><?php echo $cliente['domicilio']?>
-</textarea>
+</textarea> 
 </br>
- <?php
+ <?php 
 //// me traigo los nombres de los integrantes////
 $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesion and id_integrante in (1,2,3,4,5,6,7,8) and id_distrito=$id_distrito";
 //echo $sql_integra;
@@ -513,18 +510,18 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 	$salta=0;
 	while($row_int = sqlsrv_fetch_array($exec_int))
 	{
-
-
-	echo'<tr>';
-
+		
+	
+	echo'<tr>';	
+			
 		if($row_int[id_integrante]==1)
 		{
-
+			
 		echo'<td colspan="8" ><strong>Nombre CP :</strong>&nbsp;'.$row_int[nombre].' '.$row_int[ap_paterno].' '.$row_int[ap_materno].'</td>';
 			echo'<td colspan="2">';
 			if($cliente['qi_cp']=="1")
 			{
-			echo'<input type="checkbox" name="ck_cp" value="1" checked="checked">';
+			echo'<input type="checkbox" name="ck_cp" value="1" checked="checked">'; 
 			}
 			else
 			{
@@ -533,15 +530,15 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 			echo' CP';
 			echo'</td>';
 		}
-
+		
 		if($row_int[id_integrante]==2)
 		{
 		echo '<td colspan="8"><strong>Nombre SC :</strong>&nbsp;'.$row_int[nombre].' '.$row_int[ap_paterno].' '.$row_int[ap_materno].'</td>';
-
+		
 				echo'<td colspan="2">';
 				if($cliente['qi_se']=="1")
 				{
-				echo'<input type="checkbox" name="ck_sc" value="1" checked="checked">';
+				echo'<input type="checkbox" name="ck_sc" value="1" checked="checked">'; 
 				}
 				else
 				{
@@ -557,7 +554,7 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 				echo'<td colspan="2">';
 				if($cliente['qi_c1']=="1")
 				{
-				echo'<input type="checkbox" name="ck_c1" value="1" checked="checked">';
+				echo'<input type="checkbox" name="ck_c1" value="1" checked="checked">'; 
 				}
 				else
 				{
@@ -566,14 +563,14 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 				echo' C1';
 				echo'</td>';
 		}
-
+		
 		if($row_int[id_integrante]==4)
 		{
 		echo '<td colspan="8"><strong>NombreC2 :</strong>&nbsp;'.$row_int[nombre].' '.$row_int[ap_paterno].' '.$row_int[ap_materno].'</td>';
 				echo'<td colspan="2">';
 				if($cliente['qi_c2']=="1")
 				{
-				echo'<input type="checkbox" name="ck_c2" value="1" checked="checked">';
+				echo'<input type="checkbox" name="ck_c2" value="1" checked="checked">'; 
 				}
 				else
 				{
@@ -582,14 +579,14 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 				echo' C2';
 				echo'</td>';
 		}
-
+		
 		if($row_int[id_integrante]==5)
 		{
 		echo '<td colspan="8"><strong> NombreC3:</strong>&nbsp;'.$row_int[nombre].' '.$row_int[ap_paterno].' '.$row_int[ap_materno].'</td>';
 				echo'<td colspan="2">';
 				if($cliente['qi_c3']=="1")
 				{
-				echo'<input type="checkbox" name="ck_c3" value="1" checked="checked">';
+				echo'<input type="checkbox" name="ck_c3" value="1" checked="checked">'; 
 				}
 				else
 				{
@@ -605,7 +602,7 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 				echo'<td colspan="2">';
 				if($cliente['qi_c4']=="1")
 				{
-				echo'<input type="checkbox" name="ck_c4" value="1" checked="checked">';
+				echo'<input type="checkbox" name="ck_c4" value="1" checked="checked">'; 
 				}
 				else
 				{
@@ -620,7 +617,7 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 				echo'<td colspan="2">';
 				if($cliente['qi_c5']=="1")
 				{
-				echo'<input type="checkbox" name="ck_c5" value="1" checked="checked">';
+				echo'<input type="checkbox" name="ck_c5" value="1" checked="checked">'; 
 				}
 				else
 				{
@@ -635,7 +632,7 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 				echo'<td colspan="2">';
 				if($cliente['qi_c6']=="1")
 				{
-				echo'<input type="checkbox" name="ck_c6" value="1" checked="checked">';
+				echo'<input type="checkbox" name="ck_c6" value="1" checked="checked">'; 
 				}
 				else
 				{
@@ -645,7 +642,7 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 				echo'</td>';
 		}
 	//echo'</tr>';
-
+	
 	}// cierro while
 
   ?>
@@ -658,7 +655,7 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
   <tr>
   <td  colspan=12 align="center" bgcolor="#CCCCFF"><strong>Asistencia al Inicio de la Sesi&oacute;n  Representantes de Partidos Pol&iacute;ticos </strong></td></tr>
 <tr>
-
+	
 <tr>
 	<td  colspan=2 align="center">PAN</td>
 	<td  colspan=2 align="center">PRI</td>
@@ -667,8 +664,8 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 	<td  colspan=2 align="center">PT</td>
 	<td colspan=2 align="center">PMC</td>
 </tr>
-
-
+	
+	
 <tr>
 <td width="0%">
 <input type="radio" name="pan" value="1" <?php if($cliente['qi_pan_p']=="1") echo "checked=\"checked\""?> ><br>P
@@ -710,18 +707,18 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 
 <tr>
 
-</tr>
-
+</tr>	
+	
 <tr>
 
 <td colspan="2" align="center">MORENA</td>
 <td colspan="2" align="center">PES</td>
 <td colspan="2" align="center">RSP</td>
-<td colspan="2" align="center">FSM</td>
+<td colspan="2" align="center">FSM</td>	
 <td colspan="2" align="center">ELIGE</td>
 </tr>
 
-
+	
 <tr>
 <td>
 <input type="radio" name="morena" value="1" <?php if($cliente['qi_morena_p']=="1") echo "checked=\"checked\""?>><br>P
@@ -729,30 +726,30 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 <td width="0%">
 <input type="radio" name="morena" value="2" <?php if($cliente['qi_morena_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
-
+	
 <td>
 <input type="radio" name="pes" value="1" <?php if($cliente['qi_pes_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
 <td width="0%">
 <input type="radio" name="pes" value="2" <?php if($cliente['qi_pes_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
-
+	
 <td>
 <input type="radio" name="prsp" value="1" <?php if($cliente['qi_prsp_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
-
+	
 <td width="0%">
 <input type="radio" name="prsp" value="2" <?php if($cliente['qi_prsp_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
-
+	
 <td>
 <input type="radio" name="pfsm" value="1" <?php if($cliente['qi_pfsm_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
-
+	
 <td width="0%">
 <input type="radio" name="ppfsm" value="2" <?php if($cliente['qi_prfsm_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
-
+	
 <td>
 <input type="radio" name="elg" value="1" <?php if($cliente['qi_elg_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
@@ -829,7 +826,7 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 	}
 	else
 	{
-
+		
 $ardel[2]=	'Azcapotzalco';
 $ardel[3]=	'Coyoacan';
 $ardel[4]=	'Cuajimalpa de Morelos';
@@ -846,21 +843,21 @@ $ardel[14]=	'Benito Juarez';
 $ardel[15]=	'Cuauhtemoc';
 $ardel[16]=	'Miguel Hidalgo';
 $ardel[17]=	'Venustiano Carranza';
-
-
+	
+	
 	$sql_distrito="SELECT * FROM sisesecd_cat_distrito where id_distrito=$id_distrito";
 	//	echo $sql_distrito;
-
+		
 		$result_dist= sqlsrv_query($conn,$sql_distrito);
 		$rowDist=sqlsrv_fetch_array($result_dist);
-
+		
 		$calle = $rowDist['direccion'];
 		$colonia= $rowDist['colonia'];
 		$cp = $rowDist['cp'];
 		$id_delega= $rowDist['id_delegacion'];
-
-		$domicilioDistrito= UTF8_ENCODE($calle).' Col. '.UTF8_ENCODE($colonia). ' Demarcacion Territorial. '.$ardel[$id_delega].' CP. '.$cp ;
-
+		
+		$domicilioDistrito= UTF8_ENCODE($calle).' Col. '.UTF8_ENCODE($colonia). ' Demarcacion Territorial. '.$ardel[$id_delega].' CP. '.$cp ;	
+		
 ?>
 
 <style>
@@ -883,11 +880,11 @@ textarea{
 	<div class="card mb-4">
 	<div class="card-header">
      <b>Reporte de Inicio de la Sesión de los Consejos Distritales <br><?php echo $encabezado; ?></b>
-
+	
     </div>
 <form id="frmClienteNuevo" name="frmClienteNuevo" method="post"  onsubmit="ActualizarInicio(); return false">
  </br>
-<p>aqui</p>;
+
  <input class="text" type="hidden" name="iddistrito" id="iddistrito" value="<?php echo $_SESSION['k_iddistrito']; ?>"/></label>
   </br>
 <input class="text" type="hidden" name="iddistrito" id="iddistrito" value="<?php echo $_SESSION['k_iddistrito']; ?>"/>
@@ -903,12 +900,12 @@ textarea{
 <tr>
 <td width="50%" height="45">
 <label> Fecha de Inicio<br /></label>
-<input  type="text" id="fechainicioreal"  name = "fechainicioreal" value="<?php echo date("j/m/Y");?>" />
+<input  type="text" id="fechainicioreal"  name = "fechainicioreal" value="<?php echo date("Y-m-j");?>" />
 </td>
 <td width="50%">
-    <label>Hora programada <br />
+    <label>Hora programada <br />     
     </label>
-       <input type="text" id="horainicioreal" name="horainicioreal" value= "<?php echo date("H:i");?>"/>
+       <input type="text" id="horainicioreal" name="horainicioreal" value= "<?php echo date("H:i");?>"/> 
 </td>
 </tr>
 <tr>
@@ -919,7 +916,7 @@ textarea{
 </tr>
 </table>
 <br />
-<?php
+<?php 
 //// me traigo los nombres de los integrantes////
 
 $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesion and id_integrante in (1,2,3,4,5,6,7,8) and id_distrito=$id_distrito";
@@ -935,13 +932,13 @@ echo'</tr>';
 	$salta=0;
 	while($row_int = sqlsrv_fetch_array($exec_int))
 	{
-
-
-	echo'<tr>';
-
+		
+	
+	echo'<tr>';	
+			
 		if($row_int[id_integrante]==1)
 		{
-
+			
 		echo'<td colspan="8"><strong>Nombre CP :</strong>&nbsp;'.$row_int[nombre].' '.$row_int[ap_paterno].' '.$row_int[ap_materno].'</td>';
 		echo'<td colspan="2">';
 		echo'<input type="checkbox" name="ck_cp" value="1">CP';
@@ -953,8 +950,8 @@ echo'</tr>';
 		echo '<td colspan="2"><input type="checkbox" name="ck_sc" value="1">SC';
 		echo '</td>';
 		}
-	//echo'</tr>';
-
+	//echo'</tr>';	
+	
 	//echo'<tr>';
 		if($row_int[id_integrante]==3)
 		{
@@ -995,7 +992,7 @@ echo'</tr>';
 		echo '<td colspan="2"><input type="checkbox" name="ck_c6" value="1" />C6</td>';
 		}
 	//echo'</tr>';
-
+	
 	}// cierro while
 echo'</table>';
   ?>
@@ -1014,7 +1011,7 @@ echo'</table>';
 <td  colspan=2 align="center">PT</td>
 <td colspan=2 align="center">PMC</td>
 </tr>
-
+ 
 <tr align="center">
 <td width="0%" height="45">
 <input type="radio" name="pan" value="1" <?php if($cliente['qi_panp']=="1") echo "checked=\"checked\""?>><br>P
@@ -1070,28 +1067,28 @@ echo'</table>';
 <td width="0%">
 <input type="radio" name="morena" value="2" <?php if($cliente['qi_morenas']=="1") echo "checked=\"checked\""?>><br>S
 </td>
-
+	
 <td>
 <input type="radio" name="pes" value="1" <?php if($cliente['qi_pes_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
 <td width="0%">
 <input type="radio" name="pes" value="2" <?php if($cliente['qi_pes_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
-
+	
 <td>
 <input type="radio" name="prsp" value="1" <?php if($cliente['qi_prsp_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
 <td width="0%">
 <input type="radio" name="prsp" value="2" <?php if($cliente['qi_prsp_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
-
+	
 <td>
 <input type="radio" name="pfsm" value="1" <?php if($cliente['qi_pfsm_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
 <td width="0%">
 <input type="radio" name="pfsm" value="2" <?php if($cliente['qi_pfsm_s']=="1") echo "checked=\"checked\""?>><br>S
 </td>
-
+	
 <td>
 <input type="radio" name="elg" value="1" <?php if($cliente['qi_elg_p']=="1") echo "checked=\"checked\""?>><br>P
 </td>
@@ -1163,10 +1160,10 @@ echo'</table>';
 <p>&nbsp;</p>
     <input type="button"  class="btn btn-default" name="cancelar" id="cancelar" value="Cancelar" onclick="history.back()" />
 
-
+	
 </form>
 
-<?php
+<?php	
 	}
 }
 ?>

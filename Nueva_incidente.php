@@ -235,7 +235,7 @@ $tmpSQL="INSERT INTO sisesecd_incidentes(id_sesion,id_distrito,id_orden, tipo_in
 		$tmpSQL=str_replace("\n","",$tmpSQL);
 		$tmpSQL=str_replace("\r","",$tmpSQL);
 
-echo $tmpSQL;
+//echo $tmpSQL;
 //exit;
 //	}
 
