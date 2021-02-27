@@ -58,7 +58,7 @@ function validar_texto(a)
  { 
     tecl = (document.all) ? a.keyCode : a.which; 
     if (tecl==8) return true; 
-	patro =/[a-z A-Z áéíóúäëïöü0ñÑ 0-9\-\.\?\,\"\@\:\()\;\*\+&%\$#_]/;
+	patro =/[a-z A-Z áéíóúÁÉÍÓÚäëïöü0ñÑ 0-9\-\.\?\,\"\@\:\()\;\*\+&%\$#_]/;
     t = String.fromCharCode(tecl); 
     return patro.test(t); 
 } 
@@ -499,7 +499,7 @@ $sql_select = "select * from sisesecd_sesiones  where id_sesion=$id_sesion";
 $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesion and id_integrante in (1,2,3,4,5,6,7,8) and id_distrito=$id_distrito";
 //echo $sql_integra;
 ?>
-<table style="width: 90%;" border="1">
+<table style="width: 90%;" border="1" class="table table-bordered">
 <tr>
 <td colspan=10 align="center" bgcolor="#CCCCFF" ><strong>Asistencia a inicio de sesi&oacute;n de Consejo</strong></td>
 </tr>
@@ -651,7 +651,7 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
   </br>
 </p>
 <p>&nbsp; </p>
-<table width="730" border="1">
+<table width="730" border="1" class="table table-bordered">
   <tr>
   <td  colspan=12 align="center" bgcolor="#CCCCFF"><strong>Asistencia al Inicio de la Sesi&oacute;n  Representantes de Partidos Pol&iacute;ticos </strong></td></tr>
 <tr>
@@ -714,7 +714,7 @@ $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesi
 <td colspan="2" align="center">MORENA</td>
 <td colspan="2" align="center">PES</td>
 <td colspan="2" align="center">RSP</td>
-<td colspan="2" align="center">FSM</td>	
+<td colspan="2" align="center">FM</td>	
 <td colspan="2" align="center">ELIGE</td>
 </tr>
 
@@ -1055,7 +1055,7 @@ echo'</table>';
 <td colspan="2" align="center">MORENA</td>
 <td colspan="2" align="center">PES</td>
 <td colspan="2" align="center">RSP</td>
-<td colspan="2" align="center">FSM</td>
+<td colspan="2" align="center">FM</td>
 	<td colspan="2" align="center">ELIGE</td>
 </tr>
 

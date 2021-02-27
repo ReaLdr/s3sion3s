@@ -3,8 +3,8 @@ header("Content-type: application/vnd.ms-excel");
 header("Content-Disposition: attachment; filename=Reporte_de_Sentido_del_voto_de_las_sesiones_de_consejos_distritales.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-//header("Content-Type: text/html;charset=utf-8");
-session_start();
+header("Content-Type: text/html;charset=utf-8");
+//session_start();
 error_reporting(E_ERROR | E_PARSE);
 require("config_open_db.php");
 
@@ -103,6 +103,7 @@ $undato=sqlsrv_fetch_array ($result);
 $fecha=$undato['fecha_inicio_real'];
 
 $descripcion=$undato['desc_punto'];
+
 $desc=$undato['desc_sesion'];
 $resultados=sqlsrv_query($conn, $sql);
 
@@ -117,7 +118,7 @@ $excusa=0;
 $grantotal=0;
 $totalfav=0;
 $totalcon=0;
-eval("\$descripcion = \"$descripcion\";");
+//eval("\$descripcion = \"$descripcion\";");
 
 include ("funciones.php");
 include ("arreglos.php");
@@ -143,24 +144,16 @@ echo "</th>";
 echo "</tr> ";
 echo "<tr>";
 echo "<th colspan=5>";
-echo "<font style='font-size:14px;font-weight:bold;'>".$nom_sesion[$nosesion]." SESION DE LOS CONSEJOS DISTRITALES (".$tipo_ses[$typesess]." 0".$desc." )<br></font><br>";
+echo "<font style='font-size:14px;font-weight:bold;'>".$nom_sesion[$nosesion]." SESI&Oacute;N DE LOS CONSEJOS DISTRITALES (".$tipo_ses[$typesess]." 0".$desc." )<br></font><br>";
 echo "</th>";
 echo "</tr>";
 echo "<tr> ";
 
-if($punto ==0)
-{
-	echo "<th colspan=5 align='center'>";
-echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE SENTIDO DE LA VOTACI&Oacute;N<br> Punto ".utf8_decode(htmlspecialchars($punto))." APROBACI&Oacute;N DEL ORDEN DEL D&Iacute;A Y DISPENSA DE LA LECTURA DE LOS DOCUMENTOS PREVIAMENTE DISTRIBUIDOS</font><br>";
+
+echo "<th colspan=5 align='center'>";
+echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE SENTIDO DE LA VOTACI&Oacute;N<br>Punto ".utf8_decode($punto)." ".$descripcion."</font><br>";
 echo "</th>";
 
-}
-else
-{
-echo "<th colspan=5 align='center'>";
-echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE SENTIDO DE LA VOTACI&Oacute;N<br> Punto ".utf8_decode(htmlspecialchars($punto))." ".htmlspecialchars($descripcion)."</font><br>";
-echo "</th>";
-}
 echo "</tr>";
 echo "<tr>";
 echo "<td colspan=5 align='center'>";

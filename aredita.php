@@ -268,10 +268,14 @@ textarea{
         <option value="PAN">PAN</option>
         <option value="PRI">PRI</option>
         <option value="PRD">PRD</option>
+		<option value="PVM">PVEM</option>
         <option value="PT">PT</option>
-        <option value="PVM">PVEM</option>
         <option value="MC">MC</option>
 		<option value="MORENA">MORENA</option>
+		 <option value="PES">PES</option>
+		 <option value="PRSP">PRSP</option>
+		 <option value="FM">FM</option>
+		 <option value="ELIGE">ELIGE</option>
        </select>
 	</div>
  </div>

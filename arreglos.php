@@ -12,15 +12,15 @@ $month[10]="OCTUBRE";
 $month[11]="NOVIEMBRE";
 $month[12]="DICIEMBRE";
 
-$ar_mes[01]="ENERO";
-$ar_mes[02]="FEBRERO";
-$ar_mes[03]="MARZO";
-$ar_mes[04]="ABRIL";
-$ar_mes[05]="MAYO";
-$ar_mes[06]="JUNIO";
-$ar_mes[07]="JULIO";
-$ar_mes[08]="AGOSTO";
-$ar_mes[09]="SEPTIEMBRE";
+$ar_mes[1]="ENERO";
+$ar_mes[2]="FEBRERO";
+$ar_mes[3]="MARZO";
+$ar_mes[4]="ABRIL";
+$ar_mes[5]="MAYO";
+$ar_mes[6]="JUNIO";
+$ar_mes[7]="JULIO";
+$ar_mes[8]="AGOSTO";
+$ar_mes[9]="SEPTIEMBRE";
 $ar_mes[10]="OCTUBRE";
 $ar_mes[11]="NOVIEMBRE";
 $ar_mes[12]="DICIEMBRE";
@@ -104,12 +104,12 @@ $tipo_cand[13]="Partido de la Revoluci&oacute;n Democr&aacute;tica (PRD)";
 $tipo_cand[14]="Partido Verde Ecologista de M&eacute;xico (PVEM)";
 $tipo_cand[15]="Partido del Trabajo (PT)";
 $tipo_cand[16]="Partido Movimiento Ciudadano (PMC)";
-$tipo_cand[17]="Partido Movimiento Regeneración Nacional (MORENA)";
+$tipo_cand[17]="Partido Movimiento Regeneraci&oacute;n Nacional (MORENA)";
 
-$tipo_cand[19]="Partido Encuentro Solidario (PES)";
-$tipo_cand[20]="Partido Redes Sociales Progresistas (RSP)";
-$tipo_cand[21]="Fuerza por M&eacute;xico (FM)";
-$tipo_cand[18]="Partido Equidad, Libertad y G&eacute;nero (ELIGE)";
+$tipo_cand[18]="Partido Encuentro Solidario (PES)"; // 18 
+$tipo_cand[19]="Partido Redes Sociales Progresistas (RSP)";//19
+$tipo_cand[20]="Fuerza por M&eacute;xico (FM)";//20
+$tipo_cand[21]="Partido Equidad, Libertad y G&eacute;nero (ELIGE)";//21
 
 
 

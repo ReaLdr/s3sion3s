@@ -47,7 +47,7 @@ $id_sesion=$_GET['id_sesion'];
 function validar_texto(a) {
     tecl = (document.all) ? a.keyCode : a.which;
     if (tecl==8) return true;
-	patro =/[a-z A-Z áéíóúäëïöü0ñÑ\-\?\@\()\;\+&%\$#_]/;
+	patro =/[a-z A-Z áéíóúÁÉÍÓÚäëïöü0ñÑ\-\?\@\()\;\+&%\$#_]/;
     t = String.fromCharCode(tecl);
     return patro.test(t);
 }
@@ -283,7 +283,7 @@ if(isset($_POST['submit'])){
 	$materno[12]=$_POST['txt_maternoPRI-S'];
 	$chek[12]='S';
 
-	$id_integra[13] = $_POST['id_integra13'];
+	$id_integra[13] = $_POST['id_integra13'];//PRD
 	$id_funcionario[13]=$_POST['id_func13P'];
 	$nombre[13] =$_POST['txt_nombrePRD-P'];
 	$paterno[13] =$_POST['txt_paternoPRD-P'];
@@ -297,7 +297,7 @@ if(isset($_POST['submit'])){
 	$materno[14]=$_POST['txt_maternoPRD-S'];
 	$chek[14]='S';
 
-	$id_integra[15] = $_POST['id_integra14'];
+	$id_integra[15] = $_POST['id_integra14'];///PVERDE
 	$id_funcionario[15]=$_POST['id_func14P'];
 	$nombre[15] =$_POST['txt_nombrePVEM-P'];
 	$paterno[15] =$_POST['txt_paternoPVEM-P'];
@@ -311,7 +311,7 @@ if(isset($_POST['submit'])){
 	$materno[16]=$_POST['txt_maternoPVEM-S'];
 	$chek[16]='S';
 
-	$id_integra[17]=$_POST['id_integra15'];
+	$id_integra[17]=$_POST['id_integra15'];//PT
 	$id_funcionario[17]=$_POST['id_func15P'];
 	$nombre[17]=$_POST['txt_nombrePT-P'];
 	$paterno[17]=$_POST['txt_paternoPT-P'];
@@ -339,7 +339,7 @@ if(isset($_POST['submit'])){
 	$materno[20]=$_POST['txt_maternoPMC-S'];
 	$chek[20]='S';
 
-	$id_integra[21]=$_POST['id_integra17']; ///
+	$id_integra[21]=$_POST['id_integra17']; /// MORENA 
 	$id_funcionario[21]=$_POST['id_func17P'];
 	$nombre[21] =$_POST['txt_nombreMOR-P'];
 	$paterno[21] =$_POST['txt_paternoMOR-P'];
@@ -353,62 +353,62 @@ if(isset($_POST['submit'])){
 	$materno[22]=$_POST['txt_maternoMOR-S'];
 	$chek[22]='S';
 
-	$id_integra[23]=$_POST['id_integra18']; /// GENERO Y LIBERTAD
+	$id_integra[23]=$_POST['id_integra18']; /// PES
 	$id_funcionario[23]=$_POST['id_func18P'];
-	$nombre[23] =$_POST['txt_nombrePNA-P'];
-	$paterno[23] =$_POST['txt_paternoPNA-P'];
-	$materno[23]=$_POST['txt_maternoPNA-P'];
+	$nombre[23] =$_POST['txt_nombrePES-P'];
+	$paterno[23] =$_POST['txt_paternoPES-P'];
+	$materno[23]=$_POST['txt_maternoPES-P'];
 	$chek[23]='P';
 
 	$id_integra[24]=$_POST['id_integra18'];
 	$id_funcionario[24]=$_POST['id_func18S'];
-	$nombre[24] =$_POST['txt_nombrePNA-S'];
-	$paterno[24] =$_POST['txt_paternoPNA-S'];
-	$materno[24]=$_POST['txt_maternoPNA-S'];
+	$nombre[24] =$_POST['txt_nombrePES-S'];
+	$paterno[24] =$_POST['txt_paternoPES-S'];
+	$materno[24]=$_POST['txt_maternoPES-S'];
 	$chek[24]='S';
 
-	$id_integra[25]=$_POST['id_integra19']; ///
+	$id_integra[25]=$_POST['id_integra19']; ///PRSP
 	$id_funcionario[25]=$_POST['id_func19P'];
-	$nombre[25] =$_POST['txt_nombrePES-P'];
-	$paterno[25] =$_POST['txt_paternoPES-P'];
-	$materno[25]=$_POST['txt_maternoPES-P'];
+	$nombre[25] =$_POST['txt_nombrePRSP-P'];
+	$paterno[25] =$_POST['txt_paternoPRSP-P'];
+	$materno[25]=$_POST['txt_maternoPRSP-P'];
 	$chek[25]='P';
 
-	$id_integra[26]=$_POST['id_integra19']; //
+	$id_integra[26]=$_POST['id_integra19']; // 
 	$id_funcionario[26]=$_POST['id_func19S'];
-	$nombre[26] =$_POST['txt_nombrePES-S'];
-	$paterno[26] =$_POST['txt_paternoPES-S'];
-	$materno[26]=$_POST['txt_maternoPES-S'];
+	$nombre[26] =$_POST['txt_nombrePRSP-S'];
+	$paterno[26] =$_POST['txt_paternoPRSP-S'];
+	$materno[26]=$_POST['txt_maternoPRSP-S'];
 	$chek[26]='S';
 
-	$id_integra[27]=$_POST['id_integra20']; /// PARTIDO PROGRESISTA
+	$id_integra[27]=$_POST['id_integra20']; /// FUERZA MEXICO
 	$id_funcionario[27]=$_POST['id_func20P'];
-	$nombre[27]=$_POST['txt_nombrePH-P'];
-	$paterno[27]=$_POST['txt_paternoPH-P'];
-	$materno[27]=$_POST['txt_maternoPH-P'];
+	$nombre[27]=$_POST['txt_nombrePFSM-P'];
+	$paterno[27]=$_POST['txt_paternoPFSM-P'];
+	$materno[27]=$_POST['txt_maternoPFSM-P'];
 	$chek[27]='P';
 
 	$id_integra[28]=$_POST['id_integra20'];
 	$id_funcionario[28]=$_POST['id_func20S'];
-	$nombre[28]=$_POST['txt_nombrePH-S'];
-	$paterno[28]=$_POST['txt_paternoPH-S'];
-	$materno[28]=$_POST['txt_maternoPH-S'];
+	$nombre[28]=$_POST['txt_nombrePFSM-S'];
+	$paterno[28]=$_POST['txt_paternoPFSM-S'];
+	$materno[28]=$_POST['txt_maternoPFSM-S'];
 	$chek[28]='S';
 
-	///// nuevo partido PFSM ////
 
-	$id_integra[29]=$_POST['id_integra21'];  // FUERZA SOCIAL
+
+	$id_integra[29]=$_POST['id_integra21'];  //ELIGE
 	$id_funcionario[29]=$_POST['id_func21P'];
-	$nombre[29]=$_POST['txt_nombrePFSM-P'];
-	$paterno[29]=$_POST['txt_paternoPFSM-P'];
-	$materno[29]=$_POST['txt_maternoPFSM-P'];
+	$nombre[29]=$_POST['txt_nombreELIGE-P'];
+	$paterno[29]=$_POST['txt_paternoELIGE-P'];
+	$materno[29]=$_POST['txt_maternoELIGE-P'];
 	$chek[29]='P';
 
 	$id_integra[30]=$_POST['id_integra21'];
 	$id_funcionario[30]=$_POST['id_func21S'];
-	$nombre[30]=$_POST['txt_nombrePFSM-S'];
-	$paterno[30]=$_POST['txt_paternoPFSM-S'];
-	$materno[30]=$_POST['txt_maternoPFSM-S'];
+	$nombre[30]=$_POST['txt_nombreELIGE-S'];
+	$paterno[30]=$_POST['txt_paternoELIGE-S'];
+	$materno[30]=$_POST['txt_maternoELIGE-S'];
 	$chek[30]='S';
 
 
@@ -984,8 +984,8 @@ else
 	echo'<tr>';
     echo'<td width="26%" rowspan="2">Partido Verde Ecologista de Mexico (PVEM)</td>';
 	echo'<td width="15%">';
-    echo'<input type="hidden" name="id_integra15" id="id_integra15" value ="'.$row['id_integrante'].'"  />';
-    echo'<input type="hidden" name="id_func15P" id="id_func15P" value ="'.$row['id_funcionario'].'" />';
+    echo'<input type="hidden" name="id_integra14" id="id_integra14" value ="'.$row['id_integrante'].'"  />';
+    echo'<input type="hidden" name="id_func14P" id="id_func14P" value ="'.$row['id_funcionario'].'" />';
     echo' <input type="text" name= "txt_nombrePVEM-P" id="txt_nombrePVEM-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
     echo' <td width="22%"><input type="text" name= "txt_paternoPVEM-P" id="txt_paternoPVEM-P" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
 	echo' <td width="21%"><input type="text" name= "txt_maternoPVEM-P" id="txt_maternoPVEM-P" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/></td>';
@@ -1007,7 +1007,7 @@ else
 	if($row[id_integrante]==14 && $row[tipo_acredor]=='S')
 	{
         echo'<tr>';
-		echo'<input type="hidden" name="id_func15S" id="id_func15S" value ="'.$row['id_funcionario'].'" />';
+		echo'<input type="hidden" name="id_func14S" id="id_func14S" value ="'.$row['id_funcionario'].'" />';
         echo'<td width="15%"><input type="text" name= "txt_nombrePVEM-S" id="txt_nombrePVEM-S" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
       	echo'<td width="22%"><input type="text" name= "txt_paternoPVEM-S" id="txt_paternoPVEM-S" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
       	echo'<td width="21%"><input type="text" name= "txt_maternoPVEM-S" id="txt_maternoPVEM-S" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/> </td>';
@@ -1025,15 +1025,15 @@ else
 
       echo'</tr>';
 	}
-
+///// partido del trabajo
 	if($row[id_integrante]==15 && $row[tipo_acredor]=='P')
 	{
 
 	echo'<tr>';
     echo'<td width="26%" rowspan="2">Partido del Trabajo (PT)</td>';
     echo'<td width="15%">';
-    echo'<input type="hidden" name="id_integra14" id="id_integra14" value ="'.$row['id_integrante'].'"  />';
-    echo'<input type="hidden" name="id_func14P" id="id_func14P" value ="'.$row['id_funcionario'].'" />';
+    echo'<input type="hidden" name="id_integra15" id="id_integra15" value ="'.$row['id_integrante'].'"  />';
+    echo'<input type="hidden" name="id_func15P" id="id_func15P" value ="'.$row['id_funcionario'].'" />';
     echo' <input type="text" name="txt_nombrePT-P" id="txt_nombrePT-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
     echo' <td width="22%"><input type="text" name= "txt_paternoPT-P" id="txt_paternoPT-P" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
 	echo' <td width="21%"><input type="text" name= "txt_maternoPT-P" id="txt_maternoPT-P" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/></td>';
@@ -1054,7 +1054,7 @@ else
 	if($row[id_integrante]==15 && $row[tipo_acredor]=='S')
 	{
 	echo' <tr>';
-    echo'<input type="hidden" name="id_func14S" id="id_func14S" value ="'.$row['id_funcionario'].'" />';
+    echo'<input type="hidden" name="id_func15S" id="id_func15S" value ="'.$row['id_funcionario'].'" />';
     echo'<td width="15%"><input type="text" name= "txt_nombrePT-S" id="txt_nombrePT-S" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
     echo'<td width="22%"><input type="text" name= "txt_paternoPT-S" id="txt_paternoPT-S" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
     echo'<td width="21%"><input type="text" name= "txt_maternoPT-S" id="txt_maternoPT-S" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/> </td> ';
@@ -1071,7 +1071,7 @@ else
     echo'</tr>';
 	}
 
-
+///// partido movimiento ciudadano /////
 	if($row[id_integrante]==16 && $row[tipo_acredor]=='P')
 	{
     echo'<tr>';
@@ -1117,7 +1117,7 @@ else
 
     echo'</tr>';
 	}
-
+///// partido morena ////
 	if($row[id_integrante]==17 && $row[tipo_acredor]=='P')
 	{
     echo'<tr>';
@@ -1163,14 +1163,14 @@ else
     echo' </tr>';
 	}
 
-	/////
-	if($row[id_integrante]==19 && $row[tipo_acredor]=='P')
+	///// aqui seria 18 para el partido  PES ///
+	if($row[id_integrante]==18 && $row[tipo_acredor]=='P')
 	{
 
 	echo' <tr>';
     echo' <td width="26%" rowspan="2">Partido Encuentro Solidario (PES)</td>';
     echo' <td width="15%">';
-    echo'<input type="hidden" name="id_integra19" id="id_integra19" value ="'.$row['id_integrante'].'"  />';
+    echo'<input type="hidden" name="id_integra18" id="id_integra18" value ="'.$row['id_integrante'].'"  />';
     echo'<input type="hidden" name="id_func19P" id="id_func19P" value ="'.$row['id_funcionario'].'" />';
     echo' <input type="text" name= "txt_nombrePES-P" id="txt_nombrePES-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
     echo' <td width="22%"><input type="text" name= "txt_paternoPES-P" id="txt_paternoPES-P" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
@@ -1188,7 +1188,7 @@ else
      echo'</tr>';
 	}
 
-	if($row[id_integrante]==19 && $row[tipo_acredor]=='S')
+	if($row[id_integrante]==18 && $row[tipo_acredor]=='S')
 	{
     echo' <tr>';
     echo'<input type="hidden" name="id_func19S" id="id_func19S" value ="'.$row['id_funcionario'].'" />';
@@ -1210,62 +1210,63 @@ else
     echo' </tr>';
 	}
 
-///////
+/////// aqui seria 19  partido PRSP  nuevo ////
 
-	if($row[id_integrante]==20 && $row[tipo_acredor]=='P')
+	if($row[id_integrante]==19 && $row[tipo_acredor]=='P')
 	{
    echo' <tr>';
    echo' <td width="26%" rowspan="2">Partido Redes Sociales Progresistas (PRSP)</td>';
    echo' <td width="15%">';
-   echo'<input type="hidden" name="id_integra20" id="id_integra20" value ="'.$row['id_integrante'].'"  />';
-   echo'<input type="hidden" name="id_func20P" id="id_func20P" value ="'.$row['id_funcionario'].'" />';
-   echo' <input type="text" name= "txt_nombrePH-P" id="txt_nombrePH-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
-   echo' <td width="22%"><input type="text" name= "txt_paternoPH-P" id="txt_paternoPH-P" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
-   echo' <td width="21%"><input type="text" name= "txt_maternoPH-P" id="txt_maternoPH-P" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/></td>';
+   echo'<input type="hidden" name="id_integra19" id="id_integra19" value ="'.$row['id_integrante'].'"  />';
+   echo'<input type="hidden" name="id_func19P" id="id_func19P" value ="'.$row['id_funcionario'].'" />';
+		
+   echo' <input type="text" name= "txt_nombrePRSP-P" id="txt_nombrePRSP-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
+   echo' <td width="22%"><input type="text" name= "txt_paternoPRSP-P" id="txt_paternoPRSP-P" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
+   echo' <td width="21%"><input type="text" name= "txt_maternoPRSP-P" id="txt_maternoPRSP-P" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/></td>';
 
    echo'<td width="16%">';
    echo '<label>P</label>';
 if($row['tipo_acredor']=="P")
 {
-	echo'<input type="checkbox" name="ck_PH-P" value="P" checked="checked" >';
+	echo'<input type="checkbox" name="ck_PRSP-P" value="P" checked="checked" >';
 }
 else
 {
-	echo'<input type="checkbox" name="ck_PH-P" value="P" >';
+	echo'<input type="checkbox" name="ck_PRSP-P" value="P" >';
 }
     echo' </tr>';
 	}
 
-    if($row[id_integrante]==20 && $row[tipo_acredor]=='S')
+    if($row[id_integrante]==19 && $row[tipo_acredor]=='S')
 	{
 	echo' <tr>';
     echo'<input type="hidden" name="id_func20S" id="id_func20S" value ="'.$row['id_funcionario'].'" />';
-    echo' <td width="15%"><input type="text" name= "txt_nombrePH-S" id="txt_nombrePH-S" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
-    echo' <td width="22%"><input type="text" name= "txt_paternoPH-S" id="txt_paternoPH-S" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
-    echo' <td width="21%"><input type="text" name= "txt_maternoPH-S" id="txt_maternoPH-S" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/> </td> ';
+    echo' <td width="15%"><input type="text" name= "txt_nombrePRSP-S" id="txt_nombrePRSP-S" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
+    echo' <td width="22%"><input type="text" name= "txt_paternoPRSP-S" id="txt_paternoPRSP-S" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
+    echo' <td width="21%"><input type="text" name= "txt_maternoPRSP-S" id="txt_maternoPRSP-S" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/> </td> ';
 
 	echo'<td width="16%">';
    	echo '<label>S</label>';
   if($row['tipo_acredor']=="S")
 {
-	echo'<input type="checkbox" name="ck_PH-S" value="S" checked="checked" >';
+	echo'<input type="checkbox" name="ck_PRSP-S" value="S" checked="checked" >';
 }
 else
 {
-	echo'<input type="checkbox" name="ck_PH-S" value="S" >';
+	echo'<input type="checkbox" name="ck_PRSP-S" value="S" >';
 }
 
     echo' </tr>';
 	}
-//////////////
+////////////// aqui seria 20 . para fuerza por mexico 
 
-	 if($row[id_integrante]==21 && $row[tipo_acredor]=='P')
+	 if($row[id_integrante]==20 && $row[tipo_acredor]=='P')
 	{
    echo' <tr>';
    echo' <td width="26%" rowspan="2">Fuerza por México (FM)</td>';
    echo' <td width="15%">';
-   echo'<input type="hidden" name="id_integra21" id="id_integra21" value ="'.$row['id_integrante'].'"  />';
-   echo'<input type="hidden" name="id_func21P" id="id_func20P" value ="'.$row['id_funcionario'].'" />';
+   echo'<input type="hidden" name="id_integra20" id="id_integra20" value ="'.$row['id_integrante'].'"  />';
+   echo'<input type="hidden" name="id_func20P" id="id_func20P" value ="'.$row['id_funcionario'].'" />';
    echo' <input type="text" name= "txt_nombrePFSM-P" id="txt_nombrePFSM-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
    echo' <td width="22%"><input type="text" name= "txt_paternoPFSM-P" id="txt_paternoPFSM-P" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
    echo' <td width="21%"><input type="text" name= "txt_maternoPFSM-P" id="txt_maternoPFSM-P" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/></td>';
@@ -1283,10 +1284,10 @@ else
     echo' </tr>';
 	}
 
-    if($row[id_integrante]==21 && $row[tipo_acredor]=='S')
+    if($row[id_integrante]==20 && $row[tipo_acredor]=='S')
 	{
 	echo' <tr>';
-    echo'<input type="hidden" name="id_func21S" id="id_func21S" value ="'.$row['id_funcionario'].'" />';
+    echo'<input type="hidden" name="id_func20S" id="id_func20S" value ="'.$row['id_funcionario'].'" />';
     echo' <td width="15%"><input type="text" name= "txt_nombrePFSM-S" id="txt_nombrePFSM-S" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
     echo' <td width="22%"><input type="text" name= "txt_paternoPFSM-S" id="txt_paternoPFSM-S" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
     echo' <td width="21%"><input type="text" name= "txt_maternoPFSM-S" id="txt_maternoPFSM-S" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/> </td> ';
@@ -1306,52 +1307,52 @@ else
 	}
 
 
-	// ESTE VA AL ULTIMO:
-	 if($row[id_integrante]==18 && $row[tipo_acredor]=='P')
+	// ESTE VA AL ULTIMO seria el id 21 para elige 
+	 if($row[id_integrante]==21 && $row[tipo_acredor]=='P')
 	{
 	// 12/01/2021 Variable para imprimir partido ELEGIR AL ULTIMO
 	 $integra18 .= '<tr>';
      $integra18 .= ' <td width="26%" rowspan="2">Partido Equidad, Libertad y Genero  (ELIGE)</td>';
      $integra18 .=  ' <td width="15%">';
-     $integra18 .=  '<input type="hidden" name="id_integra18" id="id_integra18" value ="'.$row['id_integrante'].'"  />';
-     $integra18 .=  '<input type="hidden" name="id_func18P" id="id_func18P" value ="'.$row['id_funcionario'].'" />';
-     $integra18 .= ' <input type="text" name="txt_nombrePNA-P" id="txt_nombrePNA-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
-     $integra18 .= ' <td width="22%"><input type="text" name= "txt_paternoPNA-P" id="txt_paternoPNA-P" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
-	 $integra18 .= ' <td width="21%"><input type="text" name= "txt_maternoPNA-P" id="txt_maternoPNA-P" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)" /></td>';
+     $integra18 .=  '<input type="hidden" name="id_integra21" id="id_integra21" value ="'.$row['id_integrante'].'"  />';
+     $integra18 .=  '<input type="hidden" name="id_func21P" id="id_func21P" value ="'.$row['id_funcionario'].'" />';
+     $integra18 .= ' <input type="text" name="txt_nombreELIGE-P" id="txt_nombreELIGE-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
+     $integra18 .= ' <td width="22%"><input type="text" name= "txt_paternoELIGE-P" id="txt_paternoELIGE-P" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
+	 $integra18 .= ' <td width="21%"><input type="text" name= "txt_maternoELIGE-P" id="txt_maternoELIGE-P" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)" /></td>';
 
 	$integra18 .= '<td width="16%">';
     $integra18 .=  '<label>P</label>';
 
 	if($row['tipo_acredor']=="P")
 	{
-		$integra18 .= '<input type="checkbox" name="ck_PNA-P" value="P" checked="checked" >';
+		$integra18 .= '<input type="checkbox" name="ck_ELIGE-P" value="P" checked="checked" >';
 	}
 	else
 	{
-		$integra18 .= '<input type="checkbox" name="ck_PNA-P" value="P" >';
+		$integra18 .= '<input type="checkbox" name="ck_ELIGE-P" value="P" >';
 	}
 
      $integra18 .= ' </tr>';
 	}
 
-	 if($row[id_integrante]==18 && $row[tipo_acredor]=='S')
+	 if($row[id_integrante]==21 && $row[tipo_acredor]=='S')
 	{
      $integra18 .=  ' <tr>';
      $integra18 .=  '<input type="hidden" name="id_func18S" id="id_func18S" value ="'.$row['id_funcionario'].'" />';
-     $integra18 .= ' <td width="15%"><input type="text" name= "txt_nombrePNA-S" id="txt_nombrePNA-S" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
-     $integra18 .= ' <td width="22%"><input type="text" name= "txt_paternoPNA-S" id="txt_paternoPNA-S" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
-     $integra18 .= ' <td width="21%"><input type="text" name= "txt_maternoPNA-S" id="txt_maternoPNA-S" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/> </td>';
+     $integra18 .= ' <td width="15%"><input type="text" name= "txt_nombreELIGE-S" id="txt_nombreELIGE-S" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/></td>';
+     $integra18 .= ' <td width="22%"><input type="text" name= "txt_paternoELIGE-S" id="txt_paternoELIGE-S" value ="'.$row['ap_paterno'].'" onkeypress="return validar_texto(event)"/></td>';
+     $integra18 .= ' <td width="21%"><input type="text" name= "txt_maternoELIGE-S" id="txt_maternoELIGE-S" value ="'.$row['ap_materno'].'" onkeypress="return validar_texto(event)"/> </td>';
 
 
 	$integra18 .=  '<td width="16%">';
    	$integra18 .=  '<label>S</label>';
 		if($row['tipo_acredor']=="S")
 		{
-			$integra18 .= '<input type="checkbox" name="ck_PNA-S" value="S" checked="checked" >';
+			$integra18 .= '<input type="checkbox" name="ck_ELIGE-S" value="S" checked="checked" >';
 		}
 		else
 		{
-			$integra18 .= '<input type="checkbox" name="ck_PNA-S" value="S" >';
+			$integra18 .= '<input type="checkbox" name="ck_ELIGE-S" value="S" >';
 		}
      $integra18 .= '</tr>';
 	}
@@ -1456,12 +1457,12 @@ else
 if($row[id_integrante]==32 && $row[tipo_acredor]=='P')
   {
 	echo'<tr>';
-	echo'<td>Candidato Representante DMR:</td>';
+	echo'<td>Candidato Representante:</td>';
        echo'<input type="hidden" name="id_integra32" id="id_integra32" value ="32" />';
 		echo'<td colspan="4"> <input type="tex" name="txt_namecandidatoDMR" id ="txt_namecandidatoDMR" value="'.$row['candidato'].'" /></td>';
 	echo'</tr>';
 	echo'<tr>';
-	echo'<td>Puesto Representante DMR:</td>';
+	echo'<td>Puesto Representante:</td>';
 	echo'<td colspan="4"> <input type="tex" name="txt_puestocandidatoDMR" id ="txt_puestocandidatoDMR" value="'.$row['puesto'].'"/></td>';
 	echo'</tr>';
 
@@ -1469,7 +1470,7 @@ if($row[id_integrante]==32 && $row[tipo_acredor]=='P')
 	 echo'<input type="hidden" name="id_integra32" id="id_integra32" value ="'.$row['id_integrante'].'"  />';
      echo'<input type="hidden" name="id_func32P" id="id_func32P" value ="'.$row['id_funcionario'].'" />';
 
-     echo'<td width="26%" rowspan="2" align="center"><strong>Representantes C- 2</strong></td>';
+     echo'<td width="26%" rowspan="2" align="center"><strong>Representantes C-2</strong></td>';
 
 	 echo'<td >';
 	 echo'<input type="text" name= "txt_nombreCI2-P" id="txt_nombreCI2-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/>';
@@ -1528,19 +1529,19 @@ else
 if($row[id_integrante]==33 && $row[tipo_acredor]=='P')
   {
 		echo'<tr>';
-	echo'<td>Candidato Representante Alcalde:</td>';
+	echo'<td>Candidato Representante :</td>';
        echo'<input type="hidden" name="id_integra32" id="id_integra32" value ="32" />';
 		echo'<td colspan="4"> <input type="tex" name="txt_namecandidatoALCALDE" id ="txt_namecandidatoALCALDE" value="'.$row['candidato'].'" /></td>';
 	echo'</tr>';
 	echo'<tr>';
-	echo'<td>Puesto Representante Alcalde:</td>';
+	echo'<td>Puesto Representante :</td>';
 	echo'<td colspan="4"> <input type="tex" name="txt_puestocandidatoALCALDE" id ="txt_puestocandidatoALCALDE" value="'.$row['puesto'].'"/></td>';
 	echo'</tr>';
 	 echo'<tr>';
 	 echo'<input type="hidden" name="id_integra33" id="id_integra33" value ="'.$row['id_integrante'].'"/>';
      echo'<input type="hidden" name="id_func33P" id="id_func33P" value ="'.$row['id_funcionario'].'" />';
 
-     echo'<td width="26%" rowspan="2" align="center"><strong>Reperesentantes C- 3</strong></td>';
+     echo'<td width="26%" rowspan="2" align="center"><strong>Reperesentante C- 3</strong></td>';
 
 	 echo'<td >';
 	 echo'<input type="text" name= "txt_nombreCI3-P" id="txt_nombreCI3-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/>';
@@ -1602,7 +1603,7 @@ if($row[id_integrante]==34 && $row[tipo_acredor]=='P')
 	 echo'<input type="hidden" name="id_integra34" id="id_integra34" value ="'.$row['id_integrante'].'"  />';
      echo'<input type="hidden" name="id_func34P" id="id_func34P" value ="'.$row['id_funcionario'].'" />';
 
-     echo'<td width="26%" rowspan="2" align="center"><strong>Candidato Sin Partido 4</strong></td>';
+     echo'<td width="26%" rowspan="2" align="center"><strong>Representante C-4</strong></td>';
 
 	 echo'<td >';
 	 echo'<input type="text" name= "txt_nombreCI4-P" id="txt_nombreCI4-P" value ="'.$row['nombre'].'" onkeypress="return validar_texto(event)"/>';
@@ -2010,7 +2011,7 @@ else
   <tr>
       <td width="25%">Partido Encuentro Solidario (PES)</td>
       <td width="20%"><p>
-        <input type="hidden" name="id_integra19" id="id_integra19" value ="19" />
+        <input type="hidden" name="id_integra18" id="id_integra18" value ="18" />
         <input type="text" value="<?php echo $filas[22]["nombre"]?>" name= "txt_nombrePES-P" id="txt_nombrePES-P" onkeypress='return validar_texto(event)' tabindex="49"/>
       </p>
         <p>
@@ -2036,36 +2037,36 @@ S </td>
      <tr>
       <td width="25%">Partido Redes Sociales Progresistas (RSP)</td> <!-- antes Partido humanista -->
       <td width="20%"><p>
-        <input type="hidden" name="id_integra20" id="id_integra20" value ="20" />
-        <input type="text" value="<?php echo $filas[24]["nombre"]?>" name= "txt_nombrePH-P" id="txt_nombrePH-P" onkeypress='return validar_texto(event)' tabindex="55"/>
+        <input type="hidden" name="id_integra19" id="id_integra19" value ="19" />
+        <input type="text" value="<?php echo $filas[24]["nombre"]?>" name= "txt_nombrePRSP-P" id="txt_nombrePH-P" onkeypress='return validar_texto(event)' tabindex="55"/>
       </p>
         <p>
-          <input type="text" value="<?php echo $filas[25]["nombre"]?>" name= "txt_nombrePH-S" id="txt_nombrePH-S" onkeypress='return validar_texto(event)' tabindex="58"/>
+          <input type="text" value="<?php echo $filas[25]["nombre"]?>" name= "txt_nombrePRSP-S" id="txt_nombrePH-S" onkeypress='return validar_texto(event)' tabindex="58"/>
         </p></td>
       <td width="21%"><p>
-        <input type="text" value="<?php echo $filas[24]["ap_paterno"]?>" name= "txt_paternoPH-P" id="txt_paternoPH-P" onkeypress='return validar_texto(event)' tabindex="56"/>
+        <input type="text" value="<?php echo $filas[24]["ap_paterno"]?>" name= "txt_paternoPRSP-P" id="txt_paternoPH-P" onkeypress='return validar_texto(event)' tabindex="56"/>
       </p>
         <p>
-          <input type="text" value="<?php echo $filas[25]["ap_paterno"]?>" name= "txt_paternoPH-S" id="txt_paternoPH-S" onkeypress='return validar_texto(event)' tabindex="59"/>
+          <input type="text" value="<?php echo $filas[25]["ap_paterno"]?>" name= "txt_paternoPRSP-S" id="txt_paternoPH-S" onkeypress='return validar_texto(event)' tabindex="59"/>
         </p></td>
       <td width="22%"><p>
-        <input type="text" value="<?php echo $filas[24]["ap_materno"]?>" name= "txt_maternoPH-P" id="txt_maternoPH-P" onkeypress='return validar_texto(event)' tabindex="57"/>
+        <input type="text" value="<?php echo $filas[24]["ap_materno"]?>" name= "txt_maternoPRSP-P" id="txt_maternoPH-P" onkeypress='return validar_texto(event)' tabindex="57"/>
       </p>
         <p>
-          <input type="text" value="<?php echo $filas[25]["ap_materno"]?>" name= "txt_maternoPH-S" id="txt_maternoPH-S" onkeypress='return validar_texto(event)' tabindex="60"/>
+          <input type="text" value="<?php echo $filas[25]["ap_materno"]?>" name= "txt_maternoPRSP-S" id="txt_maternoPH-S" onkeypress='return validar_texto(event)' tabindex="60"/>
         </p></td>
       <td width="12%"><p>
-       <input type="checkbox" name="ck_PH-P" value="P" checked="checked" disabled="disabled"/>
+       <input type="checkbox" name="ck_PRSP-P" value="P" checked="checked" disabled="disabled"/>
         P</p>
         <p>
-       <input type="checkbox" name="ck_PH-S" value="S" checked="checked" disabled="disabled"/>
+       <input type="checkbox" name="ck_PRSP-S" value="S" checked="checked" disabled="disabled"/>
         S </p></td>
     </tr>
 
      <tr>
       <td width="25%">Fuerza por México (FM)</td> <!-- Nuevo partido  -->
       <td width="20%"><p>
-        <input type="hidden" name="id_integra21" id="id_integra21" value ="21" />
+        <input type="hidden" name="id_integra20" id="id_integra20" value ="20" />
         <input type="text" value="<?php echo $filas[26]["nombre"]?>" name= "txt_nombrePFSM-P" id="txt_nombrePFSM-P" onkeypress='return validar_texto(event)' tabindex="55"/>
       </p>
         <p>
@@ -2093,27 +2094,27 @@ S </td>
 <tr>
       <td width="25%">Partido Equidad, Libertad y Genero (ELIGE)</td><!-- antes PNA -->
       <td width="20%"><p>
-        <input type="hidden" name="id_integra18" id="id_integra18" value ="18" />
-        <input type="text" value="<?php echo $filas[28]["nombre"]?>" name= "txt_nombrePNA-P" id="txt_nombrePNA-P" onkeypress='return validar_texto(event)' tabindex="37"/>
+        <input type="hidden" name="id_integra21" id="id_integra21" value ="21" />
+        <input type="text" value="<?php echo $filas[28]["nombre"]?>" name= "txt_nombreELIGE-P" id="txt_nombreELIGE-P" onkeypress='return validar_texto(event)' tabindex="37"/>
       </p>
         <p>
-          <input type="text" value="<?php echo $filas[29]["nombre"]?>" name= "txt_nombrePNA-S" id="txt_nombrePNA-S" onkeypress='return validar_texto(event)' tabindex="40"/>
+          <input type="text" value="<?php echo $filas[29]["nombre"]?>" name= "txt_nombreELIGE-S" id="txt_nombreELIGE-S" onkeypress='return validar_texto(event)' tabindex="40"/>
         </p></td>
       <td width="21%"><p>
-        <input type="text" value="<?php echo $filas[28]["ap_paterno"]?>" name= "txt_paternoPNA-P" id="txt_paternoPNA-P" onkeypress='return validar_texto(event)' tabindex="38"/>
+        <input type="text" value="<?php echo $filas[28]["ap_paterno"]?>" name= "txt_paternoELIGE-P" id="txt_paternoELIGE-P" onkeypress='return validar_texto(event)' tabindex="38"/>
       </p>
       <p>
-          <input type="text" value="<?php echo $filas[29]["ap_paterno"]?>" name= "txt_paternoPNA-S" id="txt_paternoPNA-S" onkeypress='return validar_texto(event)' tabindex="41"/>
+          <input type="text" value="<?php echo $filas[29]["ap_paterno"]?>" name= "txt_paternoELIGE-S" id="txt_paternoELIGE-S" onkeypress='return validar_texto(event)' tabindex="41"/>
       </p></td>
       <td width="22%"><p>
-        <input type="text" value="<?php echo $filas[28]["ap_materno"]?>" name= "txt_maternoPNA-P" id="txt_maternoPNA-P" onkeypress='return validar_texto(event)' tabindex="39"/>
+        <input type="text" value="<?php echo $filas[28]["ap_materno"]?>" name= "txt_maternoELIGE-P" id="txt_maternoELIGE-P" onkeypress='return validar_texto(event)' tabindex="39"/>
       </p>
       <p>
-          <input type="text" value="<?php echo $filas[29]["ap_materno"]?>" name= "txt_maternoPNA-S" id="txt_maternoPNA-S" onkeypress='return validar_texto(event)' tabindex="42"/>
+          <input type="text" value="<?php echo $filas[29]["ap_materno"]?>" name= "txt_maternoELIGE-S" id="txt_maternoELIGE-S" onkeypress='return validar_texto(event)' tabindex="42"/>
       </p></td>
-      <td width="12%"><input type="checkbox" name="ck_PNA-P" value="P" checked="checked" disabled="disabled"/>
+      <td width="12%"><input type="checkbox" name="ck_ELIGE-P" value="P" checked="checked" disabled="disabled"/>
       P <br /> <br />
-<input type="checkbox" name="ck_PNA-S" value="S" checked="checked" disabled="disabled"/>
+<input type="checkbox" name="ck_ELIGE-S" value="S" checked="checked" disabled="disabled"/>
       S </td>
     </tr>
 
@@ -2157,7 +2158,7 @@ S </td>
       S </td>
     </tr>
 	<tr>
-	<td>Candidato  DMR:</td>
+	<td>Candidato  1:</td>
        <input type="hidden" name="id_integra32" id="id_integra32" value ="32" />
 		<td colspan="4"> <input	type="tex" name="txt_namecandidatoDMR" id ="txt_namecandidatoDMR" onkeypress='return validar_texto(event)' /></td>
 	</tr>
@@ -2191,7 +2192,7 @@ S </td>
        S </td>
     </tr>
 	<tr>
-	<td> Candidato Alcaldía 1:</td>
+	<td> Candidato  2:</td>
     <input type="hidden" name="id_integra33" id="id_integra33" value ="33" />
 	<td colspan="4"> <input	type="tex" name="txt_namecandidatoALCALDE" id ="txt_namecandidatoALCALDE" onkeypress='return validar_texto(event)' /></td>
 	</tr>
@@ -2226,7 +2227,7 @@ S </td>
 		S </td>
     </tr>
 	<tr>
-	<td>Candidato Alcaldía 2:</td>
+	<td>Candidato  3:</td>
 <input type="hidden" name="id_integra34" id="id_integra34" value ="34" />
     <input type="hidden" name="id_integra33" id="id_integra33" value ="33" />
 	<td colspan="4"> <input	type="tex" name="txt_namecandidatoALCALDE" id ="txt_namecandidatoALCALDE" onkeypress='return validar_texto(event)' /></td>
@@ -2236,7 +2237,7 @@ S </td>
 	<td colspan="4"><!--<input	type="tex" name="txt_puestocandidatoALCALDE" id ="txt_puestocandidatoALCALDE" onkeypress='return validar_texto(event)' />--></td>
 	</tr>
      <tr>
-      <td width="25%">Reperesentantes C4</td>
+      <td width="25%">Representante C4</td>
       <td width="19%"><p>
 
        <input type="text" value="<?php echo $filas[36]["nombre"]?>" name="txt_nombreCI4-P" id="txt_nombreCI4-P" onkeypress='return validar_texto(event)' tabindex="78"/>

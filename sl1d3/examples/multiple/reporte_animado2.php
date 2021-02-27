@@ -303,7 +303,7 @@ $(function() {
 </script>
 </head>
 <?php
-//error_reporting(E_ERROR | E_PARSE);
+error_reporting(E_ERROR | E_PARSE);
 require("config_open_db.php");
 include ("funciones.php");
 include ("arreglos.php");

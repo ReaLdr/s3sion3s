@@ -149,7 +149,7 @@ echo "</table>";
 
 echo "<table border=1 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 
-$sql_consulta = "SELECT * FROM sisesecd_sesiones WHERE nosesion=$nosesion AND tipo_sesion=$typesess and desc_sesion=$desc and id_distrito!=41 AND estatus=1 ORDER BY sisesecd_sesiones.id_distrito ASC";
+$sql_consulta = "SELECT * FROM sisesecd_sesiones WHERE nosesion=$nosesion AND tipo_sesion=$typesess and desc_sesion=$desc and id_distrito!=40 AND estatus=1 ORDER BY sisesecd_sesiones.id_distrito ASC";
 $consulta_sesiones = sqlsrv_query($conn, $sql_consulta);
 //echo $sql_consulta;
 
@@ -377,7 +377,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_pelgp']==1)
 					{
-						 $cargo.="PELG-P. <br>";
+						 $cargo.="MORENA-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -386,7 +386,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_pelgs']==1)
 					{
-						 $cargo.="PELG-S. <br>";
+						 $cargo.="MORENA-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -395,7 +395,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_morenap']==1)
 					{
-						 $cargo.="PMORENA-P. <br>";
+						 $cargo.="PES-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -404,7 +404,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_morenas']==1)
 					{
-						 $cargo.="PMORENA-S. <br>";
+						 $cargo.="PES-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -413,7 +413,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_pesp']==1)
 					{
-						 $cargo.="PES-P. <br>";
+						 $cargo.="RSP-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -422,7 +422,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_pess']==1)
 					{
-						 $cargo.="PES-S. <br>";
+						 $cargo.="RSP-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -431,7 +431,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_prspp']==1)
 					{
-						 $cargo.="PRS-P. <br>";
+						 $cargo.="FM-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -440,7 +440,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_prsps']==1)
 					{
-						 $cargo.="PRS-S. <br>";
+						 $cargo.="FM-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -450,7 +450,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_pfsmp']==1)
 					{
-						 $cargo.="PFSM-P. <br>";
+						 $cargo.="ELIGE-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -459,7 +459,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_intervencion, inter.id_sesion, id
 				{
 					if($intervenciones_consulta1_row['inter_pfsms']==1)
 					{
-						 $cargo.="PFSM-S. <br>";
+						 $cargo.="ELIGE-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}

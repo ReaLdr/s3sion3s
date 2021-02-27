@@ -129,7 +129,7 @@ echo "</table>";
 
 echo "<table border=1 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 
-$sql_consulta = "SELECT id_distrito, partido, nombre,  paterno, materno, tipo_acredita, fecha_notifica, oficio, presenta, fecha_concluye, oficio_concluye, presenta_concluye FROM sisesecd_acreditarep ";
+$sql_consulta = "SELECT id_distrito, partido, nombre,  paterno, materno, tipo_acredita, fecha_notifica, oficio, presenta, fecha_concluye, oficio_concluye, presenta_concluye FROM sisesecd_acreditarep order by id_distrito asc ";
 
 $consulta_sesiones = sqlsrv_query($conn, $sql_consulta);
 //echo $sql_consulta;

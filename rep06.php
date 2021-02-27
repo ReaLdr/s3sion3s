@@ -315,6 +315,25 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
+				
+				if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='14')
+				{
+					if($intervenciones_consulta1_row['inter_pvemp']==1)
+					{
+						 $cargo.="PVEM-P. <br>";
+						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
+					}
+				}
+
+			if($consejoROW['tipo_acredor']=='S' && $consejoROW['id_integrante']=='14')
+				{
+					if($intervenciones_consulta1_row['inter_pvems']==1)
+					{
+						 $cargo.="PVEM-S. <br>";
+						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
+					}
+				}
+
 
 				if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='15')
 				{
@@ -334,24 +353,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 					}
 				}
 
-			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='14')
-				{
-					if($intervenciones_consulta1_row['inter_pvemp']==1)
-					{
-						 $cargo.="PVEM-P. <br>";
-						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
-					}
-				}
-
-			if($consejoROW['tipo_acredor']=='S' && $consejoROW['id_integrante']=='14')
-				{
-					if($intervenciones_consulta1_row['inter_pvems']==1)
-					{
-						 $cargo.="PVEM-S. <br>";
-						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
-					}
-				}
-
+			
 			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='16')
 				{
 					if($intervenciones_consulta1_row['inter_pmcp']==1)
@@ -374,7 +376,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 				{
 					if($intervenciones_consulta1_row['inter_pelgp']==1)
 					{
-						 $cargo.="PELG-P. <br>";
+						 $cargo.="MORENA-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -383,52 +385,16 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 				{
 					if($intervenciones_consulta1_row['inter_pelgp']==1)
 					{
-						 $cargo.="PELG-S. <br>";
+						 $cargo.="MORENA-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
-
-			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='19')
-				{
-					if($intervenciones_consulta1_row['inter_pesp']==1)
-					{
-						 $cargo.="PES-P. <br>";
-						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
-					}
-				}
-
-			if($consejoROW['tipo_acredor']=='S' && $consejoROW['id_integrante']=='19')
-				{
-					if($intervenciones_consulta1_row['inter_pess']==1)
-					{
-						 $cargo.="PES-S. <br>";
-						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
-					}
-				}
-
-			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='20')
-				{
-					if($intervenciones_consulta1_row['inter_prspp']==1)
-					{
-						 $cargo.="PRS-P. <br>";
-						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
-					}
-				}
-
-			if($consejoROW['tipo_acredor']=='S' && $consejoROW['id_integrante']=='20')
-				{
-					if($intervenciones_consulta1_row['inter_prsps']==1)
-					{
-						 $cargo.="PRS-S. <br>";
-						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
-					}
-				}
-
-			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='18')
+				
+				if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='18')
 				{
 					if($intervenciones_consulta1_row['inter_morenap']==1)
 					{
-						 $cargo.="PMORENA-P. <br>";
+						 $cargo.="PES-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -437,17 +403,55 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 				{
 					if($intervenciones_consulta1_row['inter_morenas']==1)
 					{
-						 $cargo.="PMORENA-S. <br>";
+						 $cargo.="PES-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
 
 
+
+			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='19')
+				{
+					if($intervenciones_consulta1_row['inter_pesp']==1)
+					{
+						 $cargo.="RSP-P. <br>";
+						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
+					}
+				}
+
+			if($consejoROW['tipo_acredor']=='S' && $consejoROW['id_integrante']=='19')
+				{
+					if($intervenciones_consulta1_row['inter_pess']==1)
+					{
+						 $cargo.="RSP-S. <br>";
+						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
+					}
+				}
+
+			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='20')
+				{
+					if($intervenciones_consulta1_row['inter_prspp']==1)
+					{
+						 $cargo.="FM-P. <br>";
+						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
+					}
+				}
+
+			if($consejoROW['tipo_acredor']=='S' && $consejoROW['id_integrante']=='20')
+				{
+					if($intervenciones_consulta1_row['inter_prsps']==1)
+					{
+						 $cargo.="FM-S. <br>";
+						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
+					}
+				}
+
+			
 			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='21')
 				{
 					if($intervenciones_consulta1_row['inter_pfsmp']==1)
 					{
-						 $cargo.="PFSM-P. <br>";
+						 $cargo.="ELIGE-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -456,7 +460,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 				{
 					if($intervenciones_consulta1_row['inter_pfsms']==1)
 					{
-						 $cargo.="PFSM-S. <br>";
+						 $cargo.="ELIGE-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}

@@ -49,7 +49,7 @@ function validar_texto(a) {
     tecl = (document.all) ? a.keyCode : a.which;
     if (tecl==8) return true;
 //    patro =/[a-zA-Záéíóúäëïöü0ñÑ.-9\s]/;
-	patro =/[a-z A-Z áéíóúäëïöü0ñÑ 0-9\-\.\?\,\"\@\:\()\;\*\+&%\$#_]/;
+	patro =/[a-z A-Z áéíóúÁÉÍÓÚäëïöü0ñÑ 0-9\-\.\?\,\"\@\:\()\;\*\+&%\$#_]/;
     t = String.fromCharCode(tecl);
     return patro.test(t);
 }
@@ -496,7 +496,7 @@ echo'</table>';
 <td colspan="2" align="center">MORENA</td>
 <td colspan="2" align="center">PES</td>
 <td colspan="2" align="center">RSP</td>
-<td colspan="2" align="center">FSM</td>
+<td colspan="2" align="center">FM</td>
 <!--12/01/2021: SE CAMBIA PRELACIÓN -->
 <td colspan="2" align="center">ELIGE</td>
     </tr>

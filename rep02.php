@@ -79,7 +79,7 @@ $sql ="SELECT o.id_orden, o.id_sesion, o.punto, CAST(desc_punto as CHAR(2048)) a
 WHERE s.id_sesion=o.id_sesion
 and s.id_sesion=i.id_sesion
 and o.estatus=1
-and s.id_sesion in(select id_sesion from sisesecd_sesiones where id_sesion=$id_sesion and estatus=1 and id_distrito=$id_distrito)";
+and s.id_sesion in(select id_sesion from sisesecd_sesiones where id_sesion=$id_sesion and estatus=1 and id_distrito=$id_distrito) ORDER BY ISNUMERIC(punto), punto";
 
 
 //echo $sql;

@@ -2,6 +2,7 @@
 session_start();
 error_reporting(E_ERROR | E_PARSE);
 include ('config_open_db.php');
+include ('arreglos.php');
 
 if (isset($_SESSION['user'])) {
 
@@ -92,7 +93,8 @@ if($row_count){
 	echo'<select name="id_sesion" id="id_sesion" class="form-control">';
 	while($row2 = sqlsrv_fetch_array($resultado2)){
 		//echo '<option value='.$row[id_sesion].'>'.$nom_sesion[$row[nosesion]].' SESIÓN '.$tipo_ses[$row[tipo_sesion]].' 0'.$row[desc_sesion].'  </option>';
-		echo '<option value='.$row2[id_sesion].'>'.$tipo_ses[$row2[tipo_sesion]].' 0'.$row2[desc_sesion].'  </option>';
+		echo '<option value='.$row2['id_sesion'].'>'.$nom_sesion[$row2['nosesion']]. " " .$tipo_ses[$row2['tipo_sesion']].' 0'.$row2['desc_sesion'].'  </option>';
+		//echo '<option value='.$row2[id_sesion].'>'.$tipo_ses[$row2[tipo_sesion]].' 0'.$row2[desc_sesion].'  </option>';
 	}
 
 	  echo '</select>

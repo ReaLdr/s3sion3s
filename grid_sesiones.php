@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
-//error_reporting(E_ERROR | E_PARSE);
+error_reporting(E_ERROR | E_PARSE);
 session_start();
 
 //echo 'Bienvenido,';
@@ -115,7 +115,11 @@ if($cuantos <= 0){
 
 	$res1=sqlsrv_query($conn,$sql_nuevo);
 	if(!$res1){
-		echo "<script>alert('Ocurrió un error al iniciar el proceso (INS)');</script>";
+		//echo "<script>alert('Ocurrió un error al iniciar el proceso (INS)');</script>";
+        echo'<SCRIPT LANGUAGE="javascript">';
+        echo' 	alert("Debe volver a iniciar sesión (INS)")';
+        echo'	location.href = "index.php";';
+        echo'	</SCRIPT>';
 	}
 
 }
@@ -215,7 +219,7 @@ if($r_estado){
 <?php
 $tipo_s[1]= "ORDINARIA";
 $tipo_s[2]= "EXTRAORDINARIA";
-$tipo_s[3]= "PERMANENTE";
+//$tipo_s[3]= "PERMANENTE";
 
 while($datos = sqlsrv_fetch_array($result))
 {

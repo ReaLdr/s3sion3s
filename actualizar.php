@@ -30,7 +30,7 @@ function validar_texto(a) {
     tecl = (document.all) ? a.keyCode : a.which; 
     if (tecl==8) return true; 
 //    patro =/[a-zA-Záéíóúäëïöü0ñÑ.-9\s]/; 
-	patro =/[a-z A-Z áéíóúäëïöü0ñÑ 0-9\-\.\?\,\"\@\:\()\;\*\+&%\$#_]/;
+	patro =/[a-z A-Z áéíóúÁÉÍÓÚäëïöü0ñÑ 0-9\-\.\?\,\"\@\:\()\;\*\+&%\$#_]/;
     t = String.fromCharCode(tecl); 
     return patro.test(t); 
 } 

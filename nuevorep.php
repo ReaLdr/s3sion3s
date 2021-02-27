@@ -4,8 +4,8 @@ header("Content-Disposition: attachment; filename=Reporte_de_Inicio_de_sesion_co
 header("Pragma: no-cache");
 header("Expires: 0");
 
-//header("Content-Type: text/html;charset=utf-8");
-session_start();
+header("Content-Type: text/html;charset=utf-8");
+//session_start();
 error_reporting(E_ERROR | E_PARSE);
 require("config_open_db.php");
 
@@ -92,8 +92,8 @@ $encabezado = "SELECT * FROM sisesecd_sesiones  WHERE nosesion=".$nosesion." and
 $resultado=sqlsrv_query($conn, $encabezado);
 $undato=sqlsrv_fetch_array ($resultado);
 
-//$fecha_hoy= date('Y-n-d');
-$fecha_hoy=$undato["fecha_inicio_prog"];
+$fecha_hoy= date('Y-n-d');
+//$fecha_hoy=$undato["fecha_inicio_prog"];
 
 $fecha_partida=explode("-", $fecha_hoy);
 
@@ -101,9 +101,9 @@ $anio=$fecha_partida[0];
 $mes=$fecha_partida[1];
 $dia=$fecha_partida[2];
 
-/*echo "añooo".$anio;
-echo "messss".$mes;
-echo "diaaa".$dia;*/
+/*echo "añooo: ".$anio."<br>";
+echo "messss: ".$mes."<br>";
+echo "diaaa: ".$dia."<br>";*/
 
 //$resultados=ifx_query($sql,$conn);
 
@@ -403,9 +403,11 @@ $sum_qi_tv += $datos['qi_tv'];
 	echo'<td align="center" class="resultados">'.$datos['qi_ci4_s'].'</td>';
 
 $quorum_asistencia = ($datos['qi_se']+$datos['qi_cp']+$datos['qi_c1']+$datos['qi_c2']+$datos['qi_c3']+$datos['qi_c4']+$datos['qi_c5']+$datos['qi_c6']+$datos['qi_pan_p']+$datos['qi_pan_s']+$datos['qi_pri_p']+$datos['qi_pri_s']+$datos['qi_prd_p']+$datos['qi_prd_s']+$datos['qi_pt_p']+$datos['qi_pt_s']+$datos['qi_pvem_p']+$datos['qi_pvem_s']+$datos['qi_pmc_p']+$datos['qi_pmc_s']+$datos['qi_elg_p']+$datos['qi_elg_s']+ $datos['qi_pes_p']+$datos['qi_pes_s']+$datos['qi_prsp_p']+$datos['qi_prsp_s']+$datos['qi_morena_p']+$datos['qi_morena_s']+$datos['qi_ci1_p']+$datos['qi_ci1_s']+$datos['qi_ci2_p']+$datos['qi_ci2_s']+$datos['qi_ci3_p']+$datos['qi_ci3_s']+$datos['qi_ci4_p']+$datos['qi_ci4_s']);
-	echo'<td align="center" class="resultados">'.$quorum_asistencia.'</td>'; //quorum asistencia suma de cols.
+	echo'<td align="center" class="resultados">'.$datos['asistencia'].'</td>'; //quorum asistencia suma de cols.
+	//echo'<td align="center" class="resultados">'.$quorum_asistencia.'</td>'; //quorum asistencia suma de cols.
 
-	$sum_quorum_asistencia += $quorum_asistencia;
+	$sum_quorum_asistencia += $datos['asistencia'];
+	//$sum_quorum_asistencia += $quorum_asistencia;
 
 	echo'<td align="center" class="resultados">'.$datos['qi_prensa'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qi_radio'].'</td>';

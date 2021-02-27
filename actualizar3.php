@@ -239,7 +239,7 @@ $sql_update=str_replace("\r","",$sql_update);
 
 //echo $sql_integra;
 
-echo'<table style="width: 90%;" border="1">';
+echo'<table style="width: 90%;" class="table table-bordered">';
 echo'<tr bgcolor="#CCCCFF">';
 echo'<td colspan="10" align="center" ><strong>Asistencia a inicio de sesi&oacute;n de Consejo</strong></td>';
 echo'</tr>';
@@ -258,7 +258,7 @@ echo'</tr>';
 
 		echo'<td><strong>Consejero Presidente:</strong> &nbsp;'.$row_int['nombre'].' '.$row_int['ap_paterno'].' '.$row_int['ap_materno'].'</td>';
 
-		echo'<td>';
+		echo'<td style="width: 15%;">';
 
 		if($cliente['voto_cp']=="1")
 			{
@@ -274,7 +274,7 @@ echo'</tr>';
 		echo'</td>';
 
 
-		echo'<td>';
+		echo'<td style="width: 20%;">';
 
 	if($cliente['voto_cp']=="2")
 			{
@@ -288,7 +288,7 @@ echo'</tr>';
 
 		echo'</td>';
 
-		echo'<td>';
+		echo'<td style="width: 15%;">';
 	if($cliente['voto_cp']=="3")
 			{
 			echo'<input type="radio" name="votocp" id="votocp" value="3" checked="checked">Excusa';

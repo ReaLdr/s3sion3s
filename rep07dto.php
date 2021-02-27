@@ -112,7 +112,7 @@ echo "<table border=1 style='font-family:Calibri, Arial, Helvetica, sans-serif;'
 
 $sql_consulta = "SELECT s.id_distrito, s.id_sesion, s.nosesion, s.desc_sesion, s.tipo_sesion, f.nombre,f.ap_paterno,f.ap_materno,f.tipo_acredor, f.id_integrante, f.candidato, f.puesto FROM sisesecd_sesiones as s, sisesecd_cat_funcionarios as f WHERE s.id_sesion=f.id_sesion
 and f.id_sesion in(select id_sesion  from sisesecd_sesiones
-where id_sesion=$id_sesion and id_distrito= $id_distrito and estatus=1 )";
+where id_sesion=$id_sesion and id_distrito= $id_distrito and estatus=1 )order by f.id_integrante ASC";
 
 $consulta_sesiones = sqlsrv_query($conn, $sql_consulta);
 //echo $sql_consulta;

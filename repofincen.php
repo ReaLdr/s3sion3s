@@ -5,7 +5,7 @@ header("Pragma: no-cache");
 header("Expires: 0");
 header("Content-Type: text/html;charset=utf-8");
 
-session_start();
+//session_start();
 error_reporting(E_ERROR | E_PARSE);
 require("config_open_db.php");
 
@@ -403,7 +403,8 @@ $duracion=calcular_tiempo_trasnc($datos['hora_inicio_real'],$datos['hora_fin_fin
 	echo'<td align="center" class="resultados">'.$datos['qf_ci3_s'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['qf_ci4_p'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos['pf_ci4_s'].'</td>';
-$quorum_asistencia = ($datos['qf_se']+$datos['qf_cp']+$datos['qf_c1']+$datos['qf_c2']+$datos['qf_c3']+$datos['qf_c4']+$datos['qf_c5']+$datos['qf_c6']+$datos['qf_pan_p']+$datos['qf_pan_s']+$datos['qf_pri_p']+$datos['qf_pri_s']+$datos['qf_prd_p']+$datos['qf_prd_s']+$datos['qf_pt_p']+$datos['qf_pt_s']+$datos['qf_pvem_p']+$datos['qf_pvem_s']+$datos['qf_pmc_p']+$datos['qf_pmc_s']+$datos['qf_elg_p']+$datos['qf_elg_s']+$datos['qf_pes_p']+$datos['qf_pes_s']+$datos['qf_prsp_p']+$datos['qf_prsp_s']+$datos['qf_morena_p']+$datos['qf_morena_s']+$datos['qf_ci1_p']+$datos['qf_ci1_s']+$datos['qf_ci2_p']+$datos['qf_ci2_s']+$datos['qf_ci3_p']+$datos['qf_ci3_s']+$datos['qf_ci4_p']+$datos['pf_ci4_s']);
+$quorum_asistencia = ($datos['qf_cp']+$datos['qf_c1']+$datos['qf_c2']+$datos['qf_c3']+$datos['qf_c4']+$datos['qf_c5']+$datos['qf_c6']+$datos['qf_se']+$datos['qf_pan_p']+$datos['qf_pan_s']+$datos['qf_pri_p']+$datos['qf_pri_s']+$datos['qf_prd_p']+$datos['qf_prd_s']+$datos['qf_pvem_p']+$datos['qf_pvem_s']+$datos['qf_pt_p']+$datos['qf_pt_s']+$datos['qf_pmc_p']+$datos['qf_pmc_s']+$datos['qf_morena_p']+$datos['qf_morena_s']+$datos['qf_pes_p']+$datos['qf_pes_s']+$datos['qf_prsp_p']+$datos['qf_prsp_s']+$datos['qf_pfsm_p']+$datos['qf_pfsm_s']+$datos['qf_elg_p']+$datos['qf_elg_s']+$datos['qf_ci1_p']+$datos['qf_ci1_s']+$datos['qf_ci2_p']+$datos['qf_ci2_s']+$datos['qf_ci3_p']+$datos['qf_ci3_s']+$datos['qf_ci4_p']+$datos['pf_ci4_s']);
+//$quorum_asistencia = ($datos['qf_se']+$datos['qf_cp']+$datos['qf_c1']+$datos['qf_c2']+$datos['qf_c3']+$datos['qf_c4']+$datos['qf_c5']+$datos['qf_c6']+$datos['qf_pan_p']+$datos['qf_pan_s']+$datos['qf_pri_p']+$datos['qf_pri_s']+$datos['qf_prd_p']+$datos['qf_prd_s']+$datos['qf_pt_p']+$datos['qf_pt_s']+$datos['qf_pvem_p']+$datos['qf_pvem_s']+$datos['qf_pmc_p']+$datos['qf_pmc_s']+$datos['qf_elg_p']+$datos['qf_elg_s']+$datos['qf_pes_p']+$datos['qf_pes_s']+$datos['qf_prsp_p']+$datos['qf_prsp_s']+$datos['qf_morena_p']+$datos['qf_morena_s']+$datos['qf_ci1_p']+$datos['qf_ci1_s']+$datos['qf_ci2_p']+$datos['qf_ci2_s']+$datos['qf_ci3_p']+$datos['qf_ci3_s']+$datos['qf_ci4_p']+$datos['pf_ci4_s']);
 	echo'<td align="center" class="resultados">'.$quorum_asistencia.'</td>'; //quorum asistencia suma de cols.
 	$sum_quorum_asistencia += $quorum_asistencia;
 	echo'<td align="center" class="resultados">'.$datos['qf_prensa'].'</td>';

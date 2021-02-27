@@ -1,9 +1,9 @@
 <?php
-header('Content-type: application/vnd.ms-excel');
+/*header('Content-type: application/vnd.ms-excel');
 header("Content-Disposition: attachment; filename=Reportes de incidencias relevantes.xls");
 header("Pragma: no-cache");
 header("Expires: 0");
-header("Content-Type: text/html;charset=utf-8");
+header("Content-Type: text/html;charset=utf-8");*/
 
 session_start();
 error_reporting(E_ERROR | E_PARSE);
@@ -175,7 +175,7 @@ $iddistrito=$rowsesion['id_distrito'];
 if($procede==1)
 {
 $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_orden, tipo_incidente, inter_cp, inter_c1, inter_c2, inter_c3, inter_c4, inter_c5, inter_c6, inter_se, inter_panp, inter_pans, inter_prip, inter_pris, inter_prdp, inter_prds, inter_ptp, inter_pts, inter_pvemp, inter_pvems, inter_pmcp, inter_pmcs, inter_pelgp, inter_pelgs,inter_pesp, inter_pess, inter_prspp, inter_prsps, inter_morenap, inter_morenas, inter_ci1p, inter_ci1s, inter_ci2p, inter_ci2s, inter_ci3p, inter_ci3s, inter_ci4p, inter_ci4s, CAST(incidente as CHAR(2048))as incidente, CAST(replica as CHAR(2048))as replica, punto FROM sisesecd_incidentes as inter, sisesecd_inicio as ini WHERE inter.id_sesion=ini.id_sesion and inter.id_sesion=$idsesion ";
-//echo $sql_consulta1;
+echo $sql_consulta1;
 	$intervenciones_consulta1 = sqlsrv_query($conn, $sql_consulta1);
 
 		while($intervenciones_consulta1_row=sqlsrv_fetch_array($intervenciones_consulta1))
@@ -359,25 +359,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 					}
 				}
 
-			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='18')
-				{
-					if($intervenciones_consulta1_row['inter_morenap']==1)
-					{
-						 $cargo.="PMORENA-P. <br>";
-						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
-					}
-				}
-
-			if($consejoROW['tipo_acredor']=='S' && $consejoROW['id_integrante']=='18')
-				{
-					if($intervenciones_consulta1_row['inter_morenas']==1)
-					{
-						 $cargo.="PMORENA-S. <br>";
-						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
-					}
-				}
-
-			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='16')
+				if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='16')
 				{
 					if($intervenciones_consulta1_row['inter_pmcp']==1)
 					{
@@ -394,12 +376,12 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
-
-			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='17')
+				
+				if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='17')
 				{
 					if($intervenciones_consulta1_row['inter_pelgp']==1)
 					{
-						 $cargo.="PELG-P. <br>";
+						 $cargo.="MORENA-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -408,16 +390,36 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 				{
 					if($intervenciones_consulta1_row['inter_pelgs']==1)
 					{
-						 $cargo.="PELG-S. <br>";
+						 $cargo.="MORENA-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
+				
+			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='18')
+				{
+					if($intervenciones_consulta1_row['inter_morenap']==1)
+					{
+						 $cargo.="PES-P. <br>";
+						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
+					}
+				}
+
+			if($consejoROW['tipo_acredor']=='S' && $consejoROW['id_integrante']=='18')
+				{
+					if($intervenciones_consulta1_row['inter_morenas']==1)
+					{
+						 $cargo.="PES-S. <br>";
+						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
+					}
+				}
+
+			
 
 			if($consejoROW['tipo_acredor']=='P' && $consejoROW['id_integrante']=='19')
 				{
 					if($intervenciones_consulta1_row['inter_pesp']==1)
 					{
-						 $cargo.="PES-P. <br>";
+						 $cargo.="RSP-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -426,7 +428,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 				{
 					if($intervenciones_consulta1_row['inter_pess']==1)
 					{
-						 $cargo.="PES-S. <br>";
+						 $cargo.="RSP-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -435,7 +437,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 				{
 					if($intervenciones_consulta1_row['inter_prspp']==1)
 					{
-						 $cargo.="PRSP-P. <br>";
+						 $cargo.="FM-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -444,7 +446,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 				{
 					if($intervenciones_consulta1_row['inter_prsps']==1)
 					{
-						 $cargo.="PRSP-S. <br>";
+						 $cargo.="FM-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -454,7 +456,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 				{
 					if($intervenciones_consulta1_row['inter_inter_pfsmp']==1)
 					{
-						 $cargo.="PFSM-P. <br>";
+						 $cargo.="ELIGE-P. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}
@@ -463,7 +465,7 @@ $sql_consulta1 = "SELECT fecha_inicio_real, id_incidentes, inter.id_sesion, id_o
 				{
 					if($intervenciones_consulta1_row['inter_inter_pfsms']==1)
 					{
-						 $cargo.="PRSP-S. <br>";
+						 $cargo.="ELIGE-S. <br>";
 						 $array.= ($consejoROW["nombre"]." ".$consejoROW["ap_paterno"]." ".$consejoROW["ap_materno"])."<br>";
 					}
 				}

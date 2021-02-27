@@ -414,7 +414,7 @@ function validar_texto(a) {
     tecl = (document.all) ? a.keyCode : a.which; 
     if (tecl==8) return true; 
 //    patro =/[a-zA-Záéíóúäëïöü0ñÑ.-9\s]/; 
-	patro =/[a-z A-Z áéíóúäëïöü0ñÑ 0-9\-\.\?\,\"\@\:\()\;\*\+&%\$#_]/;
+	patro =/[a-z A-Z áéíóúÁÉÍÓÚäëïöü0ñÑ 0-9\-\.\?\,\"\@\:\()\;\*\+&%\$#_]/;
     t = String.fromCharCode(tecl); 
     return patro.test(t); 
 } 
@@ -440,7 +440,7 @@ $incremento=0;
 $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesion and id_integrante in (1,2,3,4,5,6,7,8) and id_distrito=$id_distrito";
 //echo $sql_select;
 ?>
-<table style="width: 90%;" border="1">
+<table style="width: 90%;" border="1" class="table table-bordered">
 <tr bgcolor="#CCCCFF">
 <td colspan="22" align="center"><strong>Asistencia a inicio de sesi&oacute;n de Consejo</strong></td>
 </tr>
@@ -590,7 +590,7 @@ echo'</table>';
  
 	<input type="hidden" value="<?php  echo $_REQUEST["page"] ?>" id="page" name="page" />
 <br />
-<table style="width: 95%;" border=1>
+<table style="width: 95%;" border=1 class="table table-bordered">
 <tr>
   <td colspan="12" align="center" bgcolor="#CCCCFF"><strong>Asistencia al fin de la Sesión de Representantes de Partidos Politicos </strong></td></tr>
 
@@ -646,7 +646,7 @@ echo'</table>';
 <td colspan="2" align="center">MORENA</td>
 <td colspan="2" align="center">PES</td>
 <td colspan="2" align="center">RSP</td>
-<td colspan="2" align="center">FSM</td>
+<td colspan="2" align="center">FM</td>
 	<td colspan="2" align="center">ELIGE</td>
 </tr>
 <tr>
@@ -793,7 +793,7 @@ $incremento=0;
 $sql_integra = "select * from sisesecd_cat_funcionarios where id_sesion=$id_sesion and id_integrante in (1,2,3,4,5,6,7,8) and id_distrito=$id_distrito";
 //echo $sql_select;
 
-echo'<table style="width: 90%;" border= !1>';
+echo'<table style="width: 90%;" border=1 class="table table-bordered">';
 echo'<tr bgcolor="#CCCCFF">';
 echo'<td colspan=10 align="center" ><strong>Asistencia al fin de sesi&oacute;n de Consejo</strong></td>';
 echo'</tr>';
@@ -869,7 +869,7 @@ echo'</table>';
    <input type="hidden" value="<?php echo $_REQUEST["page"]?>" id="page" name="page" />
    
 	<p>&nbsp;</p>
- <table style="width: 90%;" border="1">
+ <table style="width: 90%;" border="1" class="table table-bordered">
    <tr>
     <td colspan=12 align="center" bgcolor="#CCCCFF"><strong>Asistencia al fin de la Sesi&oacute;n de Partidos</strong></td></tr>
 <tr>
@@ -927,7 +927,7 @@ echo'</table>';
 
 <td colspan="2" align="center">PES</td>
 <td colspan="2" align="center">RSP</td>
-<td colspan="2" align="center">FSM</td>
+<td colspan="2" align="center">FM</td>
 <td colspan="2" align="center">ELIGE</td>	
 </tr>
 	 
@@ -1001,7 +1001,7 @@ echo'</table>';
 </tr>
 </table>
 <br />
-<table style="width: 90%;">
+<table style="width: 90%;" class="table table-bordered">
   <tr><td colspan=3 align="center" bgcolor="#CCCCFF"><strong>Asistencia a Sesi&oacute;n de los Medios de Comunicaci&oacute;n</strong></td></tr>
 <tr>
 <td>

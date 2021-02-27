@@ -127,7 +127,7 @@ echo "</th>";
 echo "</tr> ";
 echo "<tr> ";
 echo "<th colspan=36 align='center'>";
-echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE INICIO Y CONCLUSION DE LA SESION DE LOS CONSEJOS DISTRITALES<br></font><br>";
+echo "<font style='font-size:16px;font-weight:bold;'>REPORTE DE INICIO Y CONCLUSI&Oacute;N DE LA SESI&Oacute;N DE LOS CONSEJOS DISTRITALES<br></font><br>";
 echo "</th>";
 echo "</tr>";
 echo "<tr>";
@@ -151,20 +151,20 @@ echo '<tr border=1>';
 echo '<td width=32 rowspan=5 align="center" class="borde_tabla"><strong>Dtto</strong></td>';
 echo  '<td width=52 rowspan=5 align="center" class="borde_tabla"><strong>hora de inicio</strong></td>';
 echo  '<td colspan=39 align="center" class="borde_tabla"><strong>Asistencia</strong></td>';
-echo  '<td width=71 rowspan=5 align="center" class="borde_tabla"><strong>Quorum Asistencia</strong></td>';
-echo   '<td rowspan=4 colspan=3 align="center" class="borde_tabla"><strong>Medios de Comunicacion</strong></td>';
+echo  '<td width=71 rowspan=5 align="center" class="borde_tabla"><strong>Qu&oacute;rum Asistencia</strong></td>';
+echo   '<td rowspan=4 colspan=3 align="center" class="borde_tabla"><strong>Medios de Comunicaci&oacute;n</strong></td>';
 echo  '<td width=288 rowspan=5 align="center" class="borde_tabla"><strong>Observaciones</strong></td>';
 echo  '<td width=288 rowspan=5 align="center" class="borde_tabla"><strong>Domicilio</strong></td>';
 echo "</tr>";
 echo '<tr border=1>';
 echo  '<td colspan=7 rowspan=3 align="center" class="borde_tabla"><strong>consejeros</strong></td>';
-echo  '<td width=58 rowspan=4 align="center" class="borde_tabla"><strong>quorum votacion</strong></td>';
+echo  '<td width=58 rowspan=4 align="center" class="borde_tabla"><strong>qu&oacute;rum votaci&oacute;n</strong></td>';
 echo '<td width=42 rowspan=4 align="center" class="borde_tabla"><strong>srio</strong></td>';
 
 echo "</tr>";
 
 echo '<tr border=1>';
-echo  '<td colspan=22 align="center"><strong>partidos politicos</strong></td>';
+echo  '<td colspan=22 align="center"><strong>partidos pol&iacute;ticos</strong></td>';
 echo  '<td colspan=2 rowspan="2" align="center" class="borde_tabla"><strong>CI1</strong></td>';
 echo  '<td colspan=2 rowspan="2"  align="center" class="borde_tabla"><strong>CI2</strong></td>';
 echo  '<td colspan=2 rowspan="2" align="center" class="borde_tabla"><strong>CI3</strong></td>';
@@ -182,7 +182,7 @@ echo  '<td colspan=2 align="center" class="borde_tabla"><strong>MC</strong></td>
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>MORENA</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PES</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>RSP</strong></td>';
-echo  '<td colspan=2 align="center" class="borde_tabla"><strong>FSM</strong></td>';
+echo  '<td colspan=2 align="center" class="borde_tabla"><strong>FM</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>ELIGE</strong></td>';
 //echo  '<td colspan=2 align="center" class="borde_tabla"><strong>CI1</strong></td>';
 //echo  '<td colspan=2 align="center" class="borde_tabla"><strong>CI2</strong></td>';
@@ -342,23 +342,23 @@ echo "</tr>";
 
 echo '<tr border=1>';
 echo '<td width=32 rowspan=5 align="center" class="borde_tabla">Dtto</td>';
-echo  '<td width=52 rowspan=5 align="center" class="borde_tabla">hora inicio</td>';
+//echo  '<td width=52 rowspan=5 align="center" class="borde_tabla">hora inicio</td>';
 echo '<td width=60 rowspan=5 class="borde_tabla">Hora fin</td>';
-echo  '<td width=65 rowspan=5 class="borde_tabla">Duracion hh:mm</td>';
+//echo  '<td width=65 rowspan=5 class="borde_tabla">Duracion hh:mm</td>';
 echo  '<td colspan=39 align="center" class="borde_tabla">Asistencia</td>';
-echo  '<td width=71 rowspan=5 align="center" class="borde_tabla">Quorum Asistencia</td>';
-echo   '<td rowspan=4 colspan=3 align="center" class="borde_tabla">Medios de Comunicacion</td>';
+echo  '<td width=71 rowspan=5 align="center" class="borde_tabla">Qu&oacute;rum Asistencia</td>';
+echo   '<td rowspan=4 colspan=3 align="center" class="borde_tabla">Medios de Comunicaci&oacute;n</td>';
 echo  '<td width=288 rowspan=5 align="left" class="borde_tabla">Observaciones</td>';
 echo "</tr>";
 echo '<tr border=1>';
 echo  '<td colspan=7 rowspan=3 align="center" class="borde_tabla">consejeros</td>';
-echo  '<td width=58 rowspan=4 align="center" class="borde_tabla">quorum votacion</td>';
+echo  '<td width=58 rowspan=4 align="center" class="borde_tabla">qu&oacute;rum votaci&oacute;n</td>';
 echo '<td width=42 rowspan=4 align="center" class="borde_tabla">srio</td>';
 
 echo "</tr>";
 
 echo '<tr >';
-echo  '<td colspan=22 align="center" class="borde_tabla">partidos politicos</td>';
+echo  '<td colspan=22 align="center" class="borde_tabla">partidos pol&iacute;ticos</td>';
 echo  '<td colspan=2  rowspan=2 align="center" class="borde_tabla"><strong>CI1</strong></td>';
 echo  '<td colspan=2  rowspan=2 align="center" class="borde_tabla"><strong>CI2</strong></td>';
 echo  '<td colspan=2  rowspan=2 align="center" class="borde_tabla"><strong>CI3</strong></td>';
@@ -377,7 +377,7 @@ echo  '<td colspan=2 align="center" class="borde_tabla"><strong>MC</strong></td>
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>MORENA</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>PES</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>RSP</strong></td>';
-echo  '<td colspan=2 align="center" class="borde_tabla"><strong>FSM</strong></td>';
+echo  '<td colspan=2 align="center" class="borde_tabla"><strong>FM</strong></td>';
 echo  '<td colspan=2 align="center" class="borde_tabla"><strong>ELIGE</strong></td>';
 
 echo '</tr>';
@@ -442,15 +442,15 @@ $indice=0;
 while($datos_fin = sqlsrv_fetch_array ($resultados_fin))
 {
 
-$duracion=calcular_tiempo_trasnc($datos_fin['hora_inicio_real'],$datos_fin['hora_fin_final']);
+//$duracion=calcular_tiempo_trasnc($datos_fin['hora_inicio_real'],$datos_fin['hora_fin_final']);
 
 
 	$observafin =  utf8_decode(htmlspecialchars(trim($datos_fin['observafin'])));
 	echo'<tr>';
 	echo'<td align="center" class="resultados">'.$datos_fin['id_distrito'].'</td>';
-	echo'<td align="center" class="resultados">'.$datos_fin['hora_inicio_real'].'</td>';
+	//echo'<td align="center" class="resultados">'.$datos_fin['hora_inicio_real'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos_fin['hora_fin_final'].'</td>';
-	echo'<td align="center" class="resultados">'.$duracion.'</td>';
+	//echo'<td align="center" class="resultados">'.$duracion.'</td>';
 	echo'<td align="center" class="resultados">'.$datos_fin['qf_cp'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos_fin['qf_c1'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos_fin['qf_c2'].'</td>';
@@ -498,7 +498,11 @@ $duracion=calcular_tiempo_trasnc($datos_fin['hora_inicio_real'],$datos_fin['hora
 	echo'<td align="center" class="resultados">'.$datos_fin['qf_ci4_p'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos_fin['pf_ci4_s'].'</td>';
 
-	echo'<td align="center" class="resultados">'.($datos_fin['qf_se']+$datos_fin['qf_cp']+$datos_fin['qf_c1']+$datos_fin['qf_c2']+$datos_fin['qf_c3']+$datos_fin['qf_c4']+$datos_fin['qf_c5']+$datos_fin['qf_c6']+$datos_fin['qf_pan_p']+$datos_fin['qf_pan_s']+$datos_fin['qf_pri_p']+$datos_fin['qf_pri_s']+$datos_fin['qf_prd_p']+$datos_fin['qf_prd_s']+$datos_fin['qf_pt_p']+$datos_fin['qf_pt_s']+$datos_fin['qf_pvem_p']+$datos_fin['qf_pvem_s']+$datos_fin['qf_pmc_p']+$datos_fin['qf_pmc_s']+$datos_fin['qf_pes_p']+$datos_fin['qf_pes_s']+$datos_fin['qf_morena_p']+$datos_fin['qf_morena_s']+$datos_fin['qf_ci1_p']+$datos_fin['qf_ci1_s']+$datos_fin['qf_ci2_p']+$datos_fin['qf_ci2_s']+$datos_fin['qf_ci3_p']+$datos_fin['qf_ci3_s']+ $datos_fin['qf_ci4_p']+$datos_fin['pf_ci4_s']).'</td>'; //quorum asistencia suma de cols.
+    $suma_total = ($datos_fin['qf_cp']+$datos_fin['qf_c1']+$datos_fin['qf_c2']+$datos_fin['qf_c3']+$datos_fin['qf_c4']+$datos_fin['qf_c5']+$datos_fin['qf_c6']+$datos_fin['qf_se']+$datos_fin['qf_pan_p']+$datos_fin['qf_pan_s']+$datos_fin['qf_pri_p']+$datos_fin['qf_pri_s']+$datos_fin['qf_prd_p']+$datos_fin['qf_prd_s']+$datos_fin['qf_pvem_p']+$datos_fin['qf_pvem_s']+$datos_fin['qf_pt_p']+$datos_fin['qf_pt_s']+$datos_fin['qf_pmc_p']+$datos_fin['qf_pmc_s']+$datos_fin['qf_morena_p']+$datos_fin['qf_morena_s']+$datos_fin['qf_pes_p']+$datos_fin['qf_pes_s']+$datos_fin['qf_prsp_p']+$datos_fin['qf_prsp_s']+$datos_fin['qf_pfsm_p']+$datos_fin['qf_pfsm_s']+$datos_fin['qf_elg_p']+$datos_fin['qf_elg_s']+$datos_fin['qf_ci1_p']+$datos_fin['qf_ci1_s']+$datos_fin['qf_ci2_p']+$datos_fin['qf_ci2_s']+$datos_fin['qf_ci3_p']+$datos_fin['qf_ci3_s']+$datos_fin['qf_ci4_p']+$datos_fin['pf_ci4_s']);
+	echo'<td align="center" class="resultados">'.$suma_total.'</td>'; 
+	
+	
+	//quorum asistencia suma de cols.
 	echo'<td align="center" class="resultados">'.$datos_fin['qf_prensa'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos_fin['qf_radio'].'</td>';
 	echo'<td align="center" class="resultados">'.$datos_fin['qf_tv'].'</td>';

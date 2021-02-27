@@ -129,7 +129,7 @@ echo "</table>";
 
 echo "<table border=1 style='font-family:Calibri, Arial, Helvetica, sans-serif;'> ";
 
-$sql_consulta = "SELECT * FROM sisesecd_acreditarep WHERE id_distrito=$iddistrito ";
+$sql_consulta = "SELECT * FROM sisesecd_acreditarep WHERE id_distrito=$iddistrito AND estatus = 1 order by fecha_alta asc";
 
 $consulta_sesiones = sqlsrv_query($conn, $sql_consulta);
 //echo $sql_consulta;
